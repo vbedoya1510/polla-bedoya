@@ -3,24 +3,29 @@ export class Player {
   name: string;
   phone: string;
   email: string;
-  pay: boolean = false;
-  total_score: number = 0;
-  team_goal: string;
+  pay: boolean;
+  total_score: number;
+  team_scorer: string;
+  position: number;
 
 constructor(
     id: number,
     name: string,
     phone: string,
     email: string,
-    team_goal: string,
-    pay: boolean = false   // opcional, por defecto false
+    pay: boolean = false,
+    total_score: number = 0, 
+    team_scorer: string,
+    position: number = 0         
 ) {
     this.id = id;
     this.name = name;
     this.phone = phone;
     this.email = email;
-    this.team_goal = team_goal;
+    this.team_scorer = team_scorer;
+    this.total_score = total_score;
     this.pay = pay;
+    this.position = position;
 }
 
 

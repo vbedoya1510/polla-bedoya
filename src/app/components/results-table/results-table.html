@@ -1,0 +1,34 @@
+<div class="table-responsive">
+<h3>Lista de Predicciones</h3>
+
+<table   class="table table-striped">
+  <thead>
+    <tr>
+      <th>PARTICIPANTE</th>    
+      <th></th>    
+      <td *ngFor="let col of predictionsOrderByPlayer">{{ col.player.name }}</td>
+    </tr>
+    <tr>
+      <th>PUNTAJE TOTAL</th>    
+      <th></th>    
+      <th *ngFor="let col of predictionsOrderByPlayer">{{ col.player.total_score }}</th>
+    </tr>
+    <tr>
+      <th>PARTIDO</th>    
+      <th>Resultado Real</th>  
+      <td *ngFor="let col of predictionsOrderByPlayer">PR | Pts</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of predictionsOrderByGame">
+      <td>
+        {{ p.game.team1 }} -  {{ p.game.team2 }}
+      </td>
+      <th></th>  
+      <td *ngFor="let col of predictionsOrderByPlayer">
+         <span *ngIf="p.game.id === col.game.id">
+         </span>{{ col.goals_team1 }} - {{ col.goals_team2 }} <small *ngIf="col.score > 0"> | {{ col.score }}</small></td>
+    </tr>
+  </tbody>
+</table>
+</div>

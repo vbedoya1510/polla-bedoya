@@ -6,6 +6,7 @@ export class Game {
   team2: string;
   goals_team1: number;
   goals_team2: number;
+  end_game: boolean = false;
 
   constructor(
     id: number,
