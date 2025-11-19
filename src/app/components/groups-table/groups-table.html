@@ -1,0 +1,106 @@
+<div class="table-responsive">
+  <h4>Predicciones Grupos</h4>
+
+  <!-- Filtros -->
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="Filtrar equipo..." 
+             [(ngModel)]="gameFilter" (input)="applyFilters()">
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="Filtrar participante..." 
+             [(ngModel)]="playerFilter" (input)="applyFilters()">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control" [(ngModel)]="scoreFilter" (change)="applyFilters()">
+        <option value="">Todos los puntajes</option>
+        <option value="high">Por el liderato</option>
+        <option value="medium">... Ahí vamos</option>
+        <option value="low">Por no descender</option>
+      </select>
+    </div>
+  </div>
+
+    <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="2">PARTICIPANTE</th> 
+        <th *ngFor="let col of filteredPlayers" [class.editing]="editingPlayer === col.player.id">
+          <div *ngIf="!editingPlayer;">
+            {{ col.player.name }}
+          </div>          
+            <div *ngIf="editingPlayer === col.player.id">
+              <input type="text" class="form-control form-control-sm" 
+                     [(ngModel)]="col.player.name">
+              <button class="btn btn-sm btn-success mt-1">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          
+        </th>
+      </tr>
+      <tr>
+        <th colspan="2">PUNTAJE TOTAL</th>
+        <th *ngFor="let col of filteredPlayers" 
+            [class.text-success]="col.player.total_score > this.highThreshold"
+            [class.text-warning]="col.player.total_score <= this.highThreshold && col.player.total_score > this.lowThreshold"
+            [class.text-danger]="col.player.total_score <= this.lowThreshold">
+          {{ col.player.total_score }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let g of groups; let last = last">   
+      <tr>
+        <th>GRUPO {{g}}</th>    
+        <th>Posición Real</th>  
+        <th *ngFor="let col of filteredPlayers">Posición</th>
+      </tr>
+
+
+      <tr *ngFor="let group of filteredGroups(g)">
+        <td class="font-weight-bold">
+          {{ group.team.name }} 
+        </td>
+        <td class="text-center">
+          <span *ngIf="group.end_position; else editRealResult">
+            {{ group.position }}
+          </span>
+          <ng-template #editRealResult>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control"
+                [(ngModel)]="group.position"
+                min="0" max="9" required
+                (ngModelChange)="onResultChange($event, group, g)"
+                [disabled]="group.end_position">
+            </div>
+          </ng-template>
+        </td>
+        <td *ngFor="let player of filteredPlayers"
+    [ngClass]="getScoreClass(player.player.id, group.team.id)">
+      <div>
+        <span>
+          {{ getPrediction(player.player.id, group.team.id) }}
+          <ng-container *ngIf="getPredictionPosition(player.player.id, group.team.id) == (phase?.result_points ?? 0)">           
+          </ng-container>
+        </span>
+      </div>
+      </td>
+      </tr>
+      <tr class="font-weight-bold bg-light">
+        <td colspan="2" class="text-right">Puntos totales grupo  {{g}}</td>
+        <td *ngFor="let player of filteredPlayers"
+            [ngClass]="{ 'my-result': getTotalPoints(player.player.id, g) > 0 }">
+          {{ getTotalPoints(player.player.id, g) }}
+        </td>
+      </tr>
+      <tr *ngIf="!last" class="group-spacer">
+      <td [attr.colspan]="2 + filteredPlayers.length" style="height: 30px; background-color: transparent;"></td>
+      </tr>
+ </ng-container>  
+    </tbody>
+  </table>
+</div>
+    
+    
+

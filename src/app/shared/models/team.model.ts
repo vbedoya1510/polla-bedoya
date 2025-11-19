@@ -2,40 +2,21 @@ import { Game } from "./game.model";
 import { Phase } from "./phase.model";
 import { Player } from "./player.model";
 
-export class WinnerPosition {
+export class Team {
   id: number;
-  team: string;
-  group: number;
-  position: number;
-  prediction: boolean;
+  name: string;
+  group: string;
 
   constructor(
     id: number,
-    team: string,
-    group: number,
-    position: number = 1,
-    prediction: boolean = true
+    name: string,
+    group: string
   ) {
     this.id = id;
-    this.team = team;
+    this.name = name;
     this.group = group;
-    this.position = position;
-    this.prediction = prediction;
   }
 }
-
-export class WinnerPhase {
-  winner: WinnerPosition;
-  phase: Phase;
-    constructor(
-      winner: WinnerPosition,
-      phase: Phase,
-    ) {
-      this.winner = winner;
-      this.phase = phase;
-    } 
-}
-
 
 export class PredictionGame {
   player: Player;
@@ -59,18 +40,41 @@ export class PredictionGame {
     } 
 }
 
-export class PredictionWinnerPlayer {
+export class TeamPhase {
+  phase: Phase;
+  team: Team;
+  position: number;
+  end_position: boolean = false;
+
+    constructor(
+      phase: Phase,
+      team: Team,
+      position: number
+    ) {
+      this.phase = phase;
+      this.team = team;
+      this.position = position;
+    } 
+}
+
+export class PredictionTeamPlayer {
   player: Player;
   phase: Phase;
-  winnerPosition: WinnerPosition;
+  team: Team;
+  position: number;
+  score: number;
 
     constructor(
       player: Player,
       phase: Phase,
-      winnerPosition: WinnerPosition
+      team: Team,
+      position: number,
+      score: number = 0
     ) {
       this.player = player;
       this.phase = phase;
-      this.winnerPosition = winnerPosition;
+      this.team = team;
+      this.position = position; 
+      this.score = score;     
     } 
 }

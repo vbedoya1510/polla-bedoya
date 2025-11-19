@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ResultsTable } from '../../components/results-table/results-table';
 import { Game, GamePhase } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
-import { PredictionGame } from '../../shared/models/winner.model';
+import { PredictionGame } from '../../shared/models/team.model';
 import { Phase } from '../../shared/models/phase.model';
 
 @Component({
@@ -159,7 +159,7 @@ gamePhases: GamePhase[] = [
   ngOnInit(): void {
     this.phase = this.phases[0];
 	
-	this.games[6].end_game = true;
+	  this.games[6].end_game = true;
     this.games[8].end_game = true;
 	
     this. predictions = [

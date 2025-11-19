@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PredictionGame } from '../../shared/models/winner.model';
-import { Game, GamePhase } from '../../shared/models/game.model';
+import { PredictionGame } from '../../shared/models/team.model';
+import { Game } from '../../shared/models/game.model';
 import { FormsModule } from '@angular/forms';
-import { Player } from '../../shared/models/player.model';
 import { Phase } from '../../shared/models/phase.model';
 
 
@@ -18,7 +17,6 @@ import { Phase } from '../../shared/models/phase.model';
 export class ResultsTable {
 
   @Input() predictions: PredictionGame[] = [];
-  @Input() gamePhase: GamePhase[] = [];
   @Input() phase: Phase | undefined;
 
  
@@ -67,7 +65,7 @@ export class ResultsTable {
     return filtered.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-    get filteredGames() {
+  get filteredGames() {
     if (this.gameFilter) {
       return this.originalGames.filter(g =>
         g.game.team1.toLowerCase().includes(this.gameFilter.toLowerCase()) ||
