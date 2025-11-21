@@ -63,18 +63,21 @@ export class PredictionTeamPlayer {
   team: Team;
   position: number;
   score: number;
+  finals: boolean;
 
     constructor(
       player: Player,
       phase: Phase,
       team: Team,
       position: number,
-      score: number = 0
+      score: number = 0,
+      finals: boolean
     ) {
       this.player = player;
       this.phase = phase;
       this.team = team;
       this.position = position; 
-      this.score = score;     
+      this.score = score;  
+      this.finals = finals;   
     } 
 }

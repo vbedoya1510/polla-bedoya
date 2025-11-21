@@ -1,33 +1,33 @@
 import { Component, Input } from '@angular/core';
+import { PredictionTeamPlayer, Team, TeamPhase } from '../../shared/models/team.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PredictionTeamPlayer, TeamPhase } from '../../shared/models/team.model';
 import { Phase } from '../../shared/models/phase.model';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @Component({
-  selector: 'app-groups-table',
-  imports: [CommonModule,FormsModule],
-  templateUrl: './groups-table.html',
-  styleUrl: './groups-table.css',
+  selector: 'app-finals-table',
+  imports: [CommonModule,FormsModule,NgSelectModule],
+  templateUrl: './finals-table.html',
+  styleUrl: './finals-table.css',
 })
-export class GroupsTable {
 
+export class FinalsTable {
 
   @Input() predictions: PredictionTeamPlayer[] = [];
+  @Input() teams: Team [] = [];
+  @Input() phases: Phase [] = [];
   @Input() teamPhase: TeamPhase[] = [];
-  @Input() groups: string[] = [];
-  @Input() phase: Phase | undefined;
+
+   originalGroup: PredictionTeamPlayer[] = [];
 
   predictionsOrderByPlayer: PredictionTeamPlayer[] = [];
   predictionsOrderByTeam: PredictionTeamPlayer[] = [];
-  originalGroup: TeamPhase[] = [];
-  originalTeams: PredictionTeamPlayer[] = [];
 
   playerFilter: string = '';
   gameFilter: string = '';
   scoreFilter: string = '';
-
-  editingPlayer: number | null = null;
 
   currentPage: number = 1;
   itemsPerPage: number = 2;
@@ -35,11 +35,17 @@ export class GroupsTable {
   highThreshold: number = 0;
   lowThreshold: number = 0;
 
-  idGrupo: string = '';
+  editingPlayer: number | null = null;
+
+  contador: number = 0;
+  col: any;
+
+
+  selectedTeamIds: (number | null)[] = [null, null, null, null];
 
   applyFilters() {
     this.currentPage = 1; // Resetear a primera página al filtrar
-  }
+  }  
 
   get filteredPlayers() {
     let filtered = this.predictionsOrderByPlayer;
@@ -63,69 +69,10 @@ export class GroupsTable {
     
     // Paginación
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+
+   // console.log('Cantidad:', this.filteredPlayers.length);
     return filtered.slice(startIndex, startIndex + this.itemsPerPage);
   }
-
-    filteredGroups(group: string) {
-    if (this.gameFilter) {
-      return this.originalGroup.filter(g =>
-        (g.team.group == group) &&
-        g.team.name.toLowerCase().includes(this.gameFilter.toLowerCase())
-      );
-    }
-    return this.originalGroup.filter(g =>
-        g.team.group == group
-      );
-  }
-
-  getPrediction(playerId: number, teamId: number): string {
-    const prediction = this.getPredictionObject(playerId, teamId);
-    return prediction ? `${prediction.position}` : '-';
-  }
-
-  getPredictionPosition(playerId: number, teamId: number): number {
-    const prediction = this.getPredictionObject(playerId, teamId);
-    return prediction?.score || 0;
-  }
-
-  private getPredictionObject(playerId: number, teamId: number): any {
-    return this.predictions.find(p => 
-      p.player.id === playerId && p.team.id === teamId
-    );
-  }
-
-    getScoreClass(playerId: number, teamId: number): string {
-    const score = this.getPredictionPosition(playerId, teamId);
-    const winnerPoints = this.phase?.classified_points ?? 0;
-    if (score == winnerPoints) {
-      return 'my-winner';
-    }
-    return ''; 
-  }
-
-  getTotalPoints(playerId: number, group: string): number {
-
-    return this.predictions
-      .filter(p => p.player.id === playerId && p.team.group === group)
-      .reduce((acc, curr) => acc + (curr.score || 0), 0);      
-      
-  }
-
-  onResultChange(position: number, teamPhase: TeamPhase, group: string) {
-    if (position != null && teamPhase.position != null) {
-      let same_team = this.predictions.filter(p => p.team.id === teamPhase.team.id);
-      same_team.forEach(team => {
-        if(team.team.id == teamPhase.team.id && teamPhase.position == team.position){        
-          team.score = this.phase?.classified_points ?? 0;
-        }else {
-          team.score = 0;             
-        }
-        team.player.total_score = this.getTotalPoints(team.player.id, group);         
-        });
-        this.updateScoreByPlayer();
-        this.predictions = [...this.predictions];       
-      }    
-    }
 
       // Métodos de paginación
 
@@ -154,9 +101,9 @@ export class GroupsTable {
          player.player.total_score = this.predictions.filter(p => p.player.id === player.player.id).reduce((sum, prediction) => sum + prediction.score, 0);
       });      
       this.predictions = [...this.predictions];    
-    }
+    }   
 
-      getPercentile(scores: number[], percentile: number): number {
+        getPercentile(scores: number[], percentile: number): number {
         const sorted = [...scores].sort((a, b) => a - b);
         const index = (percentile / 100) * (sorted.length - 1);
         const lower = Math.floor(index);
@@ -167,34 +114,98 @@ export class GroupsTable {
         return sorted[lower] * (1 - weight) + sorted[upper] * weight;
       }
 
-    ngOnInit(): void { 
+  filteredGroups(idPhase: number) {
+    if (this.gameFilter) {
+      return this.originalGroup.filter(g =>
+        (g.phase.id == idPhase) &&
+        g.team.name.toLowerCase().includes(this.gameFilter.toLowerCase())
+      );
+    }
+    const data = this.originalGroup.filter(g =>
+        g.phase.id == idPhase
+      );
+    return data
+  }
+
+   getScoreClass(playerId: number, position: number, phase: number): string {
+    const score = this.getPredictionPosition(playerId, position, phase);
+    if (score > 0) {
+      return 'my-winner';
+    }
+    return ''; 
+  }
+
+  getPrediction(playerId: number, position: number, phase: number): string {       
+    const prediction = this.getPredictionObject(playerId, position, phase);
+    return prediction ? `${prediction.team.name}` : '-';
+  }
+
+  getPredictionPosition(playerId: number, position: number, phase: number): number {
+    const prediction = this.getPredictionObject(playerId, position, phase);
+    return prediction?.score || 0;
+  }
+
+  getTotalPoints(playerId: number, phase: number): number {
+    return this.predictions
+      .filter(p => p.player.id === playerId && p.phase.id === phase)
+      .reduce((acc, curr) => acc + (curr.score || 0), 0);  
+  }
+    private getPredictionObject(playerId: number, position: number, phase: number): any {
+       const prediction = this.predictions.find(p => 
+      p.player.id === playerId && p.phase.id === phase && p.position === position && p.finals==true
+    );  
+
+    return prediction;
+  }
+
+  onTeamChange(teamSelected: any, position: number) {
+    if (teamSelected != null && position != null) {
+      let same_team = this.predictions.filter(p => p.team.id === teamSelected);
+      same_team.forEach(team => {
+        if(team.team.id == teamSelected && team.position == position){ 
+          this.phases.forEach(phase => {
+            if(phase.id == team.phase.id){
+              team.score = phase.finalist_points ?? 0;
+            }
+          }); 
+        }else {
+          team.score = 0;             
+        }              
+      });
+      this.updateScoreByPlayer();
+      this.predictions = [...this.predictions];       
+    }    
+  }
+
+  ngOnInit(): void { 
     this.predictionsOrderByTeam = this.predictions
         .filter((prediction, index, array) => 
           index === array.findIndex(p => p.team.id === prediction.team.id))
         .filter((prediction, index, array) => 
-          index === array.findIndex(p => p.team.group === prediction.team.group && p.team.group === this.groups[0]))
+          index === array.findIndex(p => p.team.group === prediction.team.group))
         .sort((a, b) => a.team.id - b.team.id);
-    this.originalTeams =  JSON.parse(JSON.stringify(this.predictionsOrderByTeam));
+    // this.originalTeams =  JSON.parse(JSON.stringify(this.predictionsOrderByTeam));
     this.initComponents();
     const scores = this.filteredPlayers.map(col => col.player.total_score);
     this.highThreshold = this.getPercentile(scores, 80); 
     this.lowThreshold = this.getPercentile(scores, 30); 
    // console.log('JSON predictionsOrderByGame : ', JSON.stringify(this.predictionsOrderByGame, null, 2));
-    console.log('JSON TODAS predictions : ', JSON.stringify(this.predictions, null, 2));
   }
 
   initComponents(){
-
-      this.originalGroup = this.teamPhase
+        this.originalGroup = this.predictions
         .filter((tp, index, self) =>
-          index === self.findIndex(t => t.team.id === tp.team.id));
-              
+          index === self.findIndex(t => t.team.id === tp.team.id && tp.finals == true));   
+
         this.predictionsOrderByPlayer = this.predictions 
-        .filter(tp => tp.team.group === this.groups[0])
         .filter((tp, index, self) =>
           index === self.findIndex(t => t.player.id === tp.player.id))  
         .sort((a, b) => a.player.id - b.player.id);
-        
-  }
 
+
+        //console.log('JSON predictionsOrderByPlayer : ', JSON.stringify(this.predictionsOrderByPlayer, null, 2));
+
+
+
+  }
 }
