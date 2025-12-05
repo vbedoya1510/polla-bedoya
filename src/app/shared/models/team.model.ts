@@ -24,19 +24,26 @@ export class PredictionGame {
   goals_team1: number;
   goals_team2: number;
   score: number;
+  scoreTeam: number;
+  team_qualified?: Team;
+  selectedTeamId: any;
   
     constructor(
       player: Player,
       game: Game,
       goals_team1: number,
       goals_team2: number,
-      score: number = 0
+      score: number = 0,
+      scoreTeam: number = 0,
+      team_qualified?: Team
     ) {
       this.player = player;
       this.game = game;
       this.goals_team1 = goals_team1;
       this.goals_team2 = goals_team2;
-      this.score = score
+      this.score = score;
+      this.scoreTeam = scoreTeam;
+      this.team_qualified = team_qualified
     } 
 }
 

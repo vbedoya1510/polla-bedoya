@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <h4>Predicciones Fase 1</h4>
+  <h4>Predicciones Fase {{phase?.id}}</h4>
 
   <!-- Filtros -->
   <div class="row mb-3">
@@ -61,7 +61,7 @@
     <tbody>
       <tr *ngFor="let game of filteredGames">
         <td class="font-weight-bold">
-          {{ game.game.team1 }} - {{ game.game.team2 }}
+          {{ game.game.team1.name }} - {{ game.game.team2.name }}
         </td>
         <td class="text-center">
           <span *ngIf="game.game.end_game; else editRealResult">
@@ -103,6 +103,102 @@
         </span>
       </div>
       </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginación -->
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      Mostrando {{ filteredPlayers.length }} de {{ predictionsOrderByPlayer.length }} jugadores
+    </div>
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="previousPage()">Anterior</a>
+        </li>
+        <li class="page-item" [class.active]="currentPage === page" 
+            *ngFor="let page of [1,2,3]">
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="nextPage()">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<div *ngIf="viewQualified" style="margin-top: 30px;" class="table-responsive">
+  <h4>Predicciones Equipos Clasificados</h4>
+
+   <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>PARTICIPANTE</th>    
+        <th></th>    
+        <th *ngFor="let col of filteredPlayers" [class.editing]="editingPlayer === col.player.id">
+          <div *ngIf="!editingPlayer;">
+            {{ col.player.name }}
+          </div>          
+            <div *ngIf="editingPlayer === col.player.id">
+              <input type="text" class="form-control form-control-sm" 
+                     [(ngModel)]="col.player.name">
+              <button class="btn btn-sm btn-success mt-1">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          
+        </th>
+      </tr>
+      <tr>
+        <th>PARTIDO</th>    
+        <th>Equipo clasificado</th>  
+        <th *ngFor="let col of filteredPlayers">Equipo</th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+      <tr *ngFor="let game of filteredGames; let last = last">
+        <td class="font-weight-bold">
+          {{ game.game.team1.name }} - {{ game.game.team2.name }}
+        </td>
+        <td class="text-center">
+            <ng-select      
+            [(ngModel)]="game.selectedTeamId"
+            [items]="[
+                { id: game.game.team1.id , name: game.game.team1.name},
+                { id: game.game.team2.id , name: game.game.team2.name},
+              ]"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Seleccionar equipo"
+            [searchable]="true"
+            (ngModelChange)="onTeamChange($event,game)"
+            class="w-100">
+          </ng-select>
+        </td>
+         <td *ngFor="let player of filteredPlayers"
+      [ngClass]="getScoreClassTeam(player.player.id, game.game.id)">
+          <div>
+            <span>
+              {{ getPredictionTeam(player.player.id, game.game.id) }}              
+            </span>
+          </div>
+       </td>
+      </tr>
+
+ 
+        <tr class="font-weight-bold bg-light">
+        <td colspan="2" class="text-right">Puntos totales fase {{phase?.id}}</td>
+        <td *ngFor="let player of filteredPlayers"
+            [ngClass]="{ 'my-result': getTotalPoints(player.player.id) > 0 }">
+          {{ getTotalPoints(player.player.id) }}
+        </td>
+      </tr>
+      <tr>
+      <td [attr.colspan]="2 + filteredPlayers.length" style="height: 30px; background-color: transparent;"></td>
       </tr>
     </tbody>
   </table>

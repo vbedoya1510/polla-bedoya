@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ResultsTable } from '../../components/results-table/results-table';
 import { Game, GamePhase } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
-import { PredictionGame } from '../../shared/models/team.model';
+import { PredictionGame, Team } from '../../shared/models/team.model';
 import { Phase } from '../../shared/models/phase.model';
 
 @Component({
@@ -22,17 +22,33 @@ export class Phase1 {
   new Phase(4, 15, 7, 5, 3)
 ];
 
+  team: Team[] = [
+    new Team(1, 'Barcelona', 'A'),
+    new Team(2, 'Chelsea', 'A'),
+    new Team(3, 'Bayern', 'A'),
+    new Team(4, 'Borussia', 'A'),
+    new Team(5, 'PSG', 'B'),
+    new Team(6, 'Marseille', 'B'),
+    new Team(7, 'Juventus', 'B'),
+    new Team(8, 'Inter', 'B'),
+    new Team(9, 'Atletico', 'B'),
+    new Team(10, 'Real Madrid', 'C'),
+    new Team(11, 'liverpool', 'C'),
+    new Team(12, 'Manchester', 'C'),
+    new Team(13, 'Arsenal', 'C'),
+];
+
   games: Game[] = [
-    new Game(1, 'Barcelona', 'Real Madrid', 2, 1),
-    new Game(2, 'Liverpool', 'Chelsea', 3, 2),
-    new Game(3, 'Bayern Munich', 'Borussia Dortmund', 1, 1),
-    new Game(4, 'PSG', 'Marseille', 4, 0),
-    new Game(5, 'Juventus', 'Inter Milan', 2, 2),
-    new Game(6, 'Manchester United', 'Arsenal', 1, 0),
-    new Game(7, 'AC Milan', 'Napoli', 3, 0),
-    new Game(8, 'Atletico Madrid', 'Sevilla', 2, 2),
-    new Game(9, 'Tottenham', 'Manchester City', 1, 4),
-    new Game(10, 'River Plate', 'Boca Juniors', 3, 1)
+    new Game(1, this.team[0], this.team[9], 2, 1,this.team[0]),
+    new Game(2, this.team[10], this.team[1], 3, 2,this.team[1]),
+    new Game(3, this.team[2], this.team[3], 1, 1,this.team[3]),
+    new Game(4, this.team[4], this.team[7], 4, 0,this.team[4]),
+    new Game(5, this.team[8], this.team[9], 2, 2,this.team[9]),
+    new Game(6, this.team[11], this.team[5], 1, 0,this.team[5]),
+    new Game(7, this.team[3], this.team[4], 3, 0),
+    new Game(8, this.team[0], this.team[11], 2, 2),
+    new Game(9, this.team[8], this.team[12], 1, 4),
+    new Game(10, this.team[4], this.team[1], 3, 1)
   ];
   
 
