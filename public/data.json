@@ -1,0 +1,976 @@
+{
+  "phases": [
+    {
+      "id": 1,
+      "classified_points": 8,
+      "finalist_points": 32,
+      "result_points": 8,
+      "winner_points": 2,
+      "winner_scorer": 40
+    },
+    {
+      "id": 2,
+      "classified_points": 8,
+      "finalist_points": 16,
+      "result_points": 20,
+      "winner_points": 6,
+      "winner_scorer": 0
+    },
+    {
+      "id": 3,
+      "classified_points": 8,
+      "finalist_points": 8,
+      "result_points": 20,
+      "winner_points": 6,
+      "winner_scorer": 0
+    },
+    {
+      "id": 4,
+      "classified_points": 16,
+      "finalist_points": 0,
+      "result_points": 20,
+      "winner_points": 6,
+      "winner_scorer": 0
+    },
+    {
+      "id": 5,
+      "classified_points": 16,
+      "finalist_points": 0,
+      "result_points": 20,
+      "winner_points": 6,
+      "winner_scorer": 0
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "México",
+      "group": "A"
+    },
+    {
+      "id": 2,
+      "name": "Sudáfrica",
+      "group": "A"
+    },
+    {
+      "id": 3,
+      "name": "Corea del Sur",
+      "group": "A"
+    },
+    {
+      "id": 4,
+      "name": "Dinamarca/Macedonia/República Checa/Irlanda",
+      "group": "A"
+    },
+    {
+      "id": 5,
+      "name": "Canadá",
+      "group": "B"
+    },
+    {
+      "id": 6,
+      "name": "Italia/Nigeria/Gales/Bosnia",
+      "group": "B"
+    },
+    {
+      "id": 7,
+      "name": "Qatar",
+      "group": "B"
+    },
+    {
+      "id": 8,
+      "name": "Suiza",
+      "group": "B"
+    },
+    {
+      "id": 9,
+      "name": "Brasil",
+      "group": "C"
+    },
+    {
+      "id": 10,
+      "name": "Marruecos",
+      "group": "C"
+    },
+    {
+      "id": 11,
+      "name": "Haití",
+      "group": "C"
+    },
+    {
+      "id": 12,
+      "name": "Escocia",
+      "group": "C"
+    },
+    {
+      "id": 13,
+      "name": "EE. UU.",
+      "group": "D"
+    },
+    {
+      "id": 14,
+      "name": "Paraguay",
+      "group": "D"
+    },
+    {
+      "id": 15,
+      "name": "Australia",
+      "group": "D"
+    },
+    {
+      "id": 16,
+      "name": "Turquía/Rumania/Eslovaquia/Kosovo",
+      "group": "D"
+    },
+    {
+      "id": 17,
+      "name": "Alemania",
+      "group": "E"
+    },
+    {
+      "id": 18,
+      "name": "Curazao",
+      "group": "E"
+    },
+    {
+      "id": 19,
+      "name": "Costa de Marfil",
+      "group": "E"
+    },
+    {
+      "id": 20,
+      "name": "Ecuador",
+      "group": "E"
+    },
+    {
+      "id": 21,
+      "name": "Países Bajos",
+      "group": "F"
+    },
+    {
+      "id": 22,
+      "name": "Japón",
+      "group": "F"
+    },
+    {
+      "id": 23,
+      "name": "Ucrania/Suecia/Polonia/Albania",
+      "group": "F"
+    },
+    {
+      "id": 24,
+      "name": "Túnez",
+      "group": "F"
+    },
+    {
+      "id": 25,
+      "name": "Bélgica",
+      "group": "G"
+    },
+    {
+      "id": 26,
+      "name": "Egipto",
+      "group": "G"
+    },
+    {
+      "id": 27,
+      "name": "Irán",
+      "group": "G"
+    },
+    {
+      "id": 28,
+      "name": "Nueva Zelanda",
+      "group": "G"
+    },
+    {
+      "id": 29,
+      "name": "España",
+      "group": "H"
+    },
+    {
+      "id": 30,
+      "name": "Cabo Verde",
+      "group": "H"
+    },
+    {
+      "id": 31,
+      "name": "Arabia Saudita",
+      "group": "H"
+    },
+    {
+      "id": 32,
+      "name": "Uruguay",
+      "group": "H"
+    },
+    {
+      "id": 33,
+      "name": "Francia",
+      "group": "I"
+    },
+    {
+      "id": 34,
+      "name": "Senegal",
+      "group": "I"
+    },
+    {
+      "id": 35,
+      "name": "Irak/Bolivia/Surinam",
+      "group": "I"
+    },
+    {
+      "id": 36,
+      "name": "Noruega",
+      "group": "I"
+    },
+    {
+      "id": 37,
+      "name": "Argentina",
+      "group": "J"
+    },
+    {
+      "id": 38,
+      "name": "Argelia",
+      "group": "J"
+    },
+    {
+      "id": 39,
+      "name": "Austria",
+      "group": "J"
+    },
+    {
+      "id": 40,
+      "name": "Jordania",
+      "group": "J"
+    },
+    {
+      "id": 41,
+      "name": "Portugal",
+      "group": "K"
+    },
+    {
+      "id": 42,
+      "name": "Jamaica/RD de Congo/Nueva Caledonia",
+      "group": "K"
+    },
+    {
+      "id": 43,
+      "name": "Uzbekistán",
+      "group": "K"
+    },
+    {
+      "id": 44,
+      "name": "Colombia",
+      "group": "K"
+    },
+    {
+      "id": 45,
+      "name": "Inglaterra",
+      "group": "L"
+    },
+    {
+      "id": 46,
+      "name": "Croacia",
+      "group": "L"
+    },
+    {
+      "id": 47,
+      "name": "Ghana",
+      "group": "L"
+    },
+    {
+      "id": 48,
+      "name": "Panamá",
+      "group": "L"
+    }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "name": "Andres Esteban",
+      "phone": "3001234567",
+      "email": "carlos.perez@mail.com",
+      "pay": false,
+      "total_score": 8,
+      "team_scorer_id": 25,
+      "position": 0
+    },
+    {
+      "id": 2,
+      "name": "Nelson",
+      "phone": "3017654321",
+      "email": "ana.gomez@mail.com",
+      "pay": false,
+      "total_score": 2,
+      "team_scorer_id": 2,
+      "position": 0
+    },
+    {
+      "id": 3,
+      "name": "Henry",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 7,
+      "team_scorer_id": 5,
+      "position": 0
+    },
+    {
+      "id": 4,
+      "name": "Victor Bedoya",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 7,
+      "team_scorer_id": 45,
+      "position": 0
+    },
+    {
+      "id": 5,
+      "name": "Sandra Gomez",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 7,
+      "team_scorer_id": 33,
+      "position": 0
+    },
+    {
+      "id": 6,
+      "name": "Cristian Piedrahita",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 4,
+      "team_scorer_id": 35,
+      "position": 0
+    },
+    {
+      "id": 7,
+      "name": "Santiago Raigosa",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 5,
+      "team_scorer_id": 21,
+      "position": 0
+    },
+    {
+      "id": 8,
+      "name": "Jorge Gomez",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 7,
+      "team_scorer_id": 4,
+      "position": 0
+    },
+    {
+      "id": 9,
+      "name": "Doña Olga",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 8,
+      "team_scorer_id": 17,
+      "position": 0
+    },
+    {
+      "id": 10,
+      "name": "Tavo Bedoya",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 2,
+      "team_scorer_id": 19,
+      "position": 0
+    },
+    {
+      "id": 11,
+      "name": "Nina",
+      "phone": "3029876543",
+      "email": "luis.rodriguez@mail.com",
+      "pay": true,
+      "total_score": 5,
+      "team_scorer_id": 10,
+      "position": 0
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "team1": 1,
+      "team2": 2,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 2,
+      "team1": 3,
+      "team2": 4,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 3,
+      "team1": 5,
+      "team2": 6,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 4,
+      "team1": 13,
+      "team2": 14,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 5,
+      "team1": 7,
+      "team2": 8,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 6,
+      "team1": 9,
+      "team2": 10,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 7,
+      "team1": 11,
+      "team2": 12,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 8,
+      "team1": 15,
+      "team2": 16,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 9,
+      "team1": 17,
+      "team2": 18,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 10,
+      "team1": 21,
+      "team2": 22,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 11,
+      "team1": 19,
+      "team2": 20,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 12,
+      "team1": 23,
+      "team2": 24,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 13,
+      "team1": 29,
+      "team2": 30,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 14,
+      "team1": 25,
+      "team2": 26,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 15,
+      "team1": 31,
+      "team2": 32,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 16,
+      "team1": 27,
+      "team2": 28,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 17,
+      "team1": 33,
+      "team2": 34,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 18,
+      "team1": 35,
+      "team2": 36,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 19,
+      "team1": 37,
+      "team2": 38,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 20,
+      "team1": 39,
+      "team2": 40,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 21,
+      "team1": 41,
+      "team2": 42,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 22,
+      "team1": 45,
+      "team2": 46,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 23,
+      "team1": 47,
+      "team2": 48,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 24,
+      "team1": 43,
+      "team2": 44,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 25,
+      "team1": 4,
+      "team2": 2,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 26,
+      "team1": 8,
+      "team2": 6,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 27,
+      "team1": 5,
+      "team2": 7,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 28,
+      "team1": 1,
+      "team2": 3,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 29,
+      "team1": 13,
+      "team2": 15,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 30,
+      "team1": 12,
+      "team2": 10,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 31,
+      "team1": 9,
+      "team2": 11,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 32,
+      "team1": 16,
+      "team2": 14,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 33,
+      "team1": 21,
+      "team2": 23,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 34,
+      "team1": 17,
+      "team2": 19,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 35,
+      "team1": 20,
+      "team2": 18,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 36,
+      "team1": 24,
+      "team2": 22,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 37,
+      "team1": 29,
+      "team2": 31,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 38,
+      "team1": 25,
+      "team2": 27,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 39,
+      "team1": 32,
+      "team2": 30,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 40,
+      "team1": 28,
+      "team2": 26,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 41,
+      "team1": 37,
+      "team2": 39,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 42,
+      "team1": 33,
+      "team2": 35,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 43,
+      "team1": 36,
+      "team2": 34,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 44,
+      "team1": 40,
+      "team2": 38,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 45,
+      "team1": 41,
+      "team2": 43,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 46,
+      "team1": 45,
+      "team2": 47,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 47,
+      "team1": 48,
+      "team2": 46,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 48,
+      "team1": 44,
+      "team2": 42,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 49,
+      "team1": 8,
+      "team2": 5,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 50,
+      "team1": 6,
+      "team2": 7,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 51,
+      "team1": 9,
+      "team2": 12,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 52,
+      "team1": 10,
+      "team2": 11,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 53,
+      "team1": 4,
+      "team2": 1,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 54,
+      "team1": 2,
+      "team2": 3,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 55,
+      "team1": 18,
+      "team2": 19,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 56,
+      "team1": 20,
+      "team2": 17,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 57,
+      "team1": 22,
+      "team2": 23,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 58,
+      "team1": 24,
+      "team2": 21,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 59,
+      "team1": 16,
+      "team2": 13,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 60,
+      "team1": 14,
+      "team2": 15,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 61,
+      "team1": 36,
+      "team2": 33,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 62,
+      "team1": 34,
+      "team2": 35,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 63,
+      "team1": 30,
+      "team2": 31,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 64,
+      "team1": 32,
+      "team2": 29,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 65,
+      "team1": 26,
+      "team2": 27,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 66,
+      "team1": 28,
+      "team2": 25,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 67,
+      "team1": 47,
+      "team2": 45,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 68,
+      "team1": 46,
+      "team2": 48,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 69,
+      "team1": 44,
+      "team2": 41,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 70,
+      "team1": 42,
+      "team2": 43,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 71,
+      "team1": 38,
+      "team2": 39,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    },
+    {
+      "id": 72,
+      "team1": 40,
+      "team2": 37,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false
+    }
+  ]
+}

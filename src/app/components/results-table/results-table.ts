@@ -19,6 +19,7 @@ export class ResultsTable {
 
   @Input() predictions: PredictionGame[] = [];
   @Input() phase: Phase | undefined;
+  @Input() predictionsFinals: PredictionTeamPlayer[] = [];
 
  
   originalGames: PredictionGame[] = [];
@@ -43,8 +44,6 @@ export class ResultsTable {
   highThreshold: number = 0;
   lowThreshold: number = 0;
   viewQualified: boolean = false;
-
-
 
   get filteredPlayers() {
     let filtered = this.predictionsOrderByPlayer;
@@ -85,27 +84,6 @@ export class ResultsTable {
     return Math.ceil(this.predictionsOrderByPlayer.length / this.itemsPerPage);
   }
 
-  
-  // Métodos de edición
-  startEditingPlayer(playerId: number) {
-    this.editingPlayer = playerId;
-  }
-
-  savePlayerName(player: any) {
-    // Aquí puedes hacer una llamada HTTP para guardar
-    console.log('Guardando jugador:', player);
-    this.editingPlayer = null;
-  }
-
-  startEditingPrediction(playerId: number, gameId: number) {
-    const prediction = this.getPredictionObject(playerId, gameId);
-    this.tempPrediction = { 
-      goals_team1: prediction?.goals_team1 || 0, 
-      goals_team2: prediction?.goals_team2 || 0 
-    };
-    this.editingPrediction = { playerId, gameId };
-  }
-
   getPrediction(playerId: number, gameId: number): string {
     const prediction = this.getPredictionObject(playerId, gameId);
     return prediction ? `${prediction.goals_team1} - ${prediction.goals_team2}` : '-';
@@ -125,15 +103,12 @@ export class ResultsTable {
     return this.predictions.find(p => 
       p.player.id === playerId && p.game.id === gameId
     );
-  }
+  }  
 
   getPredictionTeam(playerId: number, gameId: number): number {
     const prediction = this.getPredictionObject(playerId, gameId);
     return prediction?.team_qualified?.name || '';
   }
-
- 
-
 
   // Métodos de paginación
   nextPage() {
@@ -153,7 +128,7 @@ export class ResultsTable {
   }
 
   applyFilters() {
-    this.currentPage = 1; // Resetear a primera página al filtrar
+    this.currentPage = 1; 
   }
 
 onResultChange(game: Game, predictionGame: PredictionGame) {
@@ -180,9 +155,6 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
   }
 
   onTeamChange(teamSelected: any, predictionGame: PredictionGame) {
-     console.log('ENTRO');
-     console.log('teamSelected', teamSelected);
-     console.log('gameId', predictionGame.game.id);
     if (teamSelected != null) {
        let same_team = this.predictions.filter(p => p.game.id == predictionGame.game.id);
         same_team.forEach(team => {         
@@ -204,8 +176,7 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
       .reduce((acc, curr) => acc + (curr.scoreTeam || 0), 0);  
   }
 
-  updateScoreByPlayer(){
-    
+  updateScoreByPlayer(){    
     this.predictionsOrderByPlayer.forEach(player => {
          player.player.total_score = this.predictions.filter(p => p.player.id === player.player.id).reduce((sum, prediction) => sum + prediction.score + prediction.scoreTeam, 0);
     });      
@@ -216,7 +187,6 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
     const score = this.getPredictionScore(playerId, gameId);
     const resultPoints = this.phase?.result_points ?? 0;
     const winnerPoints = this.phase?.winner_points ?? 0;
-
     if (score >= resultPoints) {
       return 'my-result';
     } else if (score >= winnerPoints) {
@@ -225,26 +195,46 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
     return ''; 
   }
 
+  getScoreClassFinals(playerId: number, position: number): string {
+    const score = this.getPredictionPositionFinals(playerId, position);
+    if (score > 0) {
+      return 'my-winner';
+    }
+    return ''; 
+  }
+
+  getPredictionPositionFinals(playerId: number, position: number): number {
+    const prediction = this.getPredictionObjectFinals(playerId, position);
+    return prediction?.score || 0;
+  }
+
+  private getPredictionObjectFinals(playerId: number, position: number): any {
+       const prediction = this.predictionsFinals.find(p => 
+      p.player.id === playerId && p.phase.id === this.phase?.id && p.position === position && p.finals==true
+    );  
+     return prediction;
+  }
+
   getScoreClassTeam(playerId: number, gameId: number): string {
     const score = this.getPredictionScoreTeam(playerId, gameId);
     const classifiedPoints = this.phase?.classified_points ?? 0;
-
     if (score >= classifiedPoints) {
       return 'my-winner';
     } 
     return ''; 
   }
 
-/*
-  getScoreClassTeam(playerId: number, teamId: number): string {
-    const score = this.getPredictionPosition(playerId, teamId);
-    const winnerPoints = this.phase?.classified_points ?? 0;
-    if (score == winnerPoints) {
-      return 'my-winner';
-    }
-    return ''; 
+  getPredictionFinals(playerId: number, position: number): string {       
+    const prediction = this.getPredictionObjectFinals(playerId, position);    
+    return prediction ? `${prediction.team.name}` : '-';
   }
-*/
+
+  getTotalPointsFinals(playerId: number): number {
+    return this.predictionsFinals
+      .filter(p => p.player.id === playerId && p.phase.id === this.phase?.id)
+      .reduce((acc, curr) => acc + (curr.score || 0), 0);  
+  }
+
   getPercentile(scores: number[], percentile: number): number {
   const sorted = [...scores].sort((a, b) => a - b);
   const index = (percentile / 100) * (sorted.length - 1);
@@ -256,9 +246,6 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
   return sorted[lower] * (1 - weight) + sorted[upper] * weight;
 }
 
-
-
-
    ngOnInit(): void {
     this.predictionsOrderByGame = this.predictions
         .filter((prediction, index, array) => 
@@ -266,6 +253,7 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
         .sort((a, b) => a.game.id - b.game.id);
     
     this.originalGames =  JSON.parse(JSON.stringify(this.predictionsOrderByGame));
+
     this.initComponents();
     const scores = this.filteredPlayers.map(col => col.player.total_score);
     this.highThreshold = this.getPercentile(scores, 80); 
@@ -281,8 +269,8 @@ onResultChange(game: Game, predictionGame: PredictionGame) {
           index === array.findIndex(p => p.player.id === prediction.player.id)
         )
         .sort((a, b) => a.player.id - b.player.id);
-
-        this.originalPredictions = JSON.parse(JSON.stringify(this.predictions));
+        
+        this.originalPredictions = JSON.parse(JSON.stringify(this.predictions)); 
   }
 
 

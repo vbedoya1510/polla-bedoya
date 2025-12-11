@@ -69,7 +69,7 @@ export class Positions {
       'carlos.perez@mail.com',
       false,
       8,
-      'Clasificar al torneo regional'
+      this.team[7]
     ),
     new Player(
       2,
@@ -78,7 +78,7 @@ export class Positions {
       'ana.gomez@mail.com',
       false,
       2,
-      'Llegar a la final del campeonato'
+      this.team[7]
     ),
     new Player(
       3,
@@ -87,7 +87,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       4,
@@ -96,7 +96,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
     ,
      new Player(
@@ -106,7 +106,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       6,
@@ -115,7 +115,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       4,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
     ,
      new Player(
@@ -125,7 +125,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       5,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
     ,
      new Player(
@@ -135,7 +135,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ) ,
      new Player(
       9,
@@ -144,7 +144,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       8,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       10,
@@ -153,7 +153,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       2,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       11,
@@ -162,7 +162,7 @@ export class Positions {
       'luis.rodriguez@mail.com',
       true,
       5,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
   ];
   

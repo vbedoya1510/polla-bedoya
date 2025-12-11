@@ -1,3 +1,5 @@
+import { Team } from "./team.model";
+
 export class Player {
   id: number;
   name: string;
@@ -5,7 +7,7 @@ export class Player {
   email: string;
   pay: boolean;
   total_score: number;
-  team_scorer: string;
+  team_scorer: Team;
   position: number;
 
 constructor(
@@ -15,7 +17,7 @@ constructor(
     email: string,
     pay: boolean = false,
     total_score: number = 0, 
-    team_scorer: string,
+    team_scorer: Team,
     position: number = 0         
 ) {
     this.id = id;

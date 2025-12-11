@@ -55,3 +55,66 @@ td, th {
   text-align: center;
   vertical-align: middle; 
 }
+
+
+/* Altura estimada para la primera fila (ajustada para el input y el botón) */
+:root {
+  --fila-participante-h: 75px; /* Aumentamos a 75px */
+  --fila-puntaje-h: 40px; 
+}
+
+/* 1. Contenedor de Scroll */
+.table-container {
+  /* Define una altura máxima para que aparezca el scroll */
+  max-height: 60vh; 
+  overflow-y: auto; /* Permite el scroll vertical */
+  position: relative;
+  
+  /* Opcional: sombrear un poco para dar profundidad */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.table-container table thead th {
+  position: sticky;
+  z-index: 100; /* Asegura que queden por encima del contenido */
+  background-color: #343a40; /* El color de .thead-dark de Bootstrap */
+  color: white;
+  /* Esto ayuda a que los bordes se vean bien al hacer scroll */
+  box-shadow: inset 0 -1px 0 #454d55; 
+}
+
+/* --- FILA 1: PARTICIPANTE --- */
+.table-container table thead tr:nth-child(1) th {
+  top: 0;
+}
+
+/* --- FILA 2: PUNTAJE TOTAL --- */
+.table-container table thead tr:nth-child(2) th {
+  /* 
+     IMPORTANTE: Este valor (50px) debe ser igual a la altura de tu Fila 1.
+     Como tienes inputs y botones en la fila 1, quizás sea más alta (aprox 60px o 70px).
+     Ajusta este número hasta que la fila 2 quede pegada justo debajo de la 1.
+  */
+  top: 39px; }
+  
+.table-sticky-first thead tr:first-child th {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Para que quede sobre el contenido al hacer scroll */
+  
+  /* Estilos para mantener el diseño de Bootstrap Dark */
+  background-color: #343a40; 
+  color: white;
+  box-shadow: inset 0 -1px 0 #454d55; /* Borde inferior sutil */
+}
+
+
+.table-responsive {
+  /* Define la altura visible de la tabla. Ajusta 60vh al tamaño que prefieras */
+  max-height: 100vh; 
+  /* Habilita el scroll tanto vertical como horizontal */
+  overflow: auto; 
+  /* Necesario para el contexto de posicionamiento */
+  position: relative; 
+}
+

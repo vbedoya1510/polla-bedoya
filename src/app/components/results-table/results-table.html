@@ -23,11 +23,12 @@
 
   <!-- Tabla -->
    
+<div class="table-container">
   <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
       <tr>
-        <th>PARTICIPANTE</th>    
-        <th></th>    
+        <th colspan="2">PARTICIPANTE</th>   
+ 
         <th *ngFor="let col of filteredPlayers" [class.editing]="editingPlayer === col.player.id">
           <div *ngIf="!editingPlayer;">
             {{ col.player.name }}
@@ -43,8 +44,8 @@
         </th>
       </tr>
       <tr>
-        <th>PUNTAJE TOTAL</th>    
-        <th></th>    
+        <th colspan="2">PUNTAJE TOTAL</th>   
+            
         <th *ngFor="let col of filteredPlayers" 
             [class.text-success]="col.player.total_score > this.highThreshold"
             [class.text-warning]="col.player.total_score <= this.highThreshold && col.player.total_score > this.lowThreshold"
@@ -106,7 +107,7 @@
       </tr>
     </tbody>
   </table>
-
+</div>
   <!-- Paginación -->
   <div class="d-flex justify-content-between align-items-center">
     <div>
@@ -130,14 +131,14 @@
 </div>
 
 
-<div *ngIf="viewQualified" style="margin-top: 30px;" class="table-responsive">
+<div *ngIf="viewQualified"  class="table-container">
+<div style="margin-top: 30px;">
   <h4>Predicciones Equipos Clasificados</h4>
 
-   <table class="table table-striped table-bordered table-hover">
+   <table class="table table-striped table-bordered table-hover table-sticky-first">
     <thead class="thead-dark">
       <tr>
-        <th>PARTICIPANTE</th>    
-        <th></th>    
+        <th style="width: 150px;" colspan="2">PARTICIPANTE</th>
         <th *ngFor="let col of filteredPlayers" [class.editing]="editingPlayer === col.player.id">
           <div *ngIf="!editingPlayer;">
             {{ col.player.name }}
@@ -202,7 +203,7 @@
       </tr>
     </tbody>
   </table>
-
+</div>
   <!-- Paginación -->
   <div class="d-flex justify-content-between align-items-center">
     <div>
@@ -224,3 +225,90 @@
     </nav>
   </div>
 </div>
+
+
+<div style="margin-top: 30px;" class="table-responsive">
+  <h4>Predicciones Finalistas</h4>
+    <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th >PARTICIPANTE</th> 
+        <th *ngFor="let col of filteredPlayers" [class.editing]="editingPlayer === col.player.id">
+          <div *ngIf="!editingPlayer;">
+            {{ col.player.name }}
+          </div>          
+            <div *ngIf="editingPlayer === col.player.id">
+              <input type="text" class="form-control form-control-sm" 
+                     [(ngModel)]="col.player.name">
+              <button class="btn btn-sm btn-success mt-1">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          
+        </th>
+      </tr>
+    </thead>
+    <tbody>  
+      <tr>
+        <th> Finalistas desde Fase {{this.phase?.id}}</th>   
+        <th *ngFor="let col of filteredPlayers">Equipo</th>
+      </tr>
+      <tr *ngFor="let j of [1, 2, 3, 4]"> 
+        <td class="text-center" >
+          {{ j }}
+        </td> 
+        <td *ngFor="let player of filteredPlayers"
+         [ngClass]="getScoreClassFinals(player.player.id, j)">
+        <div>
+          <span>
+            {{ getPredictionFinals(player.player.id,j) }}
+          </span>
+        </div>
+      </td>
+      </tr>
+      <tr class="font-weight-bold bg-light">
+        <td class="text-right">Puntos totales fase {{this.phase?.id}}</td>
+        <td *ngFor="let player of filteredPlayers"
+            [ngClass]="{ 'my-result': getTotalPointsFinals(player.player.id) > 0 }">
+          {{ getTotalPointsFinals(player.player.id) }}
+        </td>
+      </tr>
+       <tr>
+      <td [attr.colspan]="2 + filteredPlayers.length" style="height: 30px; background-color: transparent;"></td>
+      </tr>
+      <tr *ngIf="!viewQualified" >
+        <th> Equipo con el goleador</th>   
+        <td *ngFor="let col of filteredPlayers">
+          <div>
+            {{ col.player.team_scorer.name }}
+          </div>  
+        </td>
+      </tr>
+      <tr *ngIf="!viewQualified">
+      <td [attr.colspan]="2 + filteredPlayers.length" style="height: 30px; background-color: transparent;"></td>
+      </tr>
+  
+    </tbody>
+  </table>
+    <!-- Paginación -->
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      Mostrando {{ filteredPlayers.length }} de {{ predictionsOrderByPlayer.length }} jugadores
+    </div>
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="previousPage()">Anterior</a>
+        </li>
+        <li class="page-item" [class.active]="currentPage === page" 
+            *ngFor="let page of [1,2,3]">
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="nextPage()">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+

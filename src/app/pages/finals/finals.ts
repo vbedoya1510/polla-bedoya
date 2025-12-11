@@ -44,10 +44,10 @@ export class Finals {
       ];
   
     phases: Phase[] = [
-    new Phase(1, 8, 32, 8, 2),
-    new Phase(2, 8, 16, 20, 5),
-    new Phase(3, 8, 4, 2, 0),
-    new Phase(4, 15, 7, 5, 3)
+    new Phase(1, 8, 32, 8, 2,1),
+    new Phase(2, 8, 16, 20, 5,1),
+    new Phase(3, 8, 4, 2, 0,1),
+    new Phase(4, 15, 7, 5, 3,1)
   ];
   
   teamPhase: TeamPhase[] = [
@@ -69,7 +69,7 @@ export class Finals {
       'carlos.perez@mail.com',
       false,
       8,
-      'Clasificar al torneo regional'
+      this.team[7]
     ),
     new Player(
       2,
@@ -78,7 +78,7 @@ export class Finals {
       'ana.gomez@mail.com',
       false,
       2,
-      'Llegar a la final del campeonato'
+      this.team[7]
     ),
     new Player(
       3,
@@ -87,7 +87,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       4,
@@ -96,7 +96,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
     ,
      new Player(
@@ -106,7 +106,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       6,
@@ -115,7 +115,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       4,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
     ,
      new Player(
@@ -125,7 +125,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       5,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
     ,
      new Player(
@@ -135,7 +135,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       7,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ) ,
      new Player(
       9,
@@ -144,7 +144,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       8,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       10,
@@ -153,7 +153,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       2,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     ),
      new Player(
       11,
@@ -162,7 +162,7 @@ export class Finals {
       'luis.rodriguez@mail.com',
       true,
       5,
-      'Mejorar el rendimiento del equipo'
+      this.team[7]
     )
   ];
   

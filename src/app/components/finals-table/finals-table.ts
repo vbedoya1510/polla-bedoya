@@ -160,9 +160,16 @@ export class FinalsTable {
 
   onTeamChange(teamSelected: any, position: number) {
     if (teamSelected != null && position != null) {
+
+      let same_position = this.predictions.filter(p => p.position === position);
+      same_position.forEach(team => {
+        team.score = 0; 
+      });
+
       let same_team = this.predictions.filter(p => p.team.id === teamSelected);
       same_team.forEach(team => {
-        if(team.team.id == teamSelected && team.position == position){ 
+        team.score = 0;      
+        if(team.position == position){ 
           this.phases.forEach(phase => {
             if(phase.id == team.phase.id){
               team.score = phase.finalist_points ?? 0;
