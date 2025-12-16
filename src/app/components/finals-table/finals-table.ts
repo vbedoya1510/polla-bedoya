@@ -40,6 +40,8 @@ export class FinalsTable {
   contador: number = 0;
   col: any;
 
+  favoriteTeamId: number | null = null;
+
 
   selectedTeamIds: (number | null)[] = [null, null, null, null];
 
@@ -182,6 +184,24 @@ export class FinalsTable {
       this.updateScoreByPlayer();
       this.predictions = [...this.predictions];       
     }    
+  }
+
+  onScorerChange(teamSelected: any) {
+    let uniquePlayers = Array.from(
+        new Map(
+          this.predictions.map(item => [item.player.id, item.player])
+        ).values()
+      );
+
+      uniquePlayers.forEach(element => {
+        if(element.team_scorer.id == teamSelected){
+          element.scorer_scorer = this.phases[0].winner_scorer;
+          element.total_score = element.total_score +  element.scorer_scorer;
+        }
+      });
+      console.log('JSON this.predictions : ', JSON.stringify(uniquePlayers, null, 2));
+      this.updateScoreByPlayer();
+      this.predictions = [...this.predictions];  
   }
 
   ngOnInit(): void { 

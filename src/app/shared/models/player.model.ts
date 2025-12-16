@@ -9,17 +9,19 @@ export class Player {
   total_score: number;
   team_scorer: Team;
   position: number;
+  scorer_scorer: number;
 
-constructor(
+  constructor(
     id: number,
     name: string,
     phone: string,
     email: string,
     pay: boolean = false,
-    total_score: number = 0, 
+    total_score: number = 0,
     team_scorer: Team,
-    position: number = 0         
-) {
+    position: number = 0,
+    scorer_scorer: number = 0
+  ) {
     this.id = id;
     this.name = name;
     this.phone = phone;
@@ -28,7 +30,8 @@ constructor(
     this.total_score = total_score;
     this.pay = pay;
     this.position = position;
-}
+    this.scorer_scorer = scorer_scorer;
+  }
 
 
 }

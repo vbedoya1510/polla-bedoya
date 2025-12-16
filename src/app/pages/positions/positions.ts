@@ -44,10 +44,10 @@ export class Positions {
       ];
   
     phases: Phase[] = [
-    new Phase(1, 8, 32, 8, 2),
-    new Phase(2, 8, 16, 20, 5),
-    new Phase(3, 8, 4, 2, 0),
-    new Phase(4, 15, 7, 5, 3)
+    new Phase(1, 8, 32, 8, 2,1),
+    new Phase(2, 8, 16, 20, 5,1),
+    new Phase(3, 8, 4, 2, 0,1),
+    new Phase(4, 15, 7, 5, 3,1)
   ];
   
   teamPhase: TeamPhase[] = [

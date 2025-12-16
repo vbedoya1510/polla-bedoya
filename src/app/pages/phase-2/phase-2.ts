@@ -61,7 +61,7 @@ gamePhases: GamePhase[] = [
             p.email,
             p.pay,
             p.total_score,
-            this.teams.find(t => t.id === p.team_scorer_id)!, // busca el Team por id
+            this.teams.find(t => t.id === p.team_scorer_id)!, 
             p.position
           ));
         this.games = data.games.map((p: any) =>
@@ -104,7 +104,8 @@ gamePhases: GamePhase[] = [
               p.goals_team1,
               p.goals_team2,
               p.score, 
-              p.scoreTeam
+              p.scoreTeam,
+              this.teams.find(t => t.id === p.team_qualified)!,
             )
           );          
         },

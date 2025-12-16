@@ -1,4 +1,9 @@
 {
+  "teamScorer":{
+    "id":0,
+    "name": "",
+    "group":""
+  },
   "phases": [
     {
       "id": 1,
@@ -292,7 +297,8 @@
       "pay": false,
       "total_score": 8,
       "team_scorer_id": 25,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 2,
@@ -302,7 +308,8 @@
       "pay": false,
       "total_score": 2,
       "team_scorer_id": 2,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 3,
@@ -312,7 +319,8 @@
       "pay": true,
       "total_score": 7,
       "team_scorer_id": 5,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 4,
@@ -322,7 +330,8 @@
       "pay": true,
       "total_score": 7,
       "team_scorer_id": 45,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 5,
@@ -332,7 +341,8 @@
       "pay": true,
       "total_score": 7,
       "team_scorer_id": 33,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 6,
@@ -342,7 +352,8 @@
       "pay": true,
       "total_score": 4,
       "team_scorer_id": 35,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 7,
@@ -352,7 +363,8 @@
       "pay": true,
       "total_score": 5,
       "team_scorer_id": 21,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 8,
@@ -362,7 +374,8 @@
       "pay": true,
       "total_score": 7,
       "team_scorer_id": 4,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 9,
@@ -372,7 +385,8 @@
       "pay": true,
       "total_score": 8,
       "team_scorer_id": 17,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     },
     {
       "id": 10,
@@ -382,7 +396,8 @@
       "pay": true,
       "total_score": 2,
       "team_scorer_id": 19,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 40
     },
     {
       "id": 11,
@@ -392,7 +407,8 @@
       "pay": true,
       "total_score": 5,
       "team_scorer_id": 10,
-      "position": 0
+      "position": 0,
+      "scorer_scorer": 0
     }
   ],
   "games": [

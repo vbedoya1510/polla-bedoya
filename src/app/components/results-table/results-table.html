@@ -278,7 +278,8 @@
       </tr>
       <tr *ngIf="!viewQualified" >
         <th> Equipo con el goleador</th>   
-        <td *ngFor="let col of filteredPlayers">
+        <td *ngFor="let col of filteredPlayers"
+            [ngClass]="{ 'my-result': col.player.scorer_scorer > 0 }">
           <div>
             {{ col.player.team_scorer.name }}
           </div>  

@@ -23,6 +23,8 @@ export class Phase1 {
   teams: Team[] = [];
   games: Game[] = [];  
 
+  teamScorer: Team | undefined;
+
   gamePhases: GamePhase[] = [];
 
 
@@ -43,6 +45,7 @@ predictionTeamPlayer: PredictionTeamPlayer[] = [
         this.teams = data.teams.map((t: any) =>
           new Team(t.id, t.name, t.group)
         );
+        this.teamScorer = data.teamScorer;
         this.phases = data.phases.map((t: any) =>
           new Phase(t.id, t.classified_points, t.finalist_points, t.result_points, t.winner_points, t.winner_scorer)
         );
@@ -55,7 +58,8 @@ predictionTeamPlayer: PredictionTeamPlayer[] = [
             p.pay,
             p.total_score,
             this.teams.find(t => t.id === p.team_scorer_id)!, 
-            p.position
+            p.position,
+            p.scorer_scorer
           ));
         this.games = data.games.map((p: any) =>
           new Game(
@@ -77,6 +81,10 @@ predictionTeamPlayer: PredictionTeamPlayer[] = [
   }
 
   getPredictions(idPhase: number){
+
+    
+    console.log('JSON this.players : ', JSON.stringify(this.players, null, 2));
+
     this.dataService.getPrediction(idPhase).subscribe({
         next: prediction => {
           this.predictionTeamPlayer = prediction.predictionTeam.map((p: any) =>

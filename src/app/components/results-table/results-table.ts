@@ -107,6 +107,9 @@ export class ResultsTable {
 
   getPredictionTeam(playerId: number, gameId: number): number {
     const prediction = this.getPredictionObject(playerId, gameId);
+    if(playerId==1 && gameId==1){
+       console.log('JSON prediction DESPUES: ', JSON.stringify(prediction, null, 2));         
+    }
     return prediction?.team_qualified?.name || '';
   }
 

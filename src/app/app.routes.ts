@@ -4,13 +4,17 @@ import { NgModule } from '@angular/core';
 import { Positions } from './pages/positions/positions';
 import { Finals } from './pages/finals/finals';
 import { Phase2 } from './pages/phase-2/phase-2';
+import { Phase3 } from './pages/phase-3/phase-3';
+import { Phase4 } from './pages/phase-4/phase-4';
 
 export const routes: Routes = [
-  { path: '', component: Positions }, // 👈 ruta inicial
+  { path: '', component: Positions }, 
   { path: 'phase-1', component: Phase1 },
   { path: 'positions', component: Positions },
   { path: 'finals', component: Finals },
   { path: 'phase-2', component: Phase2 },
+  { path: 'phase-3', component: Phase3 },
+  { path: 'phase-4', component: Phase4 },
 ];
 
 @NgModule({
