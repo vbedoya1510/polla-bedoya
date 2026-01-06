@@ -1,11 +1,105 @@
 import { Component } from '@angular/core';
+import { ResultsTable } from '../../components/results-table/results-table';
+import { PredictionGame, PredictionTeamPlayer, Team, TeamPhase } from '../../shared/models/team.model';
+import { DataService } from '../../services/data.service';
+import { Phase } from '../../shared/models/phase.model';
+import { Game, GamePhase } from '../../shared/models/game.model';
+import { Player } from '../../shared/models/player.model';
 
 @Component({
   selector: 'app-phase-4',
-  imports: [],
+  imports: [ResultsTable],
   templateUrl: './phase-4.html',
   styleUrl: './phase-4.css',
 })
 export class Phase4 {
 
+  constructor(private dataService: DataService) {}
+  
+    phases: Phase[] = [];
+  
+    teams: Team[] = [];
+  
+    games: Game[] = [];
+  
+    predictionTeamPlayer: PredictionTeamPlayer[] = [];
+    
+  
+  gamePhases: GamePhase[] = [
+    new GamePhase(this.games[0], this.phases[0]),
+    new GamePhase(this.games[1], this.phases[1]),
+    new GamePhase(this.games[2], this.phases[2]),
+    new GamePhase(this.games[3], this.phases[3])
+  ];
+  
+  
+    players: Player[] = [];
+  
+    predictions: PredictionGame[] = [];
+  
+    phase: Phase | undefined;
+  
+    teamPhase: TeamPhase[] = [];
+
+     ngOnInit(): void {
+    this.dataService.getData().subscribe({
+      next: data => {
+        this.teams = data.teams.map((t: any) =>
+          new Team(t.id, t.name, t.group)
+        );
+        this.phases = data.phases.map((t: any) =>
+          new Phase(t.id, t.classified_points, t.finalist_points, t.result_points, t.winner_points, t.winner_scorer)
+        );
+        this.players = data.players.map((p: any) =>
+          new Player(
+            p.id,
+            p.name,
+            p.phone,
+            p.email,
+            p.pay,
+            p.total_score,
+            this.teams.find(t => t.id === p.team_scorer_id)!, // busca el Team por id
+            p.position
+          ));
+        this.games = data.games.map((p: any) =>
+          new Game(
+            p.id,
+            this.teams.find(t => t.id === p.team1)!,
+            this.teams.find(t => t.id === p.team2)!,
+            0,
+            0
+          ));
+          this.phase = this.phases[3];
+          this.getPredictions(this.phase.id);
+      },
+      error: err => {
+        console.error('Error leyendo JSON:', err);
+      }
+    });
+    
+    
+
+  }
+
+    getPredictions(idPhase: number){
+    this.dataService.getPrediction(idPhase).subscribe({
+        next: prediction => {
+          this.predictions =  prediction.predictionGame.map((p: any) =>
+            new PredictionGame(
+              this.players.find(t => t.id === p.player)!,
+              this.games.find(t => t.id === p.game)!,
+              p.goals_team1,
+              p.goals_team2,
+              p.score, 
+              p.scoreTeam,
+              this.teams.find(t => t.id === p.team_qualified)!,
+            )
+          );          
+        },
+        error: err => {
+          console.error('Error leyendo JSON:', err);
+        }
+      }); 
+  }
+  
 }

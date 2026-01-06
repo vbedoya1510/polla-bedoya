@@ -1,9 +1,27 @@
 {
-  "teamScorer":{
-    "id":0,
+  "teamScorer": {
+    "id": 0,
     "name": "",
-    "group":""
+    "group": ""
   },
+  "teamsPositions": [
+    {
+      "id": 1,
+      "idTeam": 0
+    },
+    {
+      "id": 2,
+      "idTeam": 0
+    },
+    {
+      "id": 3,
+      "idTeam": 0
+    },
+    {
+      "id": 4,
+      "idTeam": 0
+    }
+  ],
   "phases": [
     {
       "id": 1,

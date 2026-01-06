@@ -11,10 +11,10 @@ export const routes: Routes = [
   { path: '', component: Positions }, 
   { path: 'phase-1', component: Phase1 },
   { path: 'positions', component: Positions },
-  { path: 'finals', component: Finals },
   { path: 'phase-2', component: Phase2 },
   { path: 'phase-3', component: Phase3 },
   { path: 'phase-4', component: Phase4 },
+  { path: 'finals', component: Finals },
 ];
 
 @NgModule({

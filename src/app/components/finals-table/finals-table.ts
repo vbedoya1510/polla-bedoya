@@ -18,7 +18,6 @@ export class FinalsTable {
   @Input() predictions: PredictionTeamPlayer[] = [];
   @Input() teams: Team [] = [];
   @Input() phases: Phase [] = [];
-  @Input() teamPhase: TeamPhase[] = [];
 
    originalGroup: PredictionTeamPlayer[] = [];
 
