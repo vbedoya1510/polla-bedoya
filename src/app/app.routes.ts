@@ -6,6 +6,7 @@ import { Finals } from './pages/finals/finals';
 import { Phase2 } from './pages/phase-2/phase-2';
 import { Phase3 } from './pages/phase-3/phase-3';
 import { Phase4 } from './pages/phase-4/phase-4';
+import { Players } from './pages/players/players';
 
 export const routes: Routes = [
   { path: '', component: Positions }, 
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'phase-3', component: Phase3 },
   { path: 'phase-4', component: Phase4 },
   { path: 'finals', component: Finals },
+  { path: 'players', component: Players },
 ];
 
 @NgModule({

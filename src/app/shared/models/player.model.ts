@@ -10,6 +10,7 @@ export class Player {
   team_scorer: Team;
   position: number;
   scorer_scorer: number;
+  previous_score?: number;
 
   constructor(
     id: number,
