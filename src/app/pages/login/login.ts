@@ -24,7 +24,7 @@ export class Login {
   // 1. Simulas validación de usuario...
   if (this.email() === 'admin@polla.com' && this.password() === '123456') {
     alert("Bienvenido");
-    this.router.navigate(['/phase-1']);
+    window.location.assign('/phase-1');
 
   } else {
     this.errorMessage.set('Credenciales incorrectas');
