@@ -9,12 +9,7 @@ export class AuthService {
 
     registerLogin(status: boolean) {
         this.isLoggedIn.set(status);
-    }
-
-    logOut() {
-        if (isPlatformBrowser(this.platformId)) {
-            sessionStorage.setItem('login', 'false');
-        }
+        sessionStorage.setItem('login', status ? 'true': 'false');
     }
 
     private getInitialStatus(): boolean {
