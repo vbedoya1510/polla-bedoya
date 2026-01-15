@@ -1,5 +1,5 @@
-import { Component, inject, signal } from "@angular/core";
-import { DataService } from "../../services/data.service";
+import { Component, inject, OnInit, signal } from "@angular/core";
+import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -9,13 +9,19 @@ import { Router } from "@angular/router";
     templateUrl: './login.html',
     styleUrls: ['./login.css'],
 })
-export class Login {
-    private dataService = inject(DataService);
-    private router = inject(Router);
+export class Login implements OnInit {
+  private authService = inject(AuthService);
+  private router = inject(Router);
     email = signal('');
     password = signal('');
     isLoading = signal(false);
     errorMessage = signal('');
+
+ngOnInit(): void {
+  if(this.authService.isLoggedIn()) {
+    this.router.navigate(['/phase-1']);
+  }
+}
 
     handleLogin(event: Event) {
   event.preventDefault();
@@ -24,8 +30,8 @@ export class Login {
   // 1. Simulas validación de usuario...
   if (this.email() === 'admin@polla.com' && this.password() === '123456') {
     alert("Bienvenido");
-    window.location.assign('/phase-1');
-
+    this.authService.registerLogin(true);
+    this.router.navigate(['/phase-1']);
   } else {
     this.errorMessage.set('Credenciales incorrectas');
     this.isLoading.set(false);

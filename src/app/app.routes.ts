@@ -8,11 +8,12 @@ import { Phase3 } from './pages/phase-3/phase-3';
 import { Phase4 } from './pages/phase-4/phase-4';
 import { Players } from './pages/players/players';
 import { Login } from './pages/login/login';
+import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: Login },
   { path: 'login', component: Login }, 
-  { path: 'phase-1', component: Phase1 },
+  { path: 'phase-1', component: Phase1, canActivate: [authGuard] },
   { path: 'positions', component: Positions },
   { path: 'phase-2', component: Phase2 },
   { path: 'phase-3', component: Phase3 },
