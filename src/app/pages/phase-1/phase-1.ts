@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { ResultsTable } from '../../components/results-table/results-table';
 import { Game, GamePhase } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
@@ -39,11 +39,13 @@ export class Phase1 {
   });
 
   // 3. Variables normales para lo que NO quieres global
-  predictionTeamPlayer: PredictionTeamPlayer[] = [];
-  predictions: PredictionGame[] = [];
+predictions = signal<PredictionGame[]>([]);
+predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
 
   players = computed(() => {
     const currentTeams = this.teams();
+    console.log('--- [Phase-1 Computed Players] ---');
+  console.log('Data cruda recibida:', this.data());
     return this.data()?.players.map((p: any) =>
       new Player(p.id, p.name, p.phone, p.email, p.pay, p.total_score,
         currentTeams.find((t: { id: any; }) => t.id === p.team_scorer_id)!,
@@ -80,7 +82,7 @@ export class Phase1 {
         const currentPhases = this.phases();
         const currentGames = this.games();
 
-        this.predictionTeamPlayer = prediction.predictionTeam.map((p: any) =>
+        const mappedTeams = prediction.predictionTeam.map((p: any) =>
           new PredictionTeamPlayer(
             currentPlayers.find((pl: { id: any; }) => pl.id === p.player)!, // Uso de variable local
             currentPhases.find((ph: { id: any; }) => ph.id === p.phase)!,
@@ -89,13 +91,15 @@ export class Phase1 {
           )
         );
 
-        this.predictions = prediction.predictionGame.map((p: any) =>
+        const mappedPredictions  = prediction.predictionGame.map((p: any) =>
           new PredictionGame(
             currentPlayers.find((pl: { id: any; }) => pl.id === p.player)!,
             currentGames.find((ga: { id: any; }) => ga.id === p.game)!,
             p.goals_team1, p.goals_team2, p.score, p.scoreTeam
           )
         );
+        this.predictions.set(mappedPredictions);
+        this.predictionTeamPlayer.set(mappedTeams);
       },
       error: err => console.error('Error:', err)
     });
