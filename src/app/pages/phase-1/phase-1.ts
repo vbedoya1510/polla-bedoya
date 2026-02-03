@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, Input, signal } from '@angular/core';
 import { ResultsTable } from '../../components/results-table/results-table';
 import { Game, GamePhase } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
@@ -15,6 +15,8 @@ import { DataService } from '../../services/data.service';
 })
 export class Phase1 {
   private dataService = inject(DataService);
+
+  @Input() phaseNumber!: number;
 
   // 1. Conexión al tanque principal (Servicio)
   data = this.dataService.worldCupData;
@@ -35,7 +37,7 @@ export class Phase1 {
   );
   phase = computed(() => {
     const lista = this.phases();
-    return lista.length > 0 ? lista[0] : undefined;
+    return lista.length > 0 ? lista[this.phaseNumber - 1] : undefined;
   });
 
   // 3. Variables normales para lo que NO quieres global
@@ -44,7 +46,7 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
 
   players = computed(() => {
     const currentTeams = this.teams();
-    console.log('--- [Phase-1 Computed Players] ---');
+    console.log('--- [Phase-1 Computed Players] ---' + this.phaseNumber);
   console.log('Data cruda recibida:', this.data());
     return this.data()?.players.map((p: any) =>
       new Player(p.id, p.name, p.phone, p.email, p.pay, p.total_score,
@@ -55,10 +57,10 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
 
   games = computed(() => {
     const currentTeams = this.teams();
-    return this.data()?.games.map((g: any) =>
+    return this.data()?.games.map((g: Game) =>
       new Game(g.id, currentTeams.find((t: { id: any; }) => t.id === g.team1)!,
         currentTeams.find((t: { id: any; }) => t.id === g.team2)!,
-        g.goals_team1, g.goals_team2)
+        g.goals_team1, g.goals_team2, g.end_game)
     ) ?? [];
   });
 
@@ -68,12 +70,17 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
     effect(() => {
       const listaPhases = this.phases();
       if (listaPhases.length > 0) {
-        this.getPredictions(listaPhases[0].id);
+        this.getPredictions(listaPhases[this.phaseNumber - 1].id);
       }
     });
   }
 
   getPredictions(idPhase: number) {
+    const key = `predictions_${this.phase()?.id}`;
+    const savedData = sessionStorage.getItem(key);
+    this.predictions.set(savedData ? JSON.parse(savedData) : []);
+    this.predictionTeamPlayer.set(savedData ? JSON.parse(savedData) : []);
+    if (savedData) return;
     this.dataService.getPrediction(idPhase).subscribe({
       next: prediction => {
         // IMPORTANTE: Obtenemos los valores actuales de los signals una sola vez
@@ -82,7 +89,7 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
         const currentPhases = this.phases();
         const currentGames = this.games();
 
-        const mappedTeams = prediction.predictionTeam.map((p: any) =>
+        const mappedTeams = prediction?.predictionTeam?.map((p: any) =>
           new PredictionTeamPlayer(
             currentPlayers.find((pl: { id: any; }) => pl.id === p.player)!, // Uso de variable local
             currentPhases.find((ph: { id: any; }) => ph.id === p.phase)!,

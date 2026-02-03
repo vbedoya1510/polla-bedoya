@@ -7,6 +7,7 @@ export class Player {
   email: string;
   pay: boolean;
   total_score: number;
+  total_current_phase: number;
   team_scorer: Team;
   position: number;
   scorer_scorer: number;
@@ -21,7 +22,8 @@ export class Player {
     total_score: number = 0,
     team_scorer: Team,
     position: number = 0,
-    scorer_scorer: number = 0
+    scorer_scorer: number = 0,
+    total_current_phase: number = 0,
   ) {
     this.id = id;
     this.name = name;
@@ -32,6 +34,7 @@ export class Player {
     this.pay = pay;
     this.position = position;
     this.scorer_scorer = scorer_scorer;
+    this.total_current_phase = total_current_phase;
   }
 
 

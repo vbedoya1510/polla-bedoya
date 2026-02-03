@@ -7,8 +7,8 @@ export class Game {
   team2: Team;
   goals_team1: number;
   goals_team2: number;
-  team_qualified?: Team;
   end_game: boolean = false;
+  team_qualified?: Team;
 
   constructor(
     id: number,
@@ -16,7 +16,8 @@ export class Game {
     team2: Team,
     goals_team1: number = 0,
     goals_team2: number = 0,
-    team_qualified?: Team
+    end_game: boolean = false,
+    team_qualified?: Team,
   ) {
     this.id = id;
     this.team1 = team1;
@@ -24,6 +25,7 @@ export class Game {
     this.goals_team1 = goals_team1;
     this.goals_team2 = goals_team2;
     this.team_qualified = team_qualified;
+    this.end_game = end_game;
   }
 }
 

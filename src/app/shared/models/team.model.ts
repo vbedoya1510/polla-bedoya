@@ -27,6 +27,7 @@ export class PredictionGame {
   scoreTeam: number;
   team_qualified?: Team;
   selectedTeamId: any;
+  processed?: boolean = false;
   
     constructor(
       player: Player,

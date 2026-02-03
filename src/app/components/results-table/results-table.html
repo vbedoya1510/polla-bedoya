@@ -1,6 +1,5 @@
 <div class="table-responsive">
   <h4>Predicciones Fase {{phase()?.id}}</h4>
-  {{predictions().length}}
 
   <!-- Filtros -->
   <div class="row mb-3">
@@ -139,7 +138,7 @@
         <li class="page-item" [class.disabled]="currentPage() === 1">
           <a class="page-link" (click)="previousPage()">Anterior</a>
         </li>
-        @for (page of [1,2,3]; track page) {
+        @for (page of pages(); track page) {
         <li class="page-item" [class.active]="currentPage() === page">
           <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
         </li>
@@ -237,7 +236,7 @@
         <li class="page-item" [class.disabled]="currentPage() === 1">
           <a class="page-link" (click)="previousPage()">Anterior</a>
         </li>
-        @for (page of [1,2,3]; track page) {
+        @for (page of pages(); track page) {
         <li class="page-item" [class.active]="currentPage() === page">
           <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
         </li>
@@ -279,7 +278,7 @@
         <th>Equipo</th>
         }
       </tr>
-      <tr *ngFor="let j of [1, 2, 3, 4]">
+      <tr *ngFor="let j of pages()">
         <td class="text-center">
           {{ j }}
         </td>
@@ -333,7 +332,7 @@
         <li class="page-item" [class.disabled]="currentPage() === 1">
           <a class="page-link" (click)="previousPage()">Anterior</a>
         </li>
-        @for (page of [1,2,3]; track page) {
+        @for (page of pages(); track page) {
         <li class="page-item" [class.active]="currentPage() === page">
           <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
         </li>

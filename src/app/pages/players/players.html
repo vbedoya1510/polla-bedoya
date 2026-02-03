@@ -7,18 +7,22 @@
     <table class="table table-striped table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
-          <th>PARTICIPANTE</th>
           <th>POSICIÓN</th>
+          <th>PARTICIPANTE</th>
+          <th>PUNTOS</th>
 
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let player of paginatedPlayers()">
+        <tr *ngFor="let player of paginatedPlayers(); index as i">
+          <td class="font-weight-bold">
+            {{ i + 1}}
+          </td>
           <td class="font-weight-bold">
             {{ player.name }}
           </td>
           <td class="text-center">
-            {{player.total_score}}
+            {{player.total_score + player.total_current_phase}}
             <button (click)="simularAcierto(player.id)" class="btn-test">
               +5 pts
             </button>

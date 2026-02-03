@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, Input, model, signal, untracked } from '@angular/core';
+import { Component, computed, effect, inject, input, Input, model, signal, untracked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PredictionGame, PredictionTeamPlayer, Team } from '../../shared/models/team.model';
 import { Game } from '../../shared/models/game.model';
@@ -11,24 +11,26 @@ import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-results-table',
   standalone: true,
-  imports: [CommonModule,FormsModule,NgSelectModule],
+  imports: [CommonModule, FormsModule, NgSelectModule],
   templateUrl: './results-table.html',
   styleUrls: ['./results-table.css'],
 })
 
 export class ResultsTable {
-private dataService = inject(DataService);
-predictions = model.required<PredictionGame[]>();
+  private dataService = inject(DataService);
+  isReady = signal(false);
+  playersLocalCopy = signal<any[]>([]);
+  predictions = model.required<PredictionGame[]>();
   phase = input<Phase | undefined>();
   predictionsFinals = input<PredictionTeamPlayer[]>([]);
 
- 
+
   originalGames: PredictionGame[] = [];
   originalPredictions: PredictionGame[] = [];
   predictionsOrderByGame: PredictionGame[] = [];
   predictionsOrderByPlayer: PredictionGame[] = [];
 
-  teams: Team [] = [];
+  teams: Team[] = [];
   selectedTeamIds: (number | null)[] = [null, null];
 
   playerFilter = signal('');
@@ -36,7 +38,7 @@ predictions = model.required<PredictionGame[]>();
   gameFilter = signal('');
 
   editingPlayer: number | null = null;
-  editingPrediction: {playerId: number, gameId: number} | null = null;
+  editingPrediction: { playerId: number, gameId: number } | null = null;
   tempPrediction: any = { goals_team1: 0, goals_team2: 0 };
 
   currentPage = signal(1);
@@ -46,30 +48,135 @@ predictions = model.required<PredictionGame[]>();
   lowThreshold: number = 0;
   viewQualified: boolean = false;
 
+
+  constructor() {
+    effect(() => {
+      const original = this.playersList();
+      // Solo inicializamos si la copia local está vacía Y hay datos originales
+      if (original.length > 0 && untracked(this.playersLocalCopy).length === 0) {
+        console.log('Inicializando copia local por primera vez');
+        //this.playersLocalCopy.set(structuredClone(original));
+        this.playersLocalCopy.set(original.map(p => ({
+          ...p,
+          baseScore: p.player.total_score // Guardamos el puntaje inicial como "ancla"
+        })));
+      }
+    });
+    effect(() => {
+      const currentPredictions = this.predictions();
+      const phase = this.phase();
+
+      if (currentPredictions.length > 0 && phase) {
+        untracked(() => {
+          let logicChanged = false;
+
+          const updated = currentPredictions.map(p => {
+            const g1 = p.game.goals_team1;
+            const g2 = p.game.goals_team2;
+
+            // Calculamos el score actual basado en los goles
+            let currentScore = 0;
+            if (g1 !== null && g2 !== null) {
+              if (p.goals_team1 === g1 && p.goals_team2 === g2) {
+                currentScore = phase.result_points;
+              } else if (
+                (g1 > g2 && p.goals_team1 > p.goals_team2) ||
+                (g1 < g2 && p.goals_team1 < p.goals_team2) ||
+                (g1 === g2 && p.goals_team1 === p.goals_team2)
+              ) {
+                currentScore = phase.winner_points;
+              }
+            }
+
+            // --- LÓGICA DE CONTROL PARA NO REPETIR SUMA ---
+            // Si el partido terminó (end_game) y NO ha sido procesado aún
+            if (!p.processed && currentScore > 0) {
+              logicChanged = true;
+              // Retornamos la predicción con el score y la marca de procesado
+              return { ...p, score: currentScore, processed: true };
+            }
+
+            // Si ya estaba procesado o no hay puntos, solo actualizamos el score visual
+            return { ...p, score: currentScore };
+          });
+
+          if (logicChanged) {
+            this.predictions.set(updated);
+            // Solo disparamos la suma a los jugadores si detectamos nuevos puntos no procesados
+            this.refreshAllPlayersInitialScore();
+          }
+        });
+      }
+    });
+  }
+
+  paginatedPlayers = computed(() => {
+    const players = this.playersLocalCopy();
+    const start = (this.currentPage() - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+
+    if (players.length === 0) return [];
+
+    // Transformación: Deep copy + Slice
+    // Usamos structuredClone (estándar moderno de JS) en lugar de JSON.parse
+    const localCopy = structuredClone(players);
+
+    return localCopy.slice(start, end);
+  });
+
+  pages = computed(() => {
+    const length = this.totalPages();
+    return Array.from({ length }, (_, i) => i + 1);
+  });
+
+  updateLocalPoints(playerId: number) {
+    const allPreds = this.predictions();
+
+    this.playersLocalCopy.update(currentPlayers => {
+      return currentPlayers.map(p => {
+        if (p.player.id === playerId) {
+          const phasePoints = allPreds
+            .filter(pred => pred.player.id === playerId)
+            .reduce((sum, pred) => sum + (pred.score || 0) + (pred.scoreTeam || 0), 0);
+
+          return {
+            ...p,
+            player: {
+              ...p.player,
+              total_current_phase: phasePoints,
+              total_score: (p.baseScore || 0) + phasePoints
+            }
+          };
+        }
+        return p;
+      });
+    });
+  }
+
   //get filteredPlayers() {
-    //let filtered = this.playersList;
-    
-    // if (this.playerFilter) {
-    //   filtered = filtered().filter(p => 
-    //     p.player.name.toLowerCase().includes(this.playerFilter.toLowerCase())
-    //   );
-    // }
-    
-    // if (this.scoreFilter) {
-    //   filtered = filtered.filter(p => {
-    //     switch(this.scoreFilter) {
-    //       case 'high': return p.player.total_score > this.highThreshold;
-    //       case 'medium': return p.player.total_score >= this.lowThreshold && p.player.total_score <= this.highThreshold;
-    //       case 'low': return p.player.total_score < this.lowThreshold;
-    //       default: return true;
-    //     }
-    //   });
-    // }
-    
-    // Paginación
-    // const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    // return filtered.slice(startIndex, startIndex + this.itemsPerPage);
- // }
+  //let filtered = this.playersList;
+
+  // if (this.playerFilter) {
+  //   filtered = filtered().filter(p => 
+  //     p.player.name.toLowerCase().includes(this.playerFilter.toLowerCase())
+  //   );
+  // }
+
+  // if (this.scoreFilter) {
+  //   filtered = filtered.filter(p => {
+  //     switch(this.scoreFilter) {
+  //       case 'high': return p.player.total_score > this.highThreshold;
+  //       case 'medium': return p.player.total_score >= this.lowThreshold && p.player.total_score <= this.highThreshold;
+  //       case 'low': return p.player.total_score < this.lowThreshold;
+  //       default: return true;
+  //     }
+  //   });
+  // }
+
+  // Paginación
+  // const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  // return filtered.slice(startIndex, startIndex + this.itemsPerPage);
+  // }
 
   get filteredGames() {
     if (this.gameFilter) {
@@ -101,165 +208,165 @@ predictions = model.required<PredictionGame[]>();
   }
 
   private getPredictionObject(playerId: number, gameId: number): any {
-    return this.predictions().find(p => 
+    return this.predictions().find(p =>
       p.player.id == playerId && p.game.id == gameId
     );
-  }  
+  }
 
   getPredictionTeam(playerId: number, gameId: number): number {
     const prediction = this.getPredictionObject(playerId, gameId);
-    if(playerId==1 && gameId==1){
-       console.log('JSON prediction DESPUES: ', JSON.stringify(prediction, null, 2));         
+    if (playerId == 1 && gameId == 1) {
+      console.log('JSON prediction DESPUES: ', JSON.stringify(prediction, null, 2));
     }
     return prediction?.team_qualified?.name || '';
   }
 
-    // Métodos de paginación
+  // Métodos de paginación
   nextPage() {
-  // .update() es ideal para cambios que dependen del valor anterior
-  if (this.currentPage() < this.totalPages()) {
-    this.currentPage.update(page => page + 1);
+    // .update() es ideal para cambios que dependen del valor anterior
+    if (this.currentPage() < this.totalPages()) {
+      this.currentPage.update(page => page + 1);
+    }
   }
-}
 
-previousPage() {
-  if (this.currentPage() > 1) {
-    this.currentPage.update(page => page - 1);
+  previousPage() {
+    if (this.currentPage() > 1) {
+      this.currentPage.update(page => page - 1);
+    }
   }
-}
 
-goToPage(page: number) {
-  // .set() es ideal para asignar un valor directo
-  this.currentPage.set(page);
-}
+  goToPage(page: number) {
+    // .set() es ideal para asignar un valor directo
+    this.currentPage.set(page);
+  }
 
   applyFilters() {
-    this.currentPage.set(1); 
+    this.currentPage.set(1);
   }
 
-// onResultChange(game: Game, predictionGame: PredictionGame) {
-//   if (game != null && predictionGame.game.goals_team1 != null && predictionGame.game.goals_team2 != null) {
-//     let same_match = this.predictions().filter(p => p.game.id === predictionGame.game.id);
-//     same_match.forEach(match => {
-//       if(match.game.id == predictionGame.game.id){
-//         if(predictionGame.game.goals_team1 == match.goals_team1 && predictionGame.game.goals_team2 == match.goals_team2){
-//           match.score = this.phase()?.result_points ?? 0;
-//         }else if((predictionGame.game.goals_team1 > predictionGame.game.goals_team2 && match.goals_team1 > match.goals_team2)
-//           || (predictionGame.game.goals_team1 < predictionGame.game.goals_team2 && match.goals_team1 < match.goals_team2)
-//           || (predictionGame.game.goals_team1 == predictionGame.game.goals_team2 && match.goals_team1 == match.goals_team2)
-//           ){
-//             match.score = this.phase()?.winner_points ?? 0;        
-//           }else{
-//             match.score = 0;
-//           }   
-//       }             
-//       });
-//       //this.updateScoreByPlayer();
-//       const newTotal = this.updateScoreByPlayer(predictionGame.player.id);
-//       this.dataService.updatePlayerScore(predictionGame.player.id, newTotal);
-//       //this.predictions = [...this.predictions];    
- 
-//     }    
-//   }
+  // onResultChange(game: Game, predictionGame: PredictionGame) {
+  //   if (game != null && predictionGame.game.goals_team1 != null && predictionGame.game.goals_team2 != null) {
+  //     let same_match = this.predictions().filter(p => p.game.id === predictionGame.game.id);
+  //     same_match.forEach(match => {
+  //       if(match.game.id == predictionGame.game.id){
+  //         if(predictionGame.game.goals_team1 == match.goals_team1 && predictionGame.game.goals_team2 == match.goals_team2){
+  //           match.score = this.phase()?.result_points ?? 0;
+  //         }else if((predictionGame.game.goals_team1 > predictionGame.game.goals_team2 && match.goals_team1 > match.goals_team2)
+  //           || (predictionGame.game.goals_team1 < predictionGame.game.goals_team2 && match.goals_team1 < match.goals_team2)
+  //           || (predictionGame.game.goals_team1 == predictionGame.game.goals_team2 && match.goals_team1 == match.goals_team2)
+  //           ){
+  //             match.score = this.phase()?.winner_points ?? 0;        
+  //           }else{
+  //             match.score = 0;
+  //           }   
+  //       }             
+  //       });
+  //       //this.updateScoreByPlayer();
+  //       const newTotal = this.updateScoreByPlayer(predictionGame.player.id);
+  //       this.dataService.updatePlayerScore(predictionGame.player.id, newTotal);
+  //       //this.predictions = [...this.predictions];    
 
-updateGoals(realGame: Game, event: any, team: 'team1' | 'team2') {
-  if (!realGame) return;
-  const val = parseInt(event.target.value, 10);
-  if (isNaN(val)) return;
+  //     }    
+  //   }
 
-  // Actualizamos el objeto localmente primero
-  if (team === 'team1') realGame.goals_team1 = val;
-  else realGame.goals_team2 = val;
+  updateGoals(realGame: Game, event: any, team: 'team1' | 'team2') {
+    if (!realGame) return;
+    const val = parseInt(event.target.value, 10);
+    if (isNaN(val)) return;
 
-  // Ahora ejecutamos la lógica de puntos
-  this.onResultChange(realGame);
-}
+    // Actualizamos el objeto localmente primero
+    if (team === 'team1') realGame.goals_team1 = val;
+    else realGame.goals_team2 = val;
 
-onResultChange(realGame: Game) {
-  const g1 = realGame.goals_team1;
-  const g2 = realGame.goals_team2;
-  const phase = this.phase();
+    // Ahora ejecutamos la lógica de puntos
+    this.onResultChange(realGame);
+  }
 
-  if (g1 === null || g2 === null || !phase) return;
+  onResultChange(realGame: Game) {
+    const g1 = realGame.goals_team1;
+    const g2 = realGame.goals_team2;
+    const phase = this.phase();
 
-  // 1. Calculamos el nuevo estado de las predicciones basándonos en el resultado real
-  // IMPORTANTE: Usamos .update() para que Angular detecte el cambio de estado
-  // No necesitamos 'set', usamos una lógica inmutable
-  
-  // Aquí puedes llamar a una función en el servicio o actualizar localmente 
-  // si el input fuera un model(), pero como es input(), 
-  // lo ideal es que el PADRE actualice los datos.
-  
-  // Si quieres que funcione inmediato para la vista:
-  this.predictions.set([...this.predictions().map(p => {
-    if (p.game.id === realGame.id) {
-      let newScore = 0;
-      // Lógica de cálculo
-      if (p.goals_team1 === g1 && p.goals_team2 === g2) {
-        newScore = phase.result_points;
-      } else if (
-        (g1 > g2 && p.goals_team1 > p.goals_team2) ||
-        (g1 < g2 && p.goals_team1 < p.goals_team2) ||
-        (g1 === g2 && p.goals_team1 === p.goals_team2)
-      ) {
-        newScore = phase.winner_points;
+    if (g1 === null || g2 === null || !phase) return;
+
+    // 1. Calculamos el nuevo estado de las predicciones basándonos en el resultado real
+    // IMPORTANTE: Usamos .update() para que Angular detecte el cambio de estado
+    // No necesitamos 'set', usamos una lógica inmutable
+
+    // Aquí puedes llamar a una función en el servicio o actualizar localmente 
+    // si el input fuera un model(), pero como es input(), 
+    // lo ideal es que el PADRE actualice los datos.
+
+    // Si quieres que funcione inmediato para la vista:
+    this.predictions.set([...this.predictions().map(p => {
+      if (p.game.id === realGame.id) {
+        let newScore = 0;
+        // Lógica de cálculo
+        if (p.goals_team1 === g1 && p.goals_team2 === g2) {
+          newScore = phase.result_points;
+        } else if (
+          (g1 > g2 && p.goals_team1 > p.goals_team2) ||
+          (g1 < g2 && p.goals_team1 < p.goals_team2) ||
+          (g1 === g2 && p.goals_team1 === p.goals_team2)
+        ) {
+          newScore = phase.winner_points;
+        }
+        return { ...p, score: newScore, game: {...realGame} };
       }
-      return { ...p, score: newScore };
-    }
-    return p;
-  })]);
-  const updatedPredictions = this.predictions();
-  
-  // Obtenemos los jugadores únicos afectados para actualizar sus puntos
-  const playerIds = [...new Set(updatedPredictions.map(p => p.player.id))];
+      return p;
+    })]);
+    const updatedPredictions = this.predictions();
 
-  const allPreds = this.predictions();
-  
-  // Obtenemos los jugadores únicos que están en la tabla actual
-  const uniquePlayers = [...new Set(allPreds.map(p => p.player.id))];
+    // Obtenemos los jugadores únicos afectados para actualizar sus puntos
+    const playerIds = [...new Set(updatedPredictions.map(p => p.player.id))];
 
-  uniquePlayers.forEach(playerId => {
-    // Calculamos el total de este jugador sumando todas sus predicciones de esta fase
-    const totalPhasePoints = allPreds
-      .filter(p => p.player.id === playerId)
-      .reduce((sum, p) => sum + (p.score || 0) + (p.scoreTeam || 0), 0);
+    const allPreds = this.predictions();
 
-    // Llamamos al servicio para que el Ranking Global se entere
-    //this.dataService.updatePlayerScore(playerId, totalPhasePoints);
-  });
-}
+    // Obtenemos los jugadores únicos que están en la tabla actual
+    const uniquePlayers = [...new Set(allPreds.map(p => p.player.id))];
+
+    uniquePlayers.forEach(playerId => {
+      // Calculamos el total de este jugador sumando todas sus predicciones de esta fase
+      const totalPhasePoints = allPreds
+        .filter(p => p.player.id === playerId)
+        .reduce((sum, p) => sum + (p.score || 0) + (p.scoreTeam || 0), 0);
+
+      // Llamamos al servicio para que el Ranking Global se entere
+      this.updateLocalPoints(playerId);
+    });
+  }
 
   onTeamChange(teamSelected: any, predictionGame: PredictionGame) {
     if (teamSelected != null) {
-       let same_team = this.predictions().filter(p => p.game.id == predictionGame.game.id);
-        same_team.forEach(team => {         
-          if (team.team_qualified?.id == teamSelected){    
-            // console.log('JSON teamSelected DESPUES: ', JSON.stringify(team, null, 2));          
-            team.scoreTeam = this.phase()?.classified_points ?? 0;        
-          }else{
-            team.scoreTeam = 0;
-          }                    
-        });
-        const newTotal = this.updateScoreByPlayer(predictionGame.player.id);
+      let same_team = this.predictions().filter(p => p.game.id == predictionGame.game.id);
+      same_team.forEach(team => {
+        if (team.team_qualified?.id == teamSelected) {
+          // console.log('JSON teamSelected DESPUES: ', JSON.stringify(team, null, 2));          
+          team.scoreTeam = this.phase()?.classified_points ?? 0;
+        } else {
+          team.scoreTeam = 0;
+        }
+      });
+      const newTotal = this.updateScoreByPlayer(predictionGame.player.id);
       this.dataService.updatePlayerScore(predictionGame.player.id, newTotal);
-        //this.predictions = [...this.predictions];  
-    }    
-  } 
+      //this.predictions = [...this.predictions];  
+    }
+  }
 
   getTotalPoints(playerId: number): number {
     return this.predictions()
       .filter(p => p.player.id === playerId)
-      .reduce((acc, curr) => acc + (curr.scoreTeam || 0), 0);  
+      .reduce((acc, curr) => acc + (curr.scoreTeam || 0), 0);
   }
 
-  updateScoreByPlayer(playerId: number){   
+  updateScoreByPlayer(playerId: number) {
     // this.predictionsOrderByPlayer.forEach(player => {
     //      player.player.total_score = this.predictions().filter(p => p.player.id === player.player.id).reduce((sum, prediction) => sum + prediction.score + prediction.scoreTeam, 0);
     // }); 
     return this.predictions()
-    .filter(p => p.player.id === playerId)
-    .reduce((sum, p) => sum + (p.score || 0) + (p.scoreTeam || 0), 0);     
-      //this.predictions = [...this.predictions];    
+      .filter(p => p.player.id === playerId)
+      .reduce((sum, p) => sum + (p.score || 0) + (p.scoreTeam || 0), 0);
+    //this.predictions = [...this.predictions];    
   }
 
   getScoreClass(playerId: number, gameId: number): string {
@@ -271,7 +378,7 @@ onResultChange(realGame: Game) {
     } else if (score >= winnerPoints) {
       return 'my-winner';
     }
-    return ''; 
+    return '';
   }
 
   getScoreClassFinals(playerId: number, position: number): string {
@@ -279,7 +386,7 @@ onResultChange(realGame: Game) {
     if (score > 0) {
       return 'my-winner';
     }
-    return ''; 
+    return '';
   }
 
   getPredictionPositionFinals(playerId: number, position: number): number {
@@ -288,10 +395,10 @@ onResultChange(realGame: Game) {
   }
 
   private getPredictionObjectFinals(playerId: number, position: number): any {
-       const prediction = this.predictionsFinals().find(p => 
-      p.player.id === playerId && p.phase.id === this.phase()?.id && p.position === position && p.finals==true
-    );  
-     return prediction;
+    const prediction = this.predictionsFinals().find(p =>
+      p.player.id === playerId && p.phase.id === this.phase()?.id && p.position === position && p.finals == true
+    );
+    return prediction;
   }
 
   getScoreClassTeam(playerId: number, gameId: number): string {
@@ -299,38 +406,38 @@ onResultChange(realGame: Game) {
     const classifiedPoints = this.phase()?.classified_points ?? 0;
     if (score >= classifiedPoints) {
       return 'my-winner';
-    } 
-    return ''; 
+    }
+    return '';
   }
 
-  getPredictionFinals(playerId: number, position: number): string {       
-    const prediction = this.getPredictionObjectFinals(playerId, position);    
+  getPredictionFinals(playerId: number, position: number): string {
+    const prediction = this.getPredictionObjectFinals(playerId, position);
     return prediction ? `${prediction.team.name}` : '-';
   }
 
   getTotalPointsFinals(playerId: number): number {
     return this.predictionsFinals()
       .filter(p => p.player.id === playerId && p.phase.id === this.phase()?.id)
-      .reduce((acc, curr) => acc + (curr.score || 0), 0);  
+      .reduce((acc, curr) => acc + (curr.score || 0), 0);
   }
 
   getPercentile(scores: number[], percentile: number): number {
-  const sorted = [...scores].sort((a, b) => a - b);
-  const index = (percentile / 100) * (sorted.length - 1);
-  const lower = Math.floor(index);
-  const upper = lower + 1;
-  const weight = index % 1;
+    const sorted = [...scores].sort((a, b) => a - b);
+    const index = (percentile / 100) * (sorted.length - 1);
+    const lower = Math.floor(index);
+    const upper = lower + 1;
+    const weight = index % 1;
 
-  if (upper >= sorted.length) return sorted[sorted.length - 1];
-  return sorted[lower] * (1 - weight) + sorted[upper] * weight;
-}
+    if (upper >= sorted.length) return sorted[sorted.length - 1];
+    return sorted[lower] * (1 - weight) + sorted[upper] * weight;
+  }
 
   //  ngOnInit(): void {
   //   this.predictionsOrderByGame = this.predictions
   //       .filter((prediction, index, array) => 
   //         index === array.findIndex(p => p.game.id === prediction.game.id))
   //       .sort((a, b) => a.game.id - b.game.id);
-    
+
   //   this.originalGames =  JSON.parse(JSON.stringify(this.predictionsOrderByGame));
 
   //   this.initComponents();
@@ -347,32 +454,32 @@ onResultChange(realGame: Game) {
   //     .sort((a, b) => a.game.id - b.game.id);
   // });
 
-// En el componente.ts
-// Cambiamos la dependencia: ya no mira 'predictions', mira 'worldCupData'
-// En results-table.ts
+  // En el componente.ts
+  // Cambiamos la dependencia: ya no mira 'predictions', mira 'worldCupData'
+  // En results-table.ts
 
-// 1. Obtener la lista de juegos únicos a partir de las predicciones recibidas
-readonly gamesList = computed(() => {
-  const allPredictions = this.predictions();
-  if (allPredictions.length === 0) return [];
+  // 1. Obtener la lista de juegos únicos a partir de las predicciones recibidas
+  readonly gamesList = computed(() => {
+    const allPredictions = this.predictions();
+    if (allPredictions.length === 0) return [];
 
-  // Extraemos juegos únicos basándonos en el ID del juego
-  const seenGames = new Set();
-  const uniqueGames: PredictionGame[] = [];
+    // Extraemos juegos únicos basándonos en el ID del juego
+    const seenGames = new Set();
+    const uniqueGames: PredictionGame[] = [];
 
-  for (const p of allPredictions) {
-    if (!seenGames.has(p.game.id)) {
-      seenGames.add(p.game.id);
-      uniqueGames.push(p);
+    for (const p of allPredictions) {
+      if (!seenGames.has(p.game.id)) {
+        seenGames.add(p.game.id);
+        uniqueGames.push(p);
+      }
     }
-  }
 
-  return uniqueGames.sort((a, b) => a.game.id - b.game.id);
-});
+    return uniqueGames.sort((a, b) => a.game.id - b.game.id);
+  });
 
   // Umbrales reactivos
   readonly thresholds = computed(() => {
-    const scores = this.playersList().map(p => p.player.total_score);
+    const scores = this.playersList().map(p => p.player.total_score + p.player.total_current_phase);
     if (scores.length === 0) return { high: 0, low: 0 };
     return {
       high: this.getPercentile(scores, 80),
@@ -388,32 +495,83 @@ readonly gamesList = computed(() => {
   });
 
   readonly filteredPlayers = computed(() => {
-  const players = this.playersList();
-  const pFilter = this.playerFilter().toLowerCase();
-  const sFilter = this.scoreFilter();
-  const { high, low } = this.thresholds();
-  const page = this.currentPage();
+    // 1. Leemos de la copia local (donde sumas los puntos)
+    const players = this.playersLocalCopy();
+    const pFilter = this.playerFilter().toLowerCase();
+    const sFilter = this.scoreFilter();
+    const page = this.currentPage();
 
-  let filtered = players.filter(p => 
-    !pFilter || p.player.name.toLowerCase().includes(pFilter)
+    // Obtenemos umbrales dinámicos
+    const { high, low } = this.thresholds();
+
+    // 2. Filtramos
+    let result = players.filter(p =>
+      !pFilter || p.player.name.toLowerCase().includes(pFilter)
+    );
+
+    // 3. Aplicamos lógica de niveles (opcional según tu UI)
+    if (sFilter) {
+      result = result.filter(p => {
+        const score = p.player.total_score + p.player.total_current_phase;
+        if (sFilter === 'high') return score > high;
+        if (sFilter === 'medium') return score >= low && score <= high;
+        if (sFilter === 'low') return score < low;
+        return true;
+      });
+    }
+
+    // 4. Paginamos (sustituye a paginatedPlayers)
+    const startIndex = (page - 1) * this.itemsPerPage;
+    return result.slice(startIndex, startIndex + this.itemsPerPage);
+  });
+
+  readonly totalPages = computed(() =>
+    Math.ceil(this.playersList().length / this.itemsPerPage)
   );
 
-  if (sFilter) {
-    filtered = filtered.filter(p => {
-      const score = p.player.total_score;
-      if (sFilter === 'high') return score > high;
-      if (sFilter === 'medium') return score >= low && score <= high;
-      if (sFilter === 'low') return score < low;
-      return true;
+  ngOnDestroy() {
+    const phase = this.phase();
+    const key = `predictions_${phase?.id}`;
+    if (this.predictions().length > 0) {
+      const newPredictions = this.predictions().map(p => {
+        return { ...p, processed: false };
+      });
+      sessionStorage.setItem(key, JSON.stringify(newPredictions));
+    }
+
+
+    //update de los puntos de los jugadores
+    const dataToSave = this.playersLocalCopy();
+    console.log('Guardando en servicio:', dataToSave);
+    dataToSave.forEach(item => {
+      this.dataService.setPlayerAbsoluteScore(
+        item.player.id,
+        item.player.total_current_phase
+      );
     });
   }
 
-  const startIndex = (page - 1) * this.itemsPerPage;
-  return filtered.slice(startIndex, startIndex + this.itemsPerPage);
-});
+  refreshAllPlayersInitialScore() {
+    const allPreds = this.predictions();
+    const phase = this.phase();
+    const isSaved = sessionStorage.getItem('phase_' + phase?.id) !== null;
+    if (isSaved) return;
+    this.playersLocalCopy.update(players => players.map(p => {
+      // Solo sumamos los puntos de las predicciones que tienen el flag processed recién activado
+      // o que tengan score pero que estemos seguros que corresponden a esta acción.
+      const phasePoints = allPreds
+        .filter(pred => pred.player.id === p.player.id && pred.processed)
+        .reduce((sum, pred) => sum + (pred.score || 0) + (pred.scoreTeam || 0), 0);
 
-readonly totalPages = computed(() => 
-  Math.ceil(this.playersList().length / this.itemsPerPage)
-);
+      return {
+        ...p,
+        player: {
+          ...p.player,
+          total_current_phase: phasePoints,
+          total_score: ((p.baseScore || 0) + phasePoints)
+        }
+      };
+    }));
+  }
 
 }
