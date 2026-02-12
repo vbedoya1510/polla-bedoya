@@ -23,12 +23,6 @@
           </td>
           <td class="text-center">
             {{player.total_score + player.total_current_phase}}
-            <button (click)="simularAcierto(player.id)" class="btn-test">
-              +5 pts
-            </button>
-            <button (click)="simularDesacierto(player.id)" class="btn-test">
-              -5 pts
-            </button>
             <span *ngIf="player.trend === 'up'" class="text-success">▲</span>
             <span *ngIf="player.trend === 'down'" class="text-danger">▼</span>
           </td>

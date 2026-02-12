@@ -118,3 +118,34 @@ td, th {
   position: relative; 
 }
 
+/* Estilo para las cabeceras del acordeón */
+.accordion-header {
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  user-select: none; /* Evita que se seleccione el texto al hacer click rápido */
+}
+
+.accordion-header:hover {
+  filter: brightness(1.2);
+}
+
+/* Espaciado para el contenido */
+.accordion-content {
+  padding: 15px 0;
+  /* Opcional: una entrada suave */
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toggle-icon-main, .toggle-icon-teams {
+  transition: transform 0.3s ease; /* Esto hace la magia del giro */
+}
+
+.toggle-icon-main.is-open, .toggle-icon-teams.is-open {
+  transform: rotate(180deg); /* Gira la flecha hacia arriba */
+}
+

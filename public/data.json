@@ -314,6 +314,7 @@
       "email": "carlos.perez@mail.com",
       "pay": false,
       "total_score": 8,
+      "total_current_phase": 0,
       "team_scorer_id": 25,
       "position": 0,
       "scorer_scorer": 0
@@ -325,6 +326,7 @@
       "email": "ana.gomez@mail.com",
       "pay": false,
       "total_score": 2,
+      "total_current_phase": 0,
       "team_scorer_id": 2,
       "position": 0,
       "scorer_scorer": 0
@@ -336,6 +338,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 7,
+      "total_current_phase": 0,
       "team_scorer_id": 5,
       "position": 0,
       "scorer_scorer": 0
@@ -347,6 +350,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 7,
+      "total_current_phase": 0,
       "team_scorer_id": 45,
       "position": 0,
       "scorer_scorer": 0
@@ -358,6 +362,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 7,
+      "total_current_phase": 0,
       "team_scorer_id": 33,
       "position": 0,
       "scorer_scorer": 0
@@ -369,6 +374,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 4,
+      "total_current_phase": 0,
       "team_scorer_id": 35,
       "position": 0,
       "scorer_scorer": 0
@@ -380,6 +386,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 5,
+      "total_current_phase": 0,
       "team_scorer_id": 21,
       "position": 0,
       "scorer_scorer": 0
@@ -391,6 +398,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 7,
+      "total_current_phase": 0,
       "team_scorer_id": 4,
       "position": 0,
       "scorer_scorer": 0
@@ -402,6 +410,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 8,
+      "total_current_phase": 0,
       "team_scorer_id": 17,
       "position": 0,
       "scorer_scorer": 0
@@ -413,6 +422,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 2,
+      "total_current_phase": 0,
       "team_scorer_id": 19,
       "position": 0,
       "scorer_scorer": 40
@@ -424,6 +434,7 @@
       "email": "luis.rodriguez@mail.com",
       "pay": true,
       "total_score": 5,
+      "total_current_phase": 0,
       "team_scorer_id": 10,
       "position": 0,
       "scorer_scorer": 0
@@ -436,7 +447,7 @@
       "team2": 2,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": false
+      "end_game": true
     },
     {
       "id": 2,
@@ -450,7 +461,7 @@
       "id": 3,
       "team1": 5,
       "team2": 6,
-      "goals_team1": 0,
+      "goals_team1": 2,
       "goals_team2": 0,
       "end_game": false
     },

@@ -46,7 +46,10 @@ export class ResultsTable {
 
   highThreshold: number = 0;
   lowThreshold: number = 0;
-  viewQualified: boolean = false;
+  viewQualified: boolean = true;
+  isMainTableVisible = signal(true);
+  isTeamsTableVisible = signal(false);
+  isFinalsTableVisible = signal(false);
 
 
   constructor() {
@@ -65,7 +68,6 @@ export class ResultsTable {
     effect(() => {
       const currentPredictions = this.predictions();
       const phase = this.phase();
-
       if (currentPredictions.length > 0 && phase) {
         untracked(() => {
           let logicChanged = false;
@@ -87,17 +89,20 @@ export class ResultsTable {
                 currentScore = phase.winner_points;
               }
             }
+            // if (p?.scoreTeam) {
+            //   scoreTeam += p.scoreTeam;
+            // }
 
             // --- LÓGICA DE CONTROL PARA NO REPETIR SUMA ---
             // Si el partido terminó (end_game) y NO ha sido procesado aún
             if (!p.processed && currentScore > 0) {
               logicChanged = true;
               // Retornamos la predicción con el score y la marca de procesado
-              return { ...p, score: currentScore, processed: true };
+              return { ...p, score: currentScore, processed: true, scoreTeam: p.scoreTeam || 0 };
             }
 
             // Si ya estaba procesado o no hay puntos, solo actualizamos el score visual
-            return { ...p, score: currentScore };
+            return { ...p, score: currentScore, scoreTeam: p.scoreTeam || 0 };
           });
 
           if (logicChanged) {
@@ -213,12 +218,12 @@ export class ResultsTable {
     );
   }
 
-  getPredictionTeam(playerId: number, gameId: number): number {
+  getPredictionTeam(playerId: number, gameId: number): string {
     const prediction = this.getPredictionObject(playerId, gameId);
     if (playerId == 1 && gameId == 1) {
       console.log('JSON prediction DESPUES: ', JSON.stringify(prediction, null, 2));
     }
-    return prediction?.team_qualified?.name || '';
+    return `${this.getTeamName(prediction)} | ${prediction?.scoreTeam || 0}`;
   }
 
   // Métodos de paginación
@@ -340,9 +345,9 @@ export class ResultsTable {
     if (teamSelected != null) {
       let same_team = this.predictions().filter(p => p.game.id == predictionGame.game.id);
       same_team.forEach(team => {
-        if (team.team_qualified?.id == teamSelected) {
+        if (team.team_qualified == teamSelected) {
           // console.log('JSON teamSelected DESPUES: ', JSON.stringify(team, null, 2));          
-          team.scoreTeam = this.phase()?.classified_points ?? 0;
+          team.scoreTeam = 10;
         } else {
           team.scoreTeam = 0;
         }
@@ -396,7 +401,7 @@ export class ResultsTable {
 
   private getPredictionObjectFinals(playerId: number, position: number): any {
     const prediction = this.predictionsFinals().find(p =>
-      p.player.id === playerId && p.phase.id === this.phase()?.id && p.position === position && p.finals == true
+      p.player.id === playerId && p?.phase?.id === this.phase()?.id && p.position === position && p?.finals == true
     );
     return prediction;
   }
@@ -417,7 +422,7 @@ export class ResultsTable {
 
   getTotalPointsFinals(playerId: number): number {
     return this.predictionsFinals()
-      .filter(p => p.player.id === playerId && p.phase.id === this.phase()?.id)
+      .filter(p => p.player.id === playerId)
       .reduce((acc, curr) => acc + (curr.score || 0), 0);
   }
 
@@ -560,7 +565,7 @@ export class ResultsTable {
       // Solo sumamos los puntos de las predicciones que tienen el flag processed recién activado
       // o que tengan score pero que estemos seguros que corresponden a esta acción.
       const phasePoints = allPreds
-        .filter(pred => pred.player.id === p.player.id && pred.processed)
+        .filter(pred => pred.player.id === p.player.id)
         .reduce((sum, pred) => sum + (pred.score || 0) + (pred.scoreTeam || 0), 0);
 
       return {
@@ -574,4 +579,60 @@ export class ResultsTable {
     }));
   }
 
+  getTeamName(prediction: any): string {
+    const team = prediction?.team_qualified;
+    if (!team) return '-';
+    const teamName = this.predictions().find(p => p?.game?.team1.id === team)?.game.team1.name || this.predictions().find(p => p?.game?.team2.id === team)?.game.team2.name;
+    return teamName || '-';
+  }
+
+  toggleSection(section: string) {
+    switch (section) {
+      case 'main':
+        this.isMainTableVisible.set(!this.isMainTableVisible());
+        break;
+      case 'teams':
+        this.isTeamsTableVisible.set(!this.isTeamsTableVisible());
+        break;
+      case 'finals':
+        this.isFinalsTableVisible.set(!this.isFinalsTableVisible());
+        break;
+    }
+  }
+
+  onSelectedTeamChange(teamSelectedId: any, predictionGame: PredictionGame, playerId: number) {
+  // 1. Validaciones iniciales
+  const phase = this.phase();
+  if (!phase) return;
+
+  // 2. Actualizamos el Signal de predicciones global
+  // Esto hará que TODOS los jugadores que acertaron ese equipo reciban puntos
+ this.predictions.set([...this.predictions().map(p => {
+      let newScore = 0;
+      if ((playerId === p.player.id) && (p.game.id === predictionGame.game.id)) {
+        if (teamSelectedId && (teamSelectedId == predictionGame?.team_qualified)) {
+          newScore = phase.classified_points;
+        return { ...p, scoreTeam: newScore }; 
+        } else {
+          return { ...p, scoreTeam: 0 };
+        }
+      }
+      return p;
+    })]);
+
+    const allPreds = this.predictions();
+
+    // Obtenemos los jugadores únicos que están en la tabla actual
+    const uniquePlayers = [...new Set(allPreds.map(p => p.player.id))];
+
+    uniquePlayers.forEach(playerId => {
+      // Calculamos el total de este jugador sumando todas sus predicciones de esta fase
+      const totalPhasePoints = allPreds
+        .filter(p => p.player.id === playerId)
+        .reduce((sum, p) => sum + (p.score || 0) + (p.scoreTeam || 0), 0);
+
+      // Llamamos al servicio para que el Ranking Global se entere
+      this.updateLocalPoints(playerId);
+    });
+}
 }

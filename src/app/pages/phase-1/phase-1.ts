@@ -60,7 +60,7 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
     return this.data()?.games.map((g: Game) =>
       new Game(g.id, currentTeams.find((t: { id: any; }) => t.id === g.team1)!,
         currentTeams.find((t: { id: any; }) => t.id === g.team2)!,
-        g.goals_team1, g.goals_team2, g.end_game)
+        g.goals_team1, g.goals_team2, g.end_game, g.team_qualified)
     ) ?? [];
   });
 
@@ -102,7 +102,7 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
           new PredictionGame(
             currentPlayers.find((pl: { id: any; }) => pl.id === p.player)!,
             currentGames.find((ga: { id: any; }) => ga.id === p.game)!,
-            p.goals_team1, p.goals_team2, p.score, p.scoreTeam
+            p.goals_team1, p.goals_team2, p.score, p.scoreTeam, p.team_qualified
           )
         );
         this.predictions.set(mappedPredictions);

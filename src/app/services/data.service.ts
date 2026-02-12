@@ -104,7 +104,7 @@ setPlayerAbsoluteScore(playerId: number, newTotal: number) {
     return {
       ...state,
       players: state.players.map((p: any) => 
-        p.id === playerId ? { ...p, total_current_phase: total } : p
+        p.id === playerId ? { ...p, previous_score: p.total_current_phase, total_current_phase: total } : p
       )
     };
   });

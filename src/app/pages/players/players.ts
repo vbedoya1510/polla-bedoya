@@ -33,7 +33,7 @@ private dataService = inject(DataService);
                currentScore < prevScore ? 'down' : 'equal',
         diff: currentScore - prevScore
       };
-    }).sort((a: { total_score: number; }, b: { total_score: number; }) => b.total_score - a.total_score); // Ordenados por ranking
+    }).sort((a: { total_score: number; total_current_phase: number; }, b: { total_score: number; total_current_phase: number; }) => (b.total_score + b.total_current_phase) - (a.total_score + a.total_current_phase)); // Ordenados por ranking
   });
 
   totalPages = computed(() => {
@@ -77,8 +77,8 @@ pages = computed(() => {
 
 scoreChange(player: Player): 'up' | 'down' | 'same' {
   if (player.previous_score === undefined) return 'same';
-  if (player.total_score > player.previous_score) return 'up';
-  if (player.total_score < player.previous_score) return 'down';
+  if ((player.total_score + player.total_current_phase) > (player.total_score + player.previous_score)) return 'up';
+  if ((player.total_score + player.total_current_phase) < (player.total_score + player.previous_score)) return 'down';
   return 'same';
 }
 
