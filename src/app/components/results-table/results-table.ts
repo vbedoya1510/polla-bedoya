@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, input, Input, model, signal, untracked } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PredictionGame, PredictionTeamPlayer, Team } from '../../shared/models/team.model';
+import { PredictionGame, PredictionTeamPlayer, Team, TeamPhase } from '../../shared/models/team.model';
 import { Game } from '../../shared/models/game.model';
 import { FormsModule } from '@angular/forms';
 import { Phase } from '../../shared/models/phase.model';
@@ -24,7 +24,8 @@ export class ResultsTable {
   phase = input<Phase | undefined>();
   predictionsFinals = input<PredictionTeamPlayer[]>([]);
   predictionsPositionsTeams = input<PredictionTeamPlayer[]>([]);
- groups = input<string[]>([]);
+  teamsPositionsFinals = input<TeamPhase[]>([]);
+  groups = input<string[]>([]);
 
 
   originalGames: PredictionGame[] = [];
@@ -59,7 +60,7 @@ export class ResultsTable {
       const original = this.playersList();
       // Solo inicializamos si la copia local está vacía Y hay datos originales
       if (original.length > 0 && untracked(this.playersLocalCopy).length === 0) {
-        console.log('Inicializando copia local por primera vez');
+        console.log('Inicializando copia local por primera vez ', this.teamsPositionsFinals());
         //this.playersLocalCopy.set(structuredClone(original));
         this.playersLocalCopy.set(original.map(p => ({
           ...p,
@@ -418,7 +419,7 @@ export class ResultsTable {
   }
 
   getPredictionFinals(playerId: number, position: number): string {
-    const prediction = this.getPredictionObjectFinals(playerId, position);
+    const prediction = this.getPredictionObjectFinals(playerId, position);    
     return prediction ? `${prediction.team.name}` : '-';
   }
 
@@ -636,5 +637,12 @@ export class ResultsTable {
       // Llamamos al servicio para que el Ranking Global se entere
       this.updateLocalPoints(playerId);
     });
+}
+
+getTeamNameByPosition(position: number): string {
+  const found = this.teamsPositionsFinals()
+    ?.find(tp => tp.position === position);
+
+  return found?.team?.name ?? '-';
 }
 }

@@ -6,7 +6,7 @@
     "team": 37,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 1,
@@ -14,7 +14,7 @@
     "team": 9,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 1,
@@ -22,7 +22,7 @@
     "team": 29,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 1,
@@ -30,7 +30,7 @@
     "team": 41,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -39,7 +39,7 @@
     "team": 45,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 2,
@@ -47,7 +47,7 @@
     "team": 44,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 2,
@@ -55,7 +55,7 @@
     "team": 33,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 2,
@@ -63,7 +63,7 @@
     "team": 17,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -72,7 +72,7 @@
     "team": 9,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 3,
@@ -80,7 +80,7 @@
     "team": 37,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 3,
@@ -88,7 +88,7 @@
     "team": 33,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 3,
@@ -96,7 +96,7 @@
     "team": 29,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -105,7 +105,7 @@
     "team": 41,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 4,
@@ -113,7 +113,7 @@
     "team": 45,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 4,
@@ -121,7 +121,7 @@
     "team": 17,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 4,
@@ -129,7 +129,7 @@
     "team": 29,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -138,7 +138,7 @@
     "team": 33,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 5,
@@ -146,7 +146,7 @@
     "team": 44,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 5,
@@ -154,7 +154,7 @@
     "team": 9,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 5,
@@ -162,7 +162,7 @@
     "team": 37,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -171,7 +171,7 @@
     "team": 45,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 6,
@@ -179,7 +179,7 @@
     "team": 41,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 6,
@@ -187,7 +187,7 @@
     "team": 33,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 6,
@@ -195,7 +195,7 @@
     "team": 9,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -204,7 +204,7 @@
     "team": 29,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 7,
@@ -212,7 +212,7 @@
     "team": 44,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 7,
@@ -220,7 +220,7 @@
     "team": 17,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 7,
@@ -228,7 +228,7 @@
     "team": 45,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -237,7 +237,7 @@
     "team": 37,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 8,
@@ -245,7 +245,7 @@
     "team": 33,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 8,
@@ -253,7 +253,7 @@
     "team": 41,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 8,
@@ -261,7 +261,7 @@
     "team": 29,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -270,7 +270,7 @@
     "team": 9,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 9,
@@ -278,7 +278,7 @@
     "team": 17,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 9,
@@ -286,7 +286,7 @@
     "team": 45,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 9,
@@ -294,7 +294,7 @@
     "team": 29,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -303,7 +303,7 @@
     "team": 44,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 10,
@@ -311,7 +311,7 @@
     "team": 33,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 10,
@@ -319,7 +319,7 @@
     "team": 17,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 10,
@@ -327,7 +327,7 @@
     "team": 41,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   },
 
   {
@@ -336,7 +336,7 @@
     "team": 37,
     "position": 1,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 11,
@@ -344,7 +344,7 @@
     "team": 45,
     "position": 2,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 11,
@@ -352,7 +352,7 @@
     "team": 29,
     "position": 3,
     "score": 0,
-    "finals": true
+    "finals": false
   },
   {
     "player": 11,
@@ -360,7 +360,7 @@
     "team": 9,
     "position": 4,
     "score": 0,
-    "finals": true
+    "finals": false
   }
 ],
     "predictionGame": [
@@ -7492,5 +7492,369 @@
             "scoreTeam": 0,
             "team_qualified": null
         }
-    ]
+    ],
+    "predictionTeamFinals": [
+  {
+    "player": 1,
+    "phase": 1,
+    "team": 37,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 1,
+    "phase": 1,
+    "team": 9,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 1,
+    "phase": 1,
+    "team": 29,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 1,
+    "phase": 1,
+    "team": 41,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 2,
+    "phase": 1,
+    "team": 45,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 2,
+    "phase": 1,
+    "team": 44,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 2,
+    "phase": 1,
+    "team": 33,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 2,
+    "phase": 1,
+    "team": 17,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 3,
+    "phase": 1,
+    "team": 9,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 3,
+    "phase": 1,
+    "team": 37,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 3,
+    "phase": 1,
+    "team": 33,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 3,
+    "phase": 1,
+    "team": 29,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 4,
+    "phase": 1,
+    "team": 41,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 4,
+    "phase": 1,
+    "team": 45,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 4,
+    "phase": 1,
+    "team": 17,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 4,
+    "phase": 1,
+    "team": 29,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 5,
+    "phase": 1,
+    "team": 33,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 5,
+    "phase": 1,
+    "team": 44,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 5,
+    "phase": 1,
+    "team": 9,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 5,
+    "phase": 1,
+    "team": 37,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 6,
+    "phase": 1,
+    "team": 45,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 6,
+    "phase": 1,
+    "team": 41,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 6,
+    "phase": 1,
+    "team": 33,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 6,
+    "phase": 1,
+    "team": 9,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 7,
+    "phase": 1,
+    "team": 29,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 7,
+    "phase": 1,
+    "team": 44,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 7,
+    "phase": 1,
+    "team": 17,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 7,
+    "phase": 1,
+    "team": 45,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 8,
+    "phase": 1,
+    "team": 37,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 8,
+    "phase": 1,
+    "team": 33,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 8,
+    "phase": 1,
+    "team": 41,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 8,
+    "phase": 1,
+    "team": 29,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 9,
+    "phase": 1,
+    "team": 9,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 9,
+    "phase": 1,
+    "team": 17,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 9,
+    "phase": 1,
+    "team": 45,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 9,
+    "phase": 1,
+    "team": 29,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 10,
+    "phase": 1,
+    "team": 44,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 10,
+    "phase": 1,
+    "team": 33,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 10,
+    "phase": 1,
+    "team": 17,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 10,
+    "phase": 1,
+    "team": 41,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  },
+
+  {
+    "player": 11,
+    "phase": 1,
+    "team": 37,
+    "position": 1,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 11,
+    "phase": 1,
+    "team": 45,
+    "position": 2,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 11,
+    "phase": 1,
+    "team": 29,
+    "position": 3,
+    "score": 0,
+    "finals": true
+  },
+  {
+    "player": 11,
+    "phase": 1,
+    "team": 9,
+    "position": 4,
+    "score": 0,
+    "finals": true
+  }
+]
 }

@@ -43,6 +43,7 @@ export class Phase1 {
   // 3. Variables normales para lo que NO quieres global
 predictions = signal<PredictionGame[]>([]);
 predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
+predictionTeamFinals = signal<PredictionTeamPlayer[]>([]);
 viewQualified = signal<boolean>(false);
 
   players = computed(() => {
@@ -65,6 +66,20 @@ viewQualified = signal<boolean>(false);
     ) ?? [];
   });
 
+  
+  teamsPositionsFinals = computed(() => {
+    const currentTeams = this.teams();
+    const listaPhases = this.phases();
+    return this.data()?.teamsPositions.map((tp: any) =>
+      new TeamPhase(        
+        listaPhases[this.phaseNumber - 1].id,
+        currentTeams.find((t: { id: any; }) => t.id === tp.idTeam)!,
+        tp.id ?? 0 
+      )
+    ) ?? [];
+  });
+
+
   constructor() {
     // El effect es como un "vigilante". 
     // Cuando 'phases' deja de estar vacío, dispara la carga de predicciones.
@@ -82,6 +97,7 @@ viewQualified = signal<boolean>(false);
     const savedData = sessionStorage.getItem(key);
     this.predictions.set(savedData ? JSON.parse(savedData) : []);
     this.predictionTeamPlayer.set(savedData ? JSON.parse(savedData) : []);
+    this.predictionTeamFinals.set(savedData ? JSON.parse(savedData) : []);   
     if (savedData) return;
     this.dataService.getPrediction(idPhase).subscribe({
       next: prediction => {
@@ -100,6 +116,15 @@ viewQualified = signal<boolean>(false);
           )
         );
 
+        const mappedTeamsFinals = prediction?.predictionTeamFinals?.map((p: any) =>
+          new PredictionTeamPlayer(
+            currentPlayers.find((pl: { id: any; }) => pl.id === p.player)!, // Uso de variable local
+            currentPhases.find((ph: { id: any; }) => ph.id === p.phase)!,
+            currentTeams.find((te: { id: any; }) => te.id === p.team)!,
+            p.position, p.score, p.finals
+          )
+        );
+
         const mappedPredictions  = prediction.predictionGame.map((p: any) =>
           new PredictionGame(
             currentPlayers.find((pl: { id: any; }) => pl.id === p.player)!,
@@ -109,6 +134,7 @@ viewQualified = signal<boolean>(false);
         );
         this.predictions.set(mappedPredictions);
         this.predictionTeamPlayer.set(mappedTeams);
+        this.predictionTeamFinals.set(mappedTeamsFinals);
       },
       error: err => console.error('Error:', err)
     });

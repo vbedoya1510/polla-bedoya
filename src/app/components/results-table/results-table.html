@@ -221,86 +221,7 @@
     </details>
     }
 
-    @if(predictionsFinals().length > 0) {
-    <details open class="predictions-accordion">
-      <summary>
-        <span>PREDICCIONES EQUIPOS FINALISTAS</span>
-        <span class="icon">▲</span>
-      </summary>
-
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>PARTICIPANTE</th>
-              @for (col of filteredPlayers(); track col?.player?.id) {
-              <th class="user-header">{{ col.player.name }}</th>
-              }
-            </tr>
-            <tr>
-              <th class="user-total">PUNTAJE SECCION</th>
-              @for (col of filteredPlayers(); track col?.player?.id) {
-              <th class="user-total">{{ getTotalPointsFinals(col.player.id) }}</th>
-              }
-            </tr>
-            <tr>
-              <th>Finalistas desde Fase {{phase()?.id}}</th>
-              @for (player of filteredPlayers(); track player?.player?.id) {
-              <th>Equipo</th>
-              }
-            </tr>
-          </thead>
-          <tbody>
-            @for (j of [1, 2, 3, 4]; track j) {
-            <tr>
-              <td class="sticky-col team-cell">
-                <span class="team-name" [title]="j">
-                  {{ j }}
-                </span>
-              </td>
-              @for (player of filteredPlayers(); track player?.player?.id) {
-              <td [ngClass]="getScoreClassFinals(player.player.id, j)">
-                <div>
-                  <span>
-                    {{ getPredictionFinals(player.player.id,j) }}
-                  </span>
-                </div>
-              </td>
-              }
-            </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-      <!-- Paginación -->
-      <div class="pagination-container">
-        <div class="pagination-info">
-          Mostrando <strong>{{ filteredPlayers().length }}</strong> de <strong>{{ playersList().length }}</strong>
-          jugadores
-        </div>
-
-        <nav class="pagination-nav">
-          <button class="pag-btn prev" [disabled]="currentPage() === 1" (click)="previousPage()">
-            <span class="arrow">←</span> Anterior
-          </button>
-
-          <div class="page-numbers">
-            @for (page of pages(); track page) {
-            <button class="page-number-btn" [class.active]="currentPage() === page" (click)="goToPage(page)">
-              {{ page }}
-            </button>
-            }
-          </div>
-
-          <button class="pag-btn next" [disabled]="currentPage() === totalPages()" (click)="nextPage()">
-            Siguiente <span class="arrow">→</span>
-          </button>
-        </nav>
-      </div>
-    </details>
-    }
-
-    @if (phase()?.id === 1) {
+        @if (phase()?.id === 1) {
     <details open class="predictions-accordion">
       <summary>
         <span>PREDICCIONES GRUPOS</span>
@@ -364,6 +285,89 @@
       </div>
     </details>
     }
+
+    @if(predictionsFinals().length > 0) {
+    <details open class="predictions-accordion">
+      <summary>
+        <span>PREDICCIONES EQUIPOS FINALISTAS</span>
+        <span class="icon">▲</span>
+      </summary>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>PARTICIPANTE</th>
+              @for (col of filteredPlayers(); track col?.player?.id) {
+              <th class="user-header">{{ col.player.name }}</th>
+              }
+            </tr>
+            <tr>
+              <th class="user-total">PUNTAJE SECCION</th>
+              @for (col of filteredPlayers(); track col?.player?.id) {
+              <th class="user-total">{{ getTotalPointsFinals(col.player.id) }}</th>
+              }
+            </tr>
+            <tr>
+              <th>Finalistas desde Fase {{phase()?.id}}</th>
+              @for (player of filteredPlayers(); track player?.player?.id) {
+              <th>Equipo</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (j of [1, 2, 3, 4]; track j) {
+            <tr>
+              <td class="sticky-col team-cell">
+                <span class="team-name" [title]="j">
+                 {{
+                    getTeamNameByPosition(j)
+                  }}
+                </span>
+              </td>
+              @for (player of filteredPlayers(); track player?.player?.id) {
+              <td [ngClass]="getScoreClassFinals(player.player.id, j)">
+                <div>
+                  <span>
+                    {{ getPredictionFinals(player.player.id,j) }}
+                  </span>
+                </div>
+              </td>
+              }
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <!-- Paginación -->
+      <div class="pagination-container">
+        <div class="pagination-info">
+          Mostrando <strong>{{ filteredPlayers().length }}</strong> de <strong>{{ playersList().length }}</strong>
+          jugadores
+        </div>
+
+        <nav class="pagination-nav">
+          <button class="pag-btn prev" [disabled]="currentPage() === 1" (click)="previousPage()">
+            <span class="arrow">←</span> Anterior
+          </button>
+
+          <div class="page-numbers">
+            @for (page of pages(); track page) {
+            <button class="page-number-btn" [class.active]="currentPage() === page" (click)="goToPage(page)">
+              {{ page }}
+            </button>
+            }
+          </div>
+
+          <button class="pag-btn next" [disabled]="currentPage() === totalPages()" (click)="nextPage()">
+            Siguiente <span class="arrow">→</span>
+          </button>
+        </nav>
+      </div>
+    </details>
+    }
+
+
   </div>
 </main>
 
@@ -621,7 +625,6 @@
     </div>
     }
   </div>
-
   <div *ngIf="predictionsFinals().length>0" style="margin-top: 30px;" class="table-responsive">
     <div class="accordion-header d-flex justify-content-between align-items-center bg-dark text-white p-3 rounded"
       (click)="toggleSection('finals')" style="cursor: pointer;">

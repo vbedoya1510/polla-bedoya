@@ -180,7 +180,7 @@ export class GroupsTable {
     this.highThreshold = this.getPercentile(scores, 80); 
     this.lowThreshold = this.getPercentile(scores, 30); 
    // console.log('JSON predictionsOrderByGame : ', JSON.stringify(this.predictionsOrderByGame, null, 2));
-    console.log('JSON TODAS predictions : ', JSON.stringify(this.predictions, null, 2));
+    //console.log('JSON TODAS predictions : ', JSON.stringify(this.predictions, null, 2));
   }
 
   initComponents(){
