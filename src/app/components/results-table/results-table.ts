@@ -23,6 +23,8 @@ export class ResultsTable {
   predictions = model.required<PredictionGame[]>();
   phase = input<Phase | undefined>();
   predictionsFinals = input<PredictionTeamPlayer[]>([]);
+  predictionsPositionsTeams = input<PredictionTeamPlayer[]>([]);
+ groups = input<string[]>([]);
 
 
   originalGames: PredictionGame[] = [];
@@ -46,7 +48,7 @@ export class ResultsTable {
 
   highThreshold: number = 0;
   lowThreshold: number = 0;
-  viewQualified: boolean = true;
+  viewQualified = input<boolean>(false);
   isMainTableVisible = signal(true);
   isTeamsTableVisible = signal(false);
   isFinalsTableVisible = signal(false);

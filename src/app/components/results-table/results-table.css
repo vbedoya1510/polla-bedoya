@@ -149,3 +149,220 @@ td, th {
   transform: rotate(180deg); /* Gira la flecha hacia arriba */
 }
 
+
+---------------------------
+.container { padding: 1rem; font-family: sans-serif; max-width: 1200px; margin: auto; }
+
+.summary-row { display: flex; align-items: center; margin-bottom: 5px; }
+.summary-row .title { width: 150px; font-weight: bold; font-size: 0.8rem; }
+.participants-list { display: flex; flex: 1; justify-content: flex-start; gap: 40px; }
+.name { min-width: 60px; font-weight: bold; text-align: center; }
+.total-score { min-width: 60px; text-align: center; color: #2c3e50; font-size: 1.1rem; }
+
+/* Acordeón y Tabla */
+.predictions-accordion {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px; /* Bordes redondeados para suavizar */
+  margin-bottom: 2rem; /* Separación generosa (aprox 32px) */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* Para que el fondo del summary no tape los bordes redondeados */
+}
+summary { 
+  background: #004d40; color: white; padding: 10px; 
+  cursor: pointer; display: flex; justify-content: space-between;
+}
+
+.table-wrapper { overflow-x: auto; width: 100%; }
+table { width: 100%; border-collapse: collapse; min-width: 800px; }
+
+th, td { border: 1px solid #eee; padding: 8px; text-align: center; }
+
+/* Manejo de equipos largos */
+.sticky-col {
+  position: sticky; left: 0; background: white; z-index: 5;
+  min-width: 180px; text-align: left;
+}
+.team-name {
+  display: block; width: 170px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+/* Estilos de Predicción */
+.user-header { background: #eceff1; font-weight: bold; }
+.sub-header { font-size: 0.7rem; color: #666; }
+.real-result { font-weight: bold; background: #fff9c4; width: 100px; }
+.user-total { background: #79decd; font-weight: bold; }
+
+.prediction-cell { font-family: monospace; white-space: nowrap; }
+.divider { color: #ccc; margin: 0 4px; }
+.pts { font-weight: bold; }
+.winner { color: #2e7d32; }
+
+.summary-card {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Reutilizamos el wrapper de scroll para que se comporte igual que la tabla de abajo */
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* El min-width debe ser igual al de tu tabla de predicciones (800px) 
+     para que el scroll ocurra al mismo tiempo */
+  min-width: 800px; 
+}
+
+/* Columna de Títulos (PARTICIPANTES / PUNTAJE) */
+.summary-title-col {
+  position: sticky;
+  left: 0;
+  background-color: #f1f5f9; /* Debe coincidir para el sticky */
+  color: #475569;
+  z-index: 5;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px;
+  text-align: left;
+  border-right: 2px solid #eee;
+  /* Este ancho debe ser idéntico al de .sticky-col de tu tabla principal (180px) */
+  width: 180px;
+  min-width: 180px;
+}
+
+/* Columnas de Jugadores */
+.summary-player-col {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  /* Este ancho debe ser idéntico al de las columnas de la tabla principal */
+  width: 120px; 
+  min-width: 120px;
+}
+
+.summary-player-col.name {
+  font-weight: bold;
+  color: #333;
+}
+
+.summary-player-col.total-score {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 800;
+  background-color: #79decd;
+}
+
+/* Quitar el borde de la última fila */
+.summary-table tr:last-child .summary-player-col {
+  border-bottom: none;
+}
+
+/* Contenedor Principal */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-top: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.pagination-info strong {
+  color: #004d40;
+}
+
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botones de Navegación (Anterior/Siguiente) */
+.pag-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pag-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #004d40;
+  color: #004d40;
+}
+
+.pag-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f1f5f9;
+}
+
+/* Números de Página */
+.page-numbers {
+  display: flex;
+  gap: 4px;
+}
+
+.page-number-btn {
+  min-width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  color: #475569;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-number-btn:hover {
+  background: #f1f5f9;
+}
+
+.page-number-btn.active {
+  background: #004d40;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 6px -1px rgba(0, 77, 64, 0.2);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 600px) {
+  .pagination-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .page-numbers {
+    display: none; /* Ocultamos números en móviles muy pequeños para no romper el layout */
+  }
+}
+
+.tables-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio uniforme entre tablas */
+}

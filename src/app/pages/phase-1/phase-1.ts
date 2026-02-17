@@ -43,6 +43,7 @@ export class Phase1 {
   // 3. Variables normales para lo que NO quieres global
 predictions = signal<PredictionGame[]>([]);
 predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
+viewQualified = signal<boolean>(false);
 
   players = computed(() => {
     const currentTeams = this.teams();
@@ -70,6 +71,7 @@ predictionTeamPlayer = signal<PredictionTeamPlayer[]>([]);
     effect(() => {
       const listaPhases = this.phases();
       if (listaPhases.length > 0) {
+        this.viewQualified.set(this.phaseNumber === 2 || this.phaseNumber === 3);
         this.getPredictions(listaPhases[this.phaseNumber - 1].id);
       }
     });
