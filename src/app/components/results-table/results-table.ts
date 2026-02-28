@@ -25,7 +25,7 @@ export class ResultsTable {
   predictionsFinals = input<PredictionTeamPlayer[]>([]);
   predictionsPositionsTeams = input<PredictionTeamPlayer[]>([]);
   teamsPositionsFinals = input<TeamPhase[]>([]);
-  groups = input<string[]>([]);
+    groups = input<string[]>(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']);
 
 
   originalGames: PredictionGame[] = [];
@@ -541,16 +541,17 @@ export class ResultsTable {
     const phase = this.phase();
     const key = `predictions_${phase?.id}`;
     if (this.predictions().length > 0) {
-      const newPredictions = this.predictions().map(p => {
-        return { ...p, processed: false };
-      });
-      sessionStorage.setItem(key, JSON.stringify(newPredictions));
+      const dataToStore = {
+        games: this.predictions().map(p => ({ ...p, processed: false })),      
+        teams: this.predictionsPositionsTeams ? this.predictionsPositionsTeams() : [],      
+        finals: this.predictionsFinals()
+      };
+      sessionStorage.setItem(key, JSON.stringify(dataToStore));
     }
 
 
-    //update de los puntos de los jugadores
+  // 2. ACTUALIZACIÓN DE PUNTOS EN EL SERVICIO (Tu lógica original)
     const dataToSave = this.playersLocalCopy();
-    console.log('Guardando en servicio:', dataToSave);
     dataToSave.forEach(item => {
       this.dataService.setPlayerAbsoluteScore(
         item.player.id,
@@ -645,4 +646,6 @@ getTeamNameByPosition(position: number): string {
 
   return found?.team?.name ?? '-';
 }
+
+
 }

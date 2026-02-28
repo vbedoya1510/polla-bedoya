@@ -440,582 +440,78 @@
       "scorer_scorer": 0
     }
   ],
-  "games": [
-    {
-      "id": 1,
-      "team1": 1,
-      "team2": 2,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": true
-    },
-    {
-      "id": 2,
-      "team1": 3,
-      "team2": 4,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 3,
-      "team1": 5,
-      "team2": 6,
-      "goals_team1": 2,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 4,
-      "team1": 13,
-      "team2": 14,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 5,
-      "team1": 7,
-      "team2": 8,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 6,
-      "team1": 9,
-      "team2": 10,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 7,
-      "team1": 11,
-      "team2": 12,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 8,
-      "team1": 15,
-      "team2": 16,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 9,
-      "team1": 17,
-      "team2": 18,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 10,
-      "team1": 21,
-      "team2": 22,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 11,
-      "team1": 19,
-      "team2": 20,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 12,
-      "team1": 23,
-      "team2": 24,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 13,
-      "team1": 29,
-      "team2": 30,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 14,
-      "team1": 25,
-      "team2": 26,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 15,
-      "team1": 31,
-      "team2": 32,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 16,
-      "team1": 27,
-      "team2": 28,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 17,
-      "team1": 33,
-      "team2": 34,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 18,
-      "team1": 35,
-      "team2": 36,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 19,
-      "team1": 37,
-      "team2": 38,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 20,
-      "team1": 39,
-      "team2": 40,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 21,
-      "team1": 41,
-      "team2": 42,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 22,
-      "team1": 45,
-      "team2": 46,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 23,
-      "team1": 47,
-      "team2": 48,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 24,
-      "team1": 43,
-      "team2": 44,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 25,
-      "team1": 4,
-      "team2": 2,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 26,
-      "team1": 8,
-      "team2": 6,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 27,
-      "team1": 5,
-      "team2": 7,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 28,
-      "team1": 1,
-      "team2": 3,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 29,
-      "team1": 13,
-      "team2": 15,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 30,
-      "team1": 12,
-      "team2": 10,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 31,
-      "team1": 9,
-      "team2": 11,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 32,
-      "team1": 16,
-      "team2": 14,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 33,
-      "team1": 21,
-      "team2": 23,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 34,
-      "team1": 17,
-      "team2": 19,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 35,
-      "team1": 20,
-      "team2": 18,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 36,
-      "team1": 24,
-      "team2": 22,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 37,
-      "team1": 29,
-      "team2": 31,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 38,
-      "team1": 25,
-      "team2": 27,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 39,
-      "team1": 32,
-      "team2": 30,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 40,
-      "team1": 28,
-      "team2": 26,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 41,
-      "team1": 37,
-      "team2": 39,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 42,
-      "team1": 33,
-      "team2": 35,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 43,
-      "team1": 36,
-      "team2": 34,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 44,
-      "team1": 40,
-      "team2": 38,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 45,
-      "team1": 41,
-      "team2": 43,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 46,
-      "team1": 45,
-      "team2": 47,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 47,
-      "team1": 48,
-      "team2": 46,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 48,
-      "team1": 44,
-      "team2": 42,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 49,
-      "team1": 8,
-      "team2": 5,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 50,
-      "team1": 6,
-      "team2": 7,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 51,
-      "team1": 9,
-      "team2": 12,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 52,
-      "team1": 10,
-      "team2": 11,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 53,
-      "team1": 4,
-      "team2": 1,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 54,
-      "team1": 2,
-      "team2": 3,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 55,
-      "team1": 18,
-      "team2": 19,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 56,
-      "team1": 20,
-      "team2": 17,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 57,
-      "team1": 22,
-      "team2": 23,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 58,
-      "team1": 24,
-      "team2": 21,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 59,
-      "team1": 16,
-      "team2": 13,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 60,
-      "team1": 14,
-      "team2": 15,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 61,
-      "team1": 36,
-      "team2": 33,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 62,
-      "team1": 34,
-      "team2": 35,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 63,
-      "team1": 30,
-      "team2": 31,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 64,
-      "team1": 32,
-      "team2": 29,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 65,
-      "team1": 26,
-      "team2": 27,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 66,
-      "team1": 28,
-      "team2": 25,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 67,
-      "team1": 47,
-      "team2": 45,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 68,
-      "team1": 46,
-      "team2": 48,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 69,
-      "team1": 44,
-      "team2": 41,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 70,
-      "team1": 42,
-      "team2": 43,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 71,
-      "team1": 38,
-      "team2": 39,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    },
-    {
-      "id": 72,
-      "team1": 40,
-      "team2": 37,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false
-    }
+"games": [
+    { "id": 1, "phase": 1, "team1": 1, "team2": 2, "goals_team1": 0, "goals_team2": 0, "end_game": true },
+    { "id": 2, "phase": 1, "team1": 3, "team2": 4, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 3, "phase": 1, "team1": 5, "team2": 6, "goals_team1": 2, "goals_team2": 0, "end_game": false },
+    { "id": 4, "phase": 1, "team1": 13, "team2": 14, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 5, "phase": 1, "team1": 7, "team2": 8, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 6, "phase": 1, "team1": 9, "team2": 10, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 7, "phase": 1, "team1": 11, "team2": 12, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 8, "phase": 1, "team1": 15, "team2": 16, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 9, "phase": 1, "team1": 17, "team2": 18, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 10, "phase": 1, "team1": 21, "team2": 22, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 11, "phase": 1, "team1": 19, "team2": 20, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 12, "phase": 1, "team1": 23, "team2": 24, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 13, "phase": 1, "team1": 29, "team2": 30, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 14, "phase": 1, "team1": 25, "team2": 26, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 15, "phase": 1, "team1": 31, "team2": 32, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 16, "phase": 1, "team1": 27, "team2": 28, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 17, "phase": 1, "team1": 33, "team2": 34, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 18, "phase": 1, "team1": 35, "team2": 36, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 19, "phase": 1, "team1": 37, "team2": 38, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 20, "phase": 1, "team1": 39, "team2": 40, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 21, "phase": 1, "team1": 41, "team2": 42, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 22, "phase": 1, "team1": 45, "team2": 46, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 23, "phase": 1, "team1": 47, "team2": 48, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 24, "phase": 1, "team1": 43, "team2": 44, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 25, "phase": 1, "team1": 4, "team2": 2, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 26, "phase": 1, "team1": 8, "team2": 6, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 27, "phase": 1, "team1": 5, "team2": 7, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 28, "phase": 1, "team1": 1, "team2": 3, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 29, "phase": 1, "team1": 13, "team2": 15, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 30, "phase": 1, "team1": 12, "team2": 10, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 31, "phase": 1, "team1": 9, "team2": 11, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 32, "phase": 1, "team1": 16, "team2": 14, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 33, "phase": 1, "team1": 21, "team2": 23, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 34, "phase": 1, "team1": 17, "team2": 19, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 35, "phase": 1, "team1": 20, "team2": 18, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 36, "phase": 1, "team1": 24, "team2": 22, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 37, "phase": 1, "team1": 29, "team2": 31, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 38, "phase": 1, "team1": 25, "team2": 27, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 39, "phase": 1, "team1": 32, "team2": 30, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 40, "phase": 1, "team1": 28, "team2": 26, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 41, "phase": 1, "team1": 37, "team2": 39, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 42, "phase": 1, "team1": 33, "team2": 35, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 43, "phase": 1, "team1": 36, "team2": 34, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 44, "phase": 1, "team1": 40, "team2": 38, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 45, "phase": 1, "team1": 41, "team2": 43, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 46, "phase": 1, "team1": 45, "team2": 47, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 47, "phase": 1, "team1": 48, "team2": 46, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 48, "phase": 1, "team1": 44, "team2": 42, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 49, "phase": 1, "team1": 8, "team2": 5, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 50, "phase": 1, "team1": 6, "team2": 7, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 51, "phase": 1, "team1": 9, "team2": 12, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 52, "phase": 1, "team1": 10, "team2": 11, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 53, "phase": 1, "team1": 4, "team2": 1, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 54, "phase": 1, "team1": 2, "team2": 3, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 55, "phase": 1, "team1": 18, "team2": 19, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 56, "phase": 1, "team1": 20, "team2": 17, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 57, "phase": 1, "team1": 22, "team2": 23, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 58, "phase": 1, "team1": 24, "team2": 21, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 59, "phase": 1, "team1": 16, "team2": 13, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 60, "phase": 1, "team1": 14, "team2": 15, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 61, "phase": 1, "team1": 36, "team2": 33, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 62, "phase": 1, "team1": 34, "team2": 35, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 63, "phase": 1, "team1": 30, "team2": 31, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 64, "phase": 1, "team1": 32, "team2": 29, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 65, "phase": 1, "team1": 26, "team2": 27, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 66, "phase": 1, "team1": 28, "team2": 25, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 67, "phase": 1, "team1": 47, "team2": 45, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 68, "phase": 1, "team1": 46, "team2": 48, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 69, "phase": 1, "team1": 44, "team2": 41, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 70, "phase": 1, "team1": 42, "team2": 43, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 71, "phase": 1, "team1": 38, "team2": 39, "goals_team1": 0, "goals_team2": 0, "end_game": false },
+    { "id": 72, "phase": 1, "team1": 40, "team2": 37, "goals_team1": 0, "goals_team2": 0, "end_game": false }
   ]
 }
