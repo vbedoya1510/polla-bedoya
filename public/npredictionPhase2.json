@@ -1,0 +1,31 @@
+{
+    "players": [
+        {
+            "id": 1,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                }
+            ],
+            "games": [
+                {
+                    "game": 1,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 0
+                },
+                {
+                    "game": 2,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 0
+                }
+            ]
+        }
+    ]
+}
