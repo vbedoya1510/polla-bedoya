@@ -1,0 +1,61 @@
+<div class="table-wrapper">
+  <table class="groups-table">
+    <thead>
+      <tr class="section-header">
+        <th colspan="2">PREDICCIONES FASE DE GRUPOS</th>
+        <th *ngFor="let player of players" class="player-header">
+          {{ player.name }}
+          <div class="player-score">{{ getGroupScore(player.id) }}</div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let groupRow of groupRows">
+        <!-- Encabezado del grupo -->
+        <tr class="group-header-row">
+          <th>GRUPO {{ groupRow.group }}</th>
+          <th>Posición Real</th>
+          <th *ngFor="let player of players">Posición</th>
+        </tr>
+
+        <!-- Equipos del grupo -->
+        <tr *ngFor="let teamRow of groupRow.teams">
+          <td class="team-name">{{ teamRow.team.name }}</td>
+
+          <td class="real-position">
+            <input
+              type="number"
+              min="1"
+              max="4"
+              [(ngModel)]="teamRow.realPosition"
+              (ngModelChange)="onPositionChange(teamRow,groupRow)"
+              class="position-input"
+              placeholder="-"
+            />
+          </td>
+
+        <td
+        *ngFor="let pp of teamRow.playerPredictions"
+        [class.exact-match]="pp.fullGroupMatch"
+        [class.winner-match]="pp.correct && !pp.fullGroupMatch"
+        class="prediction-cell"
+        >
+        {{ pp.predictedPosition > 0 ? pp.predictedPosition : '-' }}
+        </td>
+        </tr>
+
+        <!-- Total puntos del grupo -->
+        <tr class="group-total-row">
+          <td colspan="2" class="group-total-label">Puntos grupo {{ groupRow.group }}</td>
+          <td *ngFor="let player of players" class="group-total-cell">
+            {{ getGroupPointsForPlayer(player.id, groupRow) }}
+          </td>
+        </tr>
+
+        <!-- Espaciador entre grupos -->
+        <tr class="group-spacer"><td [attr.colspan]="2 + players.length"></td></tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

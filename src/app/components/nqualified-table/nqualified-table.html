@@ -1,0 +1,47 @@
+<div class="table-wrapper">
+  <table class="qualified-table">
+    <thead>
+      <tr class="label-row">
+        <th>PARTIDO</th>
+        <th>Clasificado</th>
+        <th *ngFor="let player of players">{{ player.name }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of qualifiedRows">
+        <!-- Nombre del partido -->
+        <td class="match-name">
+          {{ row.game.team1.name | slice:0:12 }} - {{ row.game.team2.name | slice:0:12 }}
+        </td>
+
+        <!-- Select o nombre bloqueado -->
+        <td class="qualified-cell">
+          <select
+            *ngIf="!row.locked"
+            [(ngModel)]="row.selectedTeamId"
+            (ngModelChange)="onQualifiedChange(row)"
+            class="qualified-select"
+          >
+            <option [value]="0">-</option>
+            <option [value]="row.game.team1.id">{{ row.game.team1.name }}</option>
+            <option [value]="row.game.team2.id">{{ row.game.team2.name }}</option>
+          </select>
+
+          <span *ngIf="row.locked">
+            {{ getTeamName(row.selectedTeamId, row.game) }}
+          </span>
+        </td>
+
+        <!-- Predicciones por jugador -->
+        <td
+          *ngFor="let pp of row.playerPredictions"
+          [class.exact-match]="pp.correct"
+          class="prediction-cell"
+        >
+          {{ pp.predictedTeamId !== 0 ? getTeamName(pp.predictedTeamId, row.game) : '-' }}          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

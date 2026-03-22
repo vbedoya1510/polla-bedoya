@@ -1,0 +1,45 @@
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.players-header-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+.players-header-table th {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.section-header th {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.player-header {
+  font-weight: bold;
+}
+
+.player-score {
+  font-size: 12px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.phase-section {
+  margin-top: 32px;
+}
+
+.phase-title {
+  background-color: #454546;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}

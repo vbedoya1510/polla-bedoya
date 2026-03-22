@@ -48,6 +48,26 @@ export class PredictionGame {
     } 
 }
 
+export class NPredictionGame {
+  idPlayer: number;
+  idGame: number;
+  goals_team1: number;
+  goals_team2: number;
+  team_qualified?: Team;
+  
+    constructor(
+      idPlayer: number,
+      idGame: number,
+      goals_team1: number,
+      goals_team2: number
+    ) {
+      this.idPlayer = idPlayer;
+      this.idGame = idGame;
+      this.goals_team1 = goals_team1;
+      this.goals_team2 = goals_team2;
+    } 
+}
+
 export class TeamPhase {
   phase: Phase;
   team: Team;
@@ -89,3 +109,24 @@ export class PredictionTeamPlayer {
       this.finals = finals;   
     } 
 }
+
+export class NPredictionTeam {
+  idPlayer: number;
+  idPhase: number;
+  idTeam: number;
+  position: number;
+  
+    constructor(
+      idPlayer: number,
+      idPhase: number,
+      idTeam: number,
+      position: number
+    ) {
+      this.idPlayer = idPlayer;
+      this.idPhase = idPhase;
+      this.idTeam = idTeam;
+      this.position = position
+    } 
+}
+
+

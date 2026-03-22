@@ -1,0 +1,102 @@
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 24px;
+}
+
+.groups-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+.groups-table th,
+.groups-table td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.section-header th {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.player-header {
+  font-weight: bold;
+  color: white;
+}
+
+.player-score {
+  font-size: 12px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.group-header-row th {
+  background-color: #424242;
+  color: white;
+  font-weight: 600;
+}
+
+.team-name {
+  text-align: left;
+  font-weight: 500;
+}
+
+.real-position {
+  background-color: #fffde7;
+}
+
+.position-input {
+  width: 48px;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.correct-position {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.group-total-row td {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.group-total-label {
+  text-align: right;
+  padding-right: 12px;
+}
+
+.group-spacer {
+  height: 12px;
+  background-color: transparent;
+  border: none;
+}
+
+.group-spacer td {
+  border: none;
+}
+
+.exact-match {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.winner-match {
+  background-color: #a5d6a7;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.results-table th,
+.results-table td {
+  width: 120px;
+  min-width: 120px;
+}

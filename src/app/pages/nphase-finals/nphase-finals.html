@@ -1,0 +1,58 @@
+<div class="table-wrapper">
+  <table class="players-header-table">
+    <thead>
+      <tr class="section-header">
+        <th colspan="2">FINALES</th>
+        <th *ngFor="let player of players" class="player-header">
+          {{ player.name }}
+          <div class="player-score">{{ getPlayerScore(player.id) }}</div>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<!-- CUARTOS DE FINAL -->
+<div class="phase-section">
+  <div class="phase-title">CUARTOS DE FINAL</div>
+  <app-nresults-table
+    [games]="gamesPhase4"
+    [players]="players"
+    [predictionsGame]="predictionsPhase4"
+    [phase]="phase4">
+  </app-nresults-table>
+  <app-nqualified-table
+    [games]="gamesPhase4"
+    [players]="players"
+    [predictionsGame]="predictionsPhase4"
+    [phase]="phase4">
+  </app-nqualified-table>
+</div>
+
+<!-- SEMIFINALES -->
+<div class="phase-section">
+  <div class="phase-title">SEMIFINALES</div>
+  <app-nresults-table
+    [games]="gamesPhase5"
+    [players]="players"
+    [predictionsGame]="predictionsPhase5"
+    [phase]="phase5">
+  </app-nresults-table>
+  <app-nqualified-table
+    [games]="gamesPhase5"
+    [players]="players"
+    [predictionsGame]="predictionsPhase5"
+    [phase]="phase5">
+  </app-nqualified-table>
+</div>
+
+<!-- 3ER PUESTO Y FINAL -->
+<div class="phase-section">
+  <div class="phase-title">3ER PUESTO Y FINAL</div>
+  <app-nresults-table
+    [games]="gamesPhase6"
+    [players]="players"
+    [predictionsGame]="predictionsPhase6"
+    [phase]="phase6">
+  </app-nresults-table>
+</div>

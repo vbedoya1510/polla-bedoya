@@ -1,0 +1,27 @@
+<div class="table-wrapper">
+  <table class="players-header-table">
+    <thead>
+      <tr class="section-header">
+        <th colspan="2">PREDICCIONES FASE 1</th>
+        <th *ngFor="let player of players" class="player-header">
+          {{ player.name }}
+          <div class="player-score">{{ getPlayerScore(player.id) }}</div>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<app-nresults-table 
+  [games]="games"
+  [players]="players"
+  [predictionsGame]="predictionsGame"
+  [phase]="phase">
+</app-nresults-table>
+
+<app-ngroups-table
+  [teams]="teams"
+  [players]="players"
+  [predictionTeam]="predictionTeam"
+  [phase]="phase">
+</app-ngroups-table>

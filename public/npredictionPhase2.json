@@ -10,20 +10,796 @@
                 {
                     "team": 9,
                     "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
                 }
             ],
             "games": [
                 {
-                    "game": 1,
-                    "goals_team1": 0,
-                    "goals_team2": 0,
-                    "team_qualified": 0
+                    "game": 73,
+                    "goals_team1": 1,
+                    "goals_team2": 2,
+                    "team_qualified": 23
                 },
                 {
-                    "game": 2,
+                    "game": 74,
+                    "goals_team1": 1,
+                    "goals_team2": 0,
+                    "team_qualified": 21
+                },
+                {
+                    "game": 75,
                     "goals_team1": 0,
                     "goals_team2": 0,
-                    "team_qualified": 0
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
+                }
+            ],
+            "games": [
+                {
+                    "game": 73,
+                    "goals_team1": 2,
+                    "goals_team2": 0,
+                    "team_qualified": 23
+                },
+                {
+                    "game": 74,
+                    "goals_team1": 0,
+                    "goals_team2": 3,
+                    "team_qualified": 24
+                },
+                {
+                    "game": 75,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
+                }
+            ],
+            "games": [
+                {
+                    "game": 74,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 24
+                },
+                {
+                    "game": 75,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
+                }
+            ],
+            "games": [
+                {
+                    "game": 74,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 24
+                },
+                {
+                    "game": 75,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
+                }
+            ],
+            "games": [
+                {
+                    "game": 74,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 24
+                },
+                {
+                    "game": 75,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
+                }
+            ],
+            "games": [
+                {
+                    "game": 74,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 24
+                },
+                {
+                    "game": 75,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "teamsFinalsOrder": [
+                {
+                    "team": 37,
+                    "position": 1
+                },
+                {
+                    "team": 9,
+                    "position": 2
+                },
+                {
+                    "team": 1,
+                    "position": 3
+                },
+                {
+                    "team": 44,
+                    "position": 4
+                }
+            ],
+            "games": [
+                {
+                    "game": 74,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 21
+                },
+                {
+                    "game": 75,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 16
+                },
+                {
+                    "game": 76,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 14
+                },
+                {
+                    "game": 77,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 33
+                },
+                {
+                    "game": 78,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 35
+                },
+                {
+                    "game": 79,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 31
+                },
+                {
+                    "game": 80,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 29
+                },
+                {
+                    "game": 81,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 27
+                },
+                {
+                    "game": 82,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 26
+                },
+                {
+                    "game": 83,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 47
+                },
+                {
+                    "game": 84,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 48
+                },
+                {
+                    "game": 85,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 41
+                },
+                {
+                    "game": 86,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 43
+                },
+                {
+                    "game": 87,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 39
+                },
+                {
+                    "game": 88,
+                    "goals_team1": 0,
+                    "goals_team2": 0,
+                    "team_qualified": 40
                 }
             ]
         }

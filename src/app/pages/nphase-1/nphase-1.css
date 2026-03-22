@@ -1,0 +1,36 @@
+.players-header-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+.players-header-table th {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.players-header-table th:nth-child(1),
+.players-header-table th:nth-child(2) {
+  width: 280px;
+  min-width: 280px;
+}
+
+.section-header th {
+  background-color: #1a3a1a;
+  color: white;
+  font-weight: bold;
+}
+
+.player-header {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.player-score {
+  font-size: 12px;
+  color: #ffd700;
+  font-weight: bold;
+}

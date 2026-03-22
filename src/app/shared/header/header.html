@@ -1,16 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Polla Bedoya</a>
   <div class="collapse navbar-collapse">
-    @if (authService.isLoggedIn()) {
     <ul class="navbar-nav ms-auto">
       <li class="nav-item"><a class="nav-link" (click)="goTo('phase-1')">Fase 1</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('phase-2')">Fase 2</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('phase-3')">Fase 3</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('phase-4')">Fase 4</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('fase1')">Fase 1N</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('fase2')">Fase 2N</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('fase3')">Fase 3N</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('finales')">Fase FinalesN</a></li>
       <li class="nav-item"><a class="nav-link" (click)="goTo('players')">Jugadores</a></li>
       <li class="nav-item"><a class="nav-link" (click)="goTo('positions')">Posiciones</a></li>
       <li class="nav-item"><a class="nav-link" (click)="goTo('finals')">Finales</a></li>
     </ul>
-  }
   </div>
 </nav>
