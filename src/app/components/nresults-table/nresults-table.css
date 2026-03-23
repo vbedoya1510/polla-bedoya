@@ -4,16 +4,28 @@
 
 .results-table {
   border-collapse: collapse;
-  width: 100%;
   font-size: 13px;
+  table-layout: fixed;
 }
 
 .results-table th,
 .results-table td {
   border: 1px solid #ccc;
-  padding: 6px 10px;
+  padding: 6px 4px;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  width: 120px;
+  min-width: 120px;
+}
+
+.results-table colgroup col:nth-child(1) {
+  width: 200px;
+}
+
+.results-table colgroup col:nth-child(2) {
+  width: 100px;
 }
 
 .section-header th {
@@ -28,6 +40,8 @@
 }
 
 .player-header {
+  background-color: #2e7d32;
+  color: white;
   font-weight: bold;
 }
 
@@ -48,11 +62,11 @@
 }
 
 .score-input {
-  width: 36px;
+  width: 30px;
   text-align: center;
   border: 1px solid #aaa;
   border-radius: 4px;
-  padding: 2px 4px;
+  padding: 2px 2px;
 }
 
 .separator {
@@ -77,17 +91,5 @@
 
 .points-badge {
   font-weight: bold;
-  margin-left: 4px;
-}
-
-.results-table td:nth-child(1),
-.results-table th:nth-child(1) {
-  width: 380px;
-  min-width: 380px;
-}
-
-.results-table td:nth-child(2),
-.results-table th:nth-child(2) {
-  width: 100px;
-  min-width: 100px;
+  margin-left: 2px;
 }

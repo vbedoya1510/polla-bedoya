@@ -1,6 +1,17 @@
 <div class="table-wrapper">
   <table class="qualified-table">
+    <colgroup>
+      <col style="width: 200px; min-width: 200px;">
+      <col style="width: 100px; min-width: 100px;">
+    </colgroup>
     <thead>
+  <tr class="section-header">
+    <th colspan="2">EQUIPOS CLASIFICADOS</th>
+    <th *ngFor="let player of players" class="player-header">
+      {{ player.name }}
+      <div class="player-score">{{ getPlayerScore(player.id) }}</div>
+    </th>
+  </tr>
       <tr class="label-row">
         <th>PARTIDO</th>
         <th>Clasificado</th>

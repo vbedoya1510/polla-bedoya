@@ -41,7 +41,7 @@ export class NresultsTable implements OnInit, OnChanges, OnDestroy {
   private scoreChange$ = new Subject<void>();
   private destroy$ = new Subject<void>();
 
-  constructor(private dataService: NDataService) { }
+  constructor(public dataService: NDataService) { }
 
   ngOnInit() {
     this.scoreChange$

@@ -5,16 +5,28 @@
 
 .groups-table {
   border-collapse: collapse;
-  width: 100%;
   font-size: 13px;
+  table-layout: fixed;
 }
 
 .groups-table th,
 .groups-table td {
   border: 1px solid #ccc;
-  padding: 6px 10px;
+  padding: 6px 4px;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  width: 120px;
+  min-width: 120px;
+}
+
+.groups-table colgroup col:nth-child(1) {
+  width: 200px;
+}
+
+.groups-table colgroup col:nth-child(2) {
+  width: 100px;
 }
 
 .section-header th {
@@ -24,8 +36,9 @@
 }
 
 .player-header {
-  font-weight: bold;
+  background-color: #2e7d32;
   color: white;
+  font-weight: bold;
 }
 
 .player-score {
@@ -55,12 +68,6 @@
   border: 1px solid #aaa;
   border-radius: 4px;
   padding: 2px 4px;
-}
-
-.correct-position {
-  background-color: #2e7d32;
-  color: white;
-  font-weight: bold;
 }
 
 .group-total-row td {
@@ -93,10 +100,4 @@
   background-color: #a5d6a7;
   color: #1b5e20;
   font-weight: bold;
-}
-
-.results-table th,
-.results-table td {
-  width: 120px;
-  min-width: 120px;
 }

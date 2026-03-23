@@ -1,6 +1,18 @@
 <div class="table-wrapper">
   <table class="results-table">
+    <col style="width: 200px; min-width: 200px;">
+    <col style="width: 100px; min-width: 100px;">
     <thead>
+
+      <tr class="section-header">
+        <th colspan="2">PREDICCIONES FASE {{ phase?.id }}
+          <div>pts Fase | pts TOTAL</div>
+        </th>
+        <th *ngFor="let player of players" class="player-header">
+          {{ player.name }}
+          <div class="player-score">{{ getPlayerScore(player.id) }} | {{ dataService.playerTotalScores().get(player.id) ?? 0 }}</div>
+        </th>
+      </tr>
 
       <!-- Fila 2: Labels -->
       <tr class="label-row">
@@ -19,36 +31,20 @@
 
         <!-- Resultado real editable -->
         <td class="real-score">
-        <input
-            *ngIf="!row.game.end_game"
-            type="number"
-            min="0"
-            [(ngModel)]="row.editableGoals1"
-            (ngModelChange)="onScoreChange(row)"
-            class="score-input"
-        />
-        <span *ngIf="row.game.end_game">{{ row.editableGoals1 }}</span>
+          <input *ngIf="!row.game.end_game" type="number" min="0" [(ngModel)]="row.editableGoals1"
+            (ngModelChange)="onScoreChange(row)" class="score-input" />
+          <span *ngIf="row.game.end_game">{{ row.editableGoals1 }}</span>
 
-        <span class="separator">-</span>
+          <span class="separator">-</span>
 
-        <input
-            *ngIf="!row.game.end_game"
-            type="number"
-            min="0"
-            [(ngModel)]="row.editableGoals2"
-            (ngModelChange)="onScoreChange(row)"
-            class="score-input"
-        />
-        <span *ngIf="row.game.end_game">{{ row.editableGoals2 }}</span>
+          <input *ngIf="!row.game.end_game" type="number" min="0" [(ngModel)]="row.editableGoals2"
+            (ngModelChange)="onScoreChange(row)" class="score-input" />
+          <span *ngIf="row.game.end_game">{{ row.editableGoals2 }}</span>
         </td>
 
         <!-- Predicciones por jugador -->
-        <td
-          *ngFor="let pp of row.playerPredictions"
-          [class.exact-match]="pp.matchType === 'exact'"
-          [class.winner-match]="pp.matchType === 'winner'"
-          class="prediction-cell"
-        >
+        <td *ngFor="let pp of row.playerPredictions" [class.exact-match]="pp.matchType === 'exact'"
+          [class.winner-match]="pp.matchType === 'winner'" class="prediction-cell">
           <ng-container *ngIf="pp.prediction; else noPred">
             {{ pp.prediction.goals_team1 }} - {{ pp.prediction.goals_team2 }}
             <span *ngIf="pp.points > 0" class="points-badge">| {{ pp.points }}</span>
