@@ -31,6 +31,8 @@ readonly playerTotalScores = computed(() => {
   return scores;
 });
 
+#selectedPlayerId = signal<number>(0);
+readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
   readonly teamScorer = computed(() => this.#ndata()?.teamScorer ?? []);
   readonly teamsPositions = computed(() => this.#ndata()?.teamsPositions ?? []);
   readonly phases = computed(() => this.#ndata()?.phases ?? []);
@@ -102,5 +104,9 @@ updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idT
     const current = new Map(this.#finalistPointsMap());
     current.set(phase, new Map(points));
     this.#finalistPointsMap.set(current);
+}
+
+setSelectedPlayer(id: number) {
+  this.#selectedPlayerId.set(id);
 }
 }

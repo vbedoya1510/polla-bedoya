@@ -11,7 +11,8 @@
       <tr *ngFor="let item of rankedPlayers"
           [class.gold]="item.currentRank === 1"
           [class.silver]="item.currentRank === 2"
-          [class.bronze]="item.currentRank === 3">
+          [class.bronze]="item.currentRank === 3"
+          [class.selected]="isSelected(item.player.id)">
         <td class="rank-cell">
           <span class="rank-number">{{ item.currentRank }}</span>
           <span *ngIf="item.trend === 'up'" class="arrow up">▲</span>

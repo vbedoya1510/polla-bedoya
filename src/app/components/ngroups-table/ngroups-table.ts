@@ -207,4 +207,15 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
       return pp?.fullGroupMatch;
     });
   }
+
+  get visiblePlayers(): Player[] {
+  const id = this.dataService.selectedPlayerId();
+  return id === 0 ? this.players : this.players.filter(p => p.id === id);
+}
+
+visiblePredictions(predictions: any[]): any[] {
+  const id = this.dataService.selectedPlayerId();
+  return id === 0 ? predictions : predictions.filter(pp => pp.player.id === id);
+}
+
 }

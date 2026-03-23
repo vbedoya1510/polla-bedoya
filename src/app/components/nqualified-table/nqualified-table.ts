@@ -38,7 +38,7 @@ export class NqualifiedTable implements OnInit, OnChanges, OnDestroy {
 
   private scoreChange$ = new Subject<void>();
 
-  constructor(private dataService: NDataService) {}
+  constructor(private dataService: NDataService) { }
 
   ngOnInit() {
     this.scoreChange$
@@ -89,7 +89,7 @@ export class NqualifiedTable implements OnInit, OnChanges, OnDestroy {
 
   onQualifiedChange(row: QualifiedRow) {
     row.selectedTeamId = Number(row.selectedTeamId);
-    
+
     row.playerPredictions = row.playerPredictions.map(pp => {
       const correct = row.selectedTeamId !== 0 && pp.predictedTeamId === row.selectedTeamId;
       return { ...pp, correct, points: correct ? (this.phase?.classified_points ?? 0) : 0 };
@@ -145,5 +145,15 @@ export class NqualifiedTable implements OnInit, OnChanges, OnDestroy {
     if (game.team1.id === teamId) return game.team1.name;
     if (game.team2.id === teamId) return game.team2.name;
     return '-';
+  }
+
+  get visiblePlayers(): Player[] {
+    const id = this.dataService.selectedPlayerId();
+    return id === 0 ? this.players : this.players.filter(p => p.id === id);
+  }
+
+  visiblePredictions(predictions: any[]): any[] {
+    const id = this.dataService.selectedPlayerId();
+    return id === 0 ? predictions : predictions.filter(pp => pp.player.id === id);
   }
 }

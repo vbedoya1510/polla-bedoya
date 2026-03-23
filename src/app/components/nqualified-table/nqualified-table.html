@@ -5,28 +5,26 @@
       <col style="width: 100px; min-width: 100px;">
     </colgroup>
     <thead>
-  <tr class="section-header">
-    <th colspan="2">EQUIPOS CLASIFICADOS</th>
-    <th *ngFor="let player of players" class="player-header">
-      {{ player.name }}
-      <div class="player-score">{{ getPlayerScore(player.id) }}</div>
-    </th>
-  </tr>
+      <tr class="section-header">
+        <th colspan="2">EQUIPOS CLASIFICADOS</th>
+        <th *ngFor="let player of visiblePlayers" class="player-header">
+          {{ player.name }}
+          <div class="player-score">{{ getPlayerScore(player.id) }}</div>
+        </th>
+      </tr>
       <tr class="label-row">
         <th>PARTIDO</th>
         <th>Clasificado</th>
-        <th *ngFor="let player of players">{{ player.name }}</th>
+        <th *ngFor="let player of visiblePlayers">{{ player.name }}</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let row of qualifiedRows">
-        <!-- Nombre del partido -->
         <td class="match-name">
           {{ row.game.team1.name | slice:0:12 }} - {{ row.game.team2.name | slice:0:12 }}
         </td>
 
-        <!-- Select o nombre bloqueado -->
         <td class="qualified-cell">
           <select
             *ngIf="!row.locked"
@@ -44,13 +42,12 @@
           </span>
         </td>
 
-        <!-- Predicciones por jugador -->
         <td
-          *ngFor="let pp of row.playerPredictions"
+          *ngFor="let pp of visiblePredictions(row.playerPredictions)"
           [class.exact-match]="pp.correct"
           class="prediction-cell"
         >
-          {{ pp.predictedTeamId !== 0 ? getTeamName(pp.predictedTeamId, row.game) : '-' }}          
+          {{ pp.predictedTeamId !== 0 ? getTeamName(pp.predictedTeamId, row.game) : '-' }}
         </td>
       </tr>
     </tbody>

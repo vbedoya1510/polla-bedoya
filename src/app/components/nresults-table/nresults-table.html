@@ -8,17 +8,17 @@
         <th colspan="2">PREDICCIONES FASE {{ phase?.id }}
           <div>pts Fase | pts TOTAL</div>
         </th>
-        <th *ngFor="let player of players" class="player-header">
-          {{ player.name }}
-          <div class="player-score">{{ getPlayerScore(player.id) }} | {{ dataService.playerTotalScores().get(player.id) ?? 0 }}</div>
-        </th>
+<th *ngFor="let player of visiblePlayers" class="player-header">
+  {{ player.name }}
+  <div class="player-score">{{ getPlayerScore(player.id) }} | {{ dataService.playerTotalScores().get(player.id) ?? 0 }}</div>
+</th>
       </tr>
 
       <!-- Fila 2: Labels -->
       <tr class="label-row">
         <th>PARTIDO</th>
         <th>Resultado Real</th>
-        <th *ngFor="let player of players">PR | Pts</th>
+        <th *ngFor="let player of visiblePlayers">PR | Pts</th>
       </tr>
     </thead>
 
@@ -43,7 +43,7 @@
         </td>
 
         <!-- Predicciones por jugador -->
-        <td *ngFor="let pp of row.playerPredictions" [class.exact-match]="pp.matchType === 'exact'"
+        <td *ngFor="let pp of visiblePredictions(row.playerPredictions)" [class.exact-match]="pp.matchType === 'exact'"
           [class.winner-match]="pp.matchType === 'winner'" class="prediction-cell">
           <ng-container *ngIf="pp.prediction; else noPred">
             {{ pp.prediction.goals_team1 }} - {{ pp.prediction.goals_team2 }}

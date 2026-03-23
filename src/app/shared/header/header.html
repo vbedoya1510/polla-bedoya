@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Polla Bedoya</a>
-
+<select class="form-select form-select-sm player-filter" (change)="onPlayerSelect($event)">
+  <option [value]="0">Todos</option>
+  <option *ngFor="let p of players" [value]="p.id">{{ p.name }}</option>
+</select>
   <button class="navbar-toggler" type="button" (click)="toggleMenu()">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -27,15 +27,15 @@ export class NfinalsTable implements OnChanges {
 
   protected readonly Object = Object;
 
-constructor() {
-effect(() => {
-  const positions = this.dataService.teamsPositions();
-  untracked(() => {
-    this.calculatePoints();
-    this.cdr.detectChanges();
-  });
-});
-}
+  constructor() {
+    effect(() => {
+      const positions = this.dataService.teamsPositions();
+      untracked(() => {
+        this.calculatePoints();
+        this.cdr.detectChanges();
+      });
+    });
+  }
 
   ngOnChanges() {
     console.log('scorerPredictions input:', this.scorerPredictions);
@@ -63,32 +63,37 @@ effect(() => {
     return this.phasePoints.get(playerId) ?? 0;
   }
 
-private calculatePoints() {
-  if (!this.phase || !this.players.length) return;
-  const points = new Map<number, number>();
-  const scorerPoints = this.dataService.worldCupData()?.teamScorer?.scorer_points ?? 40;
+  private calculatePoints() {
+    if (!this.phase || !this.players.length) return;
+    const points = new Map<number, number>();
+    const scorerPoints = this.dataService.worldCupData()?.teamScorer?.scorer_points ?? 40;
 
-  this.players.forEach(player => {
-    let total = 0;
-    this.positions.forEach(pos => {
-      if (this.isCorrect(player.id, pos)) {
-        total += this.phase.finalist_points ?? 0;
+    this.players.forEach(player => {
+      let total = 0;
+      this.positions.forEach(pos => {
+        if (this.isCorrect(player.id, pos)) {
+          total += this.phase.finalist_points ?? 0;
+        }
+      });
+      if (this.isScorerCorrect(player.id)) {
+        total += scorerPoints;
       }
+      points.set(player.id, total);
     });
-    if (this.isScorerCorrect(player.id)) {
-      total += scorerPoints;
-    }
-    points.set(player.id, total);
-  });
 
-  this.phasePoints = points;
-  this.dataService.setFinalistPoints(this.phase.id, points);
-}
+    this.phasePoints = points;
+    this.dataService.setFinalistPoints(this.phase.id, points);
+  }
 
   isScorerCorrect(playerId: number): boolean {
     const predicted = +(this.scorerPredictions[playerId] ?? 0);
     const actual = +(this.dataService.teamScorer()?.idTeam ?? 0);
     return predicted !== 0 && actual !== 0 && predicted === actual;
+  }
+
+  get visiblePlayers(): Player[] {
+    const id = this.dataService.selectedPlayerId();
+    return id === 0 ? this.players : this.players.filter(p => p.id === id);
   }
 
 }

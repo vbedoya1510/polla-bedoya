@@ -56,3 +56,8 @@ td {
   background-color: #e9d5d0;
   border-left: 4px solid #bf360c;
 }
+
+.selected {
+  outline: 2px solid #1976d2;
+  background-color: #e3f2fd !important;
+}

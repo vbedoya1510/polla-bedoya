@@ -78,4 +78,9 @@ export class NpositionsTable implements OnChanges, OnDestroy {
     });
 
   }
+
+  isSelected(playerId: number): boolean {
+    const id = this.dataService.selectedPlayerId();
+    return id !== 0 && id === playerId;
+  }
 }

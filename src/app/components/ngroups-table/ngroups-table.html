@@ -7,7 +7,7 @@
     <thead>
       <tr class="section-header">
         <th colspan="2">PREDICCIONES FASE DE GRUPOS</th>
-        <th *ngFor="let player of players" class="player-header">
+        <th *ngFor="let player of visiblePlayers" class="player-header">
           {{ player.name }}
           <div class="player-score">{{ getGroupScore(player.id) }}</div>
         </th>
@@ -20,7 +20,7 @@
         <tr class="group-header-row">
           <th>GRUPO {{ groupRow.group }}</th>
           <th>Posición Real</th>
-          <th *ngFor="let player of players">Posición</th>
+          <th *ngFor="let player of visiblePlayers">Posición</th>
         </tr>
 
         <!-- Equipos del grupo -->
@@ -32,7 +32,7 @@
               (ngModelChange)="onPositionChange(teamRow,groupRow)" class="position-input" placeholder="-" />
           </td>
 
-          <td *ngFor="let pp of teamRow.playerPredictions" [class.winner-match]="pp.correct" class="prediction-cell">
+          <td *ngFor="let pp of visiblePredictions(teamRow.playerPredictions)" [class.winner-match]="pp.correct" class="prediction-cell">
             {{ pp.predictedPosition > 0 ? pp.predictedPosition : '-' }}
           </td>
         </tr>
@@ -40,7 +40,7 @@
         <!-- Total puntos del grupo -->
         <tr class="group-total-row">
           <td colspan="2" class="group-total-label">Puntos grupo {{ groupRow.group }}</td>
-          <td *ngFor="let player of players" class="group-total-cell"
+          <td *ngFor="let player of visiblePlayers" class="group-total-cell"
             [class.exact-match]="hasFullGroupMatch(player.id, groupRow)">
             {{ getGroupPointsForPlayer(player.id, groupRow) }}
           </td>
@@ -48,7 +48,7 @@
 
         <!-- Espaciador entre grupos -->
         <tr class="group-spacer">
-          <td [attr.colspan]="2 + players.length"></td>
+          <td [attr.colspan]="2 + visiblePlayers.length"></td>
         </tr>
       </ng-container>
     </tbody>
