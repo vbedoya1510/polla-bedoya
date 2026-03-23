@@ -1,17 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Polla Bedoya</a>
-  <div class="collapse navbar-collapse">
+
+  <button class="navbar-toggler" type="button" (click)="toggleMenu()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
     <ul class="navbar-nav ms-auto">
-      <li class="nav-item"><a class="nav-link" (click)="goTo('phase-1')">Fase 1</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('fase1')">Fase 1N</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('fase2')">Fase 2N</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('fase3')">Fase 3N</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('finales')">Fase FinalesN</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('posiciones')">Pos FinalesN</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('participantes')">ParticipantesN</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('players')">Jugadores</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('positions')">Posiciones</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('finals')">Finales</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('fase1'); isMenuOpen=false">1ra Ronda</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('fase2'); isMenuOpen=false">16avos</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('fase3'); isMenuOpen=false">8vos</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('finales'); isMenuOpen=false">4tos + Finales</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('posiciones'); isMenuOpen=false">Pos Finales</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="goTo('participantes'); isMenuOpen=false">Participantes</a></li>
     </ul>
   </div>
 </nav>

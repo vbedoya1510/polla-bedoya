@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
+
 export class Header {
+  isMenuOpen = false;
   isLogin: boolean = false;
   public authService = inject(AuthService);
   private router = inject(Router);
@@ -18,4 +20,8 @@ export class Header {
     //window.location.assign(`/${namePage}`);
     this.router.navigate([`/${namePage}`]);
   }
+
+  toggleMenu(): void {
+  this.isMenuOpen = !this.isMenuOpen;
+}
 }
