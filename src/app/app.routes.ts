@@ -11,6 +11,7 @@ import { NPhase2 } from './pages/nphase-2/nphase-2';
 import { Nphase3 } from './pages/nphase-3/nphase-3';
 import { NphaseFinals } from './pages/nphase-finals/nphase-finals';
 import { NFinals } from './pages/nfinals/nfinals';
+import { Npositions } from './pages/npositions/npositions';
 
 export const routes: Routes = [
   { path: '', component: NPhase1 },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'fase3', component: Nphase3, data: { phaseNumber: 3 } },
   { path: 'finales', component: NphaseFinals, data: { phaseNumber: 3 } },
   { path: 'posiciones', component: NFinals },
+  { path: 'participantes', component: Npositions },
   { path: 'positions', component: Positions },
   { path: 'phase-2', component: Phase1, canActivate: [authGuard], data: { phaseNumber: 2 } },
   { path: 'phase-3', component: Phase1, canActivate: [authGuard], data: { phaseNumber: 3 } },

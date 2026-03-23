@@ -1,0 +1,58 @@
+.positions-container {
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #e0e0e0;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.rank-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 60px;
+}
+
+.rank-number {
+  font-weight: bold;
+  min-width: 20px;
+}
+
+.arrow.up { color: green; font-size: 0.8rem; }
+.arrow.down { color: red; font-size: 0.8rem; }
+.dash { color: #aaa; }
+
+.score {
+  font-weight: bold;
+}
+
+/* Top 3 */
+.gold {
+  background-color: #fff9c4;
+  border-left: 4px solid #ebf925;
+
+}
+
+.silver {
+  background-color: #bceaf0;
+  border-left: 4px solid #0527c0;
+}
+
+.bronze {
+  background-color: #e9d5d0;
+  border-left: 4px solid #bf360c;
+}

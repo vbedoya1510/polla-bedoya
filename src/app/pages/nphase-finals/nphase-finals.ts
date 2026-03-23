@@ -40,10 +40,6 @@ export class NphaseFinals {
       const data = this.dataService.worldCupData();
       if (!data) return;
 
-       console.log('games fase 4:', data.games.filter((g: any) => g.phase === 4));
-      console.log('games fase 5:', data.games.filter((g: any) => g.phase === 5));
-      console.log('games fase 6:', data.games.filter((g: any) => g.phase === 6));
-
       this.teams = data.teams.map((t: any) => new Team(t.id, t.name, t.group));
       this.phases = data.phases.map((p: any) =>
         new Phase(p.id, p.classified_points, p.finalist_points, p.result_points, p.winner_points, p.winner_scorer)

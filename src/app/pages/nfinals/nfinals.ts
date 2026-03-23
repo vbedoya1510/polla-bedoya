@@ -111,7 +111,6 @@ private mapScorers(data: any): { [playerId: number]: number } {
   (data.players ?? []).forEach((p: any) => {
     if (p.teamScorer) obj[p.id] = p.teamScorer;
   });
-  console.log('scorerPredictions:', obj);
   return obj;
 }
 }

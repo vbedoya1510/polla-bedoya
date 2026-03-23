@@ -1,0 +1,26 @@
+<div class="positions-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Pos.</th>
+        <th>Participante</th>
+        <th>Puntos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of rankedPlayers"
+          [class.gold]="item.currentRank === 1"
+          [class.silver]="item.currentRank === 2"
+          [class.bronze]="item.currentRank === 3">
+        <td class="rank-cell">
+          <span class="rank-number">{{ item.currentRank }}</span>
+          <span *ngIf="item.trend === 'up'" class="arrow up">▲</span>
+          <span *ngIf="item.trend === 'down'" class="arrow down">▼</span>
+          <span *ngIf="item.trend === 'neutral'" class="dash">—</span>
+        </td>
+        <td>{{ item.player.name }}</td>
+        <td class="score">{{ item.player.total_score }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

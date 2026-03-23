@@ -81,9 +81,6 @@ export class Nphase3 {
           });
         });
 
-      console.log('mappedGames total:', mappedGames.length);
-      console.log('games fase 2:', this.games.length);
-
       this.predictionsGame = mappedGames;
       setTimeout(() => this.cdr.detectChanges());
       },
