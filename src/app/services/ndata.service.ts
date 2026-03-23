@@ -16,18 +16,20 @@ export class NDataService {
   #gamePoints = signal<Map<number, number>>(new Map());
   #groupPoints = signal<Map<number, number>>(new Map());
   #qualifiedPoints = signal<Map<number, number>>(new Map());
+  #finalistPointsMap = signal<Map<number, Map<number, number>>>(new Map());
 
-  // Score total calculado = base + gamePoints + groupPoints
-  readonly playerTotalScores = computed(() => {
-    const scores = new Map<number, number>();
-    this.#baseScores.forEach((base, playerId) => {
-      const games = this.#gamePoints().get(playerId) ?? 0;
-      const groups = this.#groupPoints().get(playerId) ?? 0;
-      const qualified = this.#qualifiedPoints().get(playerId) ?? 0;
-      scores.set(playerId, base + games + groups + qualified);
-    });
-    return scores;
+readonly playerTotalScores = computed(() => {
+  const scores = new Map<number, number>();
+  this.#baseScores.forEach((base, playerId) => {
+    const games = this.#gamePoints().get(playerId) ?? 0;
+    const groups = this.#groupPoints().get(playerId) ?? 0;
+    const qualified = this.#qualifiedPoints().get(playerId) ?? 0;
+    const finalist = [...this.#finalistPointsMap().values()]
+      .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
+    scores.set(playerId, base + games + groups + qualified + finalist);
   });
+  return scores;
+});
 
   readonly teamScorer = computed(() => this.#ndata()?.teamScorer ?? []);
   readonly teamsPositions = computed(() => this.#ndata()?.teamsPositions ?? []);
@@ -89,4 +91,16 @@ export class NDataService {
       });
     }
   }
+
+updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idTeam: number; scorer_points: number }) {
+  const current = this.#ndata();
+  if (!current) return;
+  this.#ndata.set({ ...current, teamsPositions, teamScorer });
+}
+
+  setFinalistPoints(phase: number, points: Map<number, number>) {
+    const current = new Map(this.#finalistPointsMap());
+    current.set(phase, new Map(points));
+    this.#finalistPointsMap.set(current);
+}
 }

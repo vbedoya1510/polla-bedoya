@@ -16,7 +16,7 @@ interface TeamRow {
     predictedPosition: number;
     points: number;
     correct: boolean;
-    fullGroupMatch: boolean; 
+    fullGroupMatch: boolean;
   }[];
 }
 
@@ -43,21 +43,21 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
 
   private scoreChange$ = new Subject<void>();
 
-  constructor(private dataService: NDataService) {}
+  constructor(private dataService: NDataService) { }
 
-ngOnInit() {
-  this.scoreChange$
-    .pipe(debounceTime(500))
-    .subscribe(() => {
-      this.persistScores();
-      this.saveEditsToStorage();
-    });
-}
+  ngOnInit() {
+    this.scoreChange$
+      .pipe(debounceTime(500))
+      .subscribe(() => {
+        this.persistScores();
+        this.saveEditsToStorage();
+      });
+  }
 
-ngOnDestroy() {
-  this.saveEditsToStorage();
-  this.scoreChange$.complete();
-}
+  ngOnDestroy() {
+    this.saveEditsToStorage();
+    this.scoreChange$.complete();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     const allReady = this.teams.length > 0
@@ -120,84 +120,91 @@ ngOnDestroy() {
     this.scoreChange$.next();
   }
 
-private recalculateAllScores() {
-  this.players.forEach(p => this.playerPhaseScores.set(p.id, 0));
+  private recalculateAllScores() {
+    this.players.forEach(p => this.playerPhaseScores.set(p.id, 0));
 
-  this.groupRows.forEach(group => {
-    group.teams.forEach(teamRow => {
-      if (!teamRow.edited && teamRow.realPosition === 0) return;
-      teamRow.playerPredictions.forEach(pp => {
-        const current = this.playerPhaseScores.get(pp.player.id) ?? 0;
-        this.playerPhaseScores.set(pp.player.id, current + pp.points);
+    this.groupRows.forEach(group => {
+      group.teams.forEach(teamRow => {
+        if (!teamRow.edited && teamRow.realPosition === 0) return;
+        teamRow.playerPredictions.forEach(pp => {
+          const current = this.playerPhaseScores.get(pp.player.id) ?? 0;
+          this.playerPhaseScores.set(pp.player.id, current + pp.points);
+        });
       });
     });
-  });
 
-}
+  }
 
-private persistScores() {
-  this.dataService.setGroupPoints(this.playerPhaseScores);
-}
+  private persistScores() {
+    this.dataService.setGroupPoints(this.playerPhaseScores);
+  }
 
   getGroupScore(playerId: number): number {
     return this.playerPhaseScores.get(playerId) ?? 0;
   }
 
   getGroupPointsForPlayer(playerId: number, groupRow: GroupRow): number {
-  return groupRow.teams.reduce((total, teamRow) => {
-    const pp = teamRow.playerPredictions.find(p => p.player.id === playerId);
-    return total + (pp?.points ?? 0);
-  }, 0);
-}
+    return groupRow.teams.reduce((total, teamRow) => {
+      const pp = teamRow.playerPredictions.find(p => p.player.id === playerId);
+      return total + (pp?.points ?? 0);
+    }, 0);
+  }
 
-private checkFullGroupMatch(groupRow: GroupRow) {
-  this.players.forEach(player => {
-    // Verificar si todos los equipos del grupo tienen posición real ingresada
-    const allEdited = groupRow.teams.every(t => t.realPosition > 0);
-    if (!allEdited) return;
+  private checkFullGroupMatch(groupRow: GroupRow) {
+    this.players.forEach(player => {
+      // Verificar si todos los equipos del grupo tienen posición real ingresada
+      const allEdited = groupRow.teams.every(t => t.realPosition > 0);
+      if (!allEdited) return;
 
-    // Verificar si el jugador acertó todas las posiciones del grupo
-    const fullMatch = groupRow.teams.every(teamRow => {
-      const pp = teamRow.playerPredictions.find(p => p.player.id === player.id);
-      return pp?.correct;
-    });
-
-    // Marcar fullMatch en cada predicción del grupo para ese jugador
-    groupRow.teams.forEach(teamRow => {
-      const pp = teamRow.playerPredictions.find(p => p.player.id === player.id);
-      if (pp) pp.fullGroupMatch = fullMatch;
-    });
-  });
-}
-
-private saveEditsToStorage() {
-  if (!this.phase || typeof sessionStorage === 'undefined') return;
-  const edits = this.groupRows.flatMap(g =>
-    g.teams
-      .filter(t => t.edited)
-      .map(t => ({ id: t.team.id, pos: t.realPosition }))
-  );
-  sessionStorage.setItem(`group_edits_phase_${this.phase.id}`, JSON.stringify(edits));
-}
-
-private restoreEditsFromStorage() {
-  if (!this.phase || typeof sessionStorage === 'undefined') return;
-  const raw = sessionStorage.getItem(`group_edits_phase_${this.phase.id}`);
-  if (!raw) return;
-  const edits: { id: number, pos: number }[] = JSON.parse(raw);
-  edits.forEach(edit => {
-    this.groupRows.forEach(groupRow => {
-      const teamRow = groupRow.teams.find(t => t.team.id === edit.id);
-      if (!teamRow) return;
-      teamRow.realPosition = edit.pos;
-      teamRow.edited = true;
-      teamRow.playerPredictions = teamRow.playerPredictions.map(pp => {
-        const correct = pp.predictedPosition === teamRow.realPosition;
-        return { ...pp, correct, points: correct ? (this.phase?.classified_points ?? 0) : 0 };
+      // Verificar si el jugador acertó todas las posiciones del grupo
+      const fullMatch = groupRow.teams.every(teamRow => {
+        const pp = teamRow.playerPredictions.find(p => p.player.id === player.id);
+        return pp?.correct;
       });
-      this.checkFullGroupMatch(groupRow);
+
+      // Marcar fullMatch en cada predicción del grupo para ese jugador
+      groupRow.teams.forEach(teamRow => {
+        const pp = teamRow.playerPredictions.find(p => p.player.id === player.id);
+        if (pp) pp.fullGroupMatch = fullMatch;
+      });
     });
-  });
-  this.recalculateAllScores();
-}
+  }
+
+  private saveEditsToStorage() {
+    if (!this.phase || typeof sessionStorage === 'undefined') return;
+    const edits = this.groupRows.flatMap(g =>
+      g.teams
+        .filter(t => t.edited)
+        .map(t => ({ id: t.team.id, pos: t.realPosition }))
+    );
+    sessionStorage.setItem(`group_edits_phase_${this.phase.id}`, JSON.stringify(edits));
+  }
+
+  private restoreEditsFromStorage() {
+    if (!this.phase || typeof sessionStorage === 'undefined') return;
+    const raw = sessionStorage.getItem(`group_edits_phase_${this.phase.id}`);
+    if (!raw) return;
+    const edits: { id: number, pos: number }[] = JSON.parse(raw);
+    edits.forEach(edit => {
+      this.groupRows.forEach(groupRow => {
+        const teamRow = groupRow.teams.find(t => t.team.id === edit.id);
+        if (!teamRow) return;
+        teamRow.realPosition = edit.pos;
+        teamRow.edited = true;
+        teamRow.playerPredictions = teamRow.playerPredictions.map(pp => {
+          const correct = pp.predictedPosition === teamRow.realPosition;
+          return { ...pp, correct, points: correct ? (this.phase?.classified_points ?? 0) : 0 };
+        });
+        this.checkFullGroupMatch(groupRow);
+      });
+    });
+    this.recalculateAllScores();
+  }
+
+  hasFullGroupMatch(playerId: number, groupRow: GroupRow): boolean {
+    return groupRow.teams.some(teamRow => {
+      const pp = teamRow.playerPredictions.find(p => p.player.id === playerId);
+      return pp?.fullGroupMatch;
+    });
+  }
 }

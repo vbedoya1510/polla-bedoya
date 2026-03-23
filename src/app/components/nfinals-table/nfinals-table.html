@@ -1,0 +1,43 @@
+<div class="table-wrapper">
+  <table class="finalist-table">
+    <colgroup>
+      <col />
+      <col *ngFor="let player of players" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Posición</th>
+        <th class="player-header" *ngFor="let player of players">
+          <div>{{ player.name }}</div>
+          <div class="player-score">{{ getPhasePoints(player.id) }} pts</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pos of positions">
+        <td class="position-cell">{{ pos }}°</td>
+        <td
+          *ngFor="let player of players"
+          [class.prediction-cell]="!isCorrect(player.id, pos)"
+          [class.correct]="isCorrect(player.id, pos)">
+          {{ getTeamName(getPrediction(player.id, pos)) }}
+        </td>
+      </tr>
+      <!-- Separador -->
+  <tr *ngIf="Object.keys(scorerPredictions).length > 0">
+    <td [attr.colspan]="players.length + 1" style="border: none; padding: 4px;"></td>
+  </tr>
+
+  <!-- Goleador -->
+  <tr *ngIf="Object.keys(scorerPredictions).length > 0">
+    <td class="position-cell">Equipo con Goleador</td>
+    <td
+      *ngFor="let player of players"
+      [class.prediction-cell]="!isScorerCorrect(player.id)"
+      [class.correct]="isScorerCorrect(player.id)">
+      {{ getTeamName(scorerPredictions[player.id] ?? 0) }}
+    </td>
+  </tr>
+    </tbody>
+  </table>
+</div>

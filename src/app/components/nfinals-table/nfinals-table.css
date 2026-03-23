@@ -1,0 +1,52 @@
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.finalist-table {
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.finalist-table th,
+.finalist-table td {
+  border: 1px solid #ccc;
+  padding: 6px 4px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 120px;
+  min-width: 120px;
+}
+
+.finalist-table colgroup col:nth-child(1) {
+  width: 120px;
+}
+
+.player-header {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.player-score {
+  font-size: 12px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.position-cell {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.prediction-cell {
+  color: #333;
+}
+
+.correct {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+  font-weight: bold;
+}

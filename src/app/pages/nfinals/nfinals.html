@@ -1,0 +1,70 @@
+<div class="finals-container">
+  <h2>Posición Final</h2>
+
+  <div class="finals-content">
+    <div class="positions-panel">
+      <img src="/images/cup.jpg" alt="Copa" class="panel-image" />
+      <table>
+        <thead>
+          <tr>
+            <th>Posición</th>
+            <th>Equipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pos of positions">
+            <td>{{ pos }}</td>
+            <td>
+              <select [(ngModel)]="selectedTeams[pos]" (ngModelChange)="onSelectionChange()">
+                <option [value]="0">Seleccionar equipo</option>
+                <option *ngFor="let team of availableTeamsFor(pos)" [value]="team.id">
+                  {{ team.name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="scorer-panel">
+      <img src="/images/goal.jpg" alt="Goleador" class="panel-image" />
+      <div class="scorer-box">
+        <h4>Equipo con Goleador</h4>
+        <select [(ngModel)]="selectedScorer" (ngModelChange)="onSelectionChange()">
+          <option [value]="0">Seleccionar equipo</option>
+          <option *ngFor="let team of teams" [value]="team.id">
+            {{ team.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <h3>Predicciones desde Fase 1</h3>
+  <app-nfinals-table
+  [predictionTeams]="predictionTeamsPhase1"
+  [players]="players"
+  [phase]="phases[0]"
+  [teams]="teams"
+  [scorerPredictions]="scorerPredictionsPhase1">
+  </app-nfinals-table>
+
+  <h3>Predicciones desde Fase 2</h3>
+  <app-nfinals-table
+  [predictionTeams]="predictionTeamsPhase2"
+  [players]="players"
+  [phase]="phases[1]"
+  [teams]="teams">
+  </app-nfinals-table>
+
+  <h3>Predicciones desde Fase 3</h3>
+  <app-nfinals-table
+  [predictionTeams]="predictionTeamsPhase3"
+  [players]="players"
+  [phase]="phases[2]"
+  [teams]="teams">
+  </app-nfinals-table>
+</div>
