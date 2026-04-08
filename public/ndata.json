@@ -1,6 +1,6 @@
 {
   "teamScorer": {
-    "idTeam": 0,
+    "idTeams": [],
     "scorer_points": 40
   },
   "teamsPositions": [
@@ -26,7 +26,7 @@
       "id": 1,
       "classified_points": 8,
       "finalist_points": 32,
-      "result_points": 8,
+      "result_points": 10,
       "winner_points": 2
     },
     {
@@ -34,32 +34,32 @@
       "classified_points": 8,
       "finalist_points": 16,
       "result_points": 20,
-      "winner_points": 6
+      "winner_points": 4
     },
     {
       "id": 3,
       "classified_points": 8,
       "finalist_points": 8,
       "result_points": 20,
-      "winner_points": 6
+      "winner_points": 4
     },
     {
       "id": 4,
       "classified_points": 16,
       "result_points": 20,
-      "winner_points": 6
+      "winner_points": 4
     },
     {
       "id": 5,
       "classified_points": 16,
       "result_points": 20,
-      "winner_points": 6
+      "winner_points": 4
     },
     {
       "id": 6,
       "classified_points": 16,
       "result_points": 20,
-      "winner_points": 6
+      "winner_points": 4
     }
   ],
   "teams": [
@@ -83,7 +83,7 @@
     },
     {
       "id": 4,
-      "name": "Dinamarca/Macedonia/República Checa/Irlanda",
+      "name": "República Checa",
       "group": "A",
       "position": 0
     },
@@ -95,7 +95,7 @@
     },
     {
       "id": 6,
-      "name": "Italia/Nigeria/Gales/Bosnia",
+      "name": "Bosnia",
       "group": "B",
       "position": 0
     },
@@ -155,7 +155,7 @@
     },
     {
       "id": 16,
-      "name": "Turquía/Rumania/Eslovaquia/Kosovo",
+      "name": "Turquía",
       "group": "D",
       "position": 0
     },
@@ -197,7 +197,7 @@
     },
     {
       "id": 23,
-      "name": "Ucrania/Suecia/Polonia/Albania",
+      "name": "Suecia",
       "group": "F",
       "position": 0
     },
@@ -269,7 +269,7 @@
     },
     {
       "id": 35,
-      "name": "Irak/Bolivia/Surinam",
+      "name": "Irak",
       "group": "I",
       "position": 0
     },
@@ -311,7 +311,7 @@
     },
     {
       "id": 42,
-      "name": "Jamaica/RD de Congo/Nueva Caledonia",
+      "name": "RD de Congo",
       "group": "K",
       "position": 0
     },
@@ -433,9 +433,9 @@
       "phase": 1,
       "team1": 3,
       "team2": 4,
-      "goals_team1": 0,
+      "goals_team1": 2,
       "goals_team2": 0,
-      "end_game": false,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -1143,10 +1143,10 @@
       "phase": 2,
       "team1": 22,
       "team2": 23,
-      "goals_team1": 0,
+      "goals_team1": 1,
       "goals_team2": 0,
-      "end_game": false,
-      "team_qualified": 0
+      "end_game": true,
+      "team_qualified": 22
     },
     {
       "id": 74,
@@ -1154,9 +1154,9 @@
       "team1": 24,
       "team2": 21,
       "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false,
-      "team_qualified": 0
+      "goals_team2": 2,
+      "end_game": true,
+      "team_qualified": 21
     },
     {
       "id": 75,

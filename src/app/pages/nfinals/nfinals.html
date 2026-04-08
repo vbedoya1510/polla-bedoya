@@ -12,17 +12,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let pos of positions">
-            <td>{{ pos }}</td>
-            <td>
-              <select [(ngModel)]="selectedTeams[pos]" (ngModelChange)="onSelectionChange()">
-                <option [value]="0">Seleccionar equipo</option>
-                <option *ngFor="let team of availableTeamsFor(pos)" [value]="team.id">
-                  {{ team.name }}
-                </option>
-              </select>
-            </td>
-          </tr>
+          @for (pos of positions; track pos) {
+            <tr>
+              <td>{{ pos }}</td>
+              <td>
+                @if (!hasRealPositions[pos]) {
+                  <select [(ngModel)]="selectedTeams[pos]" (ngModelChange)="onSelectionChange()">
+                    <option [value]="0">Seleccionar equipo</option>
+                    @for (team of availableTeamsFor(pos); track team.id) {
+                      <option [value]="team.id">{{ team.name }}</option>
+                    }
+                  </select>
+                } @else {
+                  <select disabled>
+                    @for (team of availableTeamsFor(pos); track team.id) {
+                      <option [value]="team.id" [selected]="team.id === selectedTeams[pos]">{{ team.name }}</option>
+                    }
+                  </select>
+                }
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
@@ -31,12 +41,21 @@
       <img src="/images/goal.jpg" alt="Goleador" class="panel-image" />
       <div class="scorer-box">
         <h4>Equipo con Goleador</h4>
-        <select [(ngModel)]="selectedScorer" (ngModelChange)="onSelectionChange()">
-          <option [value]="0">Seleccionar equipo</option>
-          <option *ngFor="let team of teams" [value]="team.id">
-            {{ team.name }}
-          </option>
-        </select>
+        @if (!hasRealScorer) {
+          <select multiple [(ngModel)]="selectedScorer"
+            (ngModelChange)="onSelectionChange()"
+            style="height: 120px; width: 100%;">
+            @for (team of teams; track team.id) {
+              <option [value]="team.id">{{ team.name }}</option>
+            }
+          </select>
+        } @else {
+          <select multiple disabled style="height: 120px; width: 100%;">
+            @for (team of teams; track team.id) {
+              <option [value]="team.id" [selected]="selectedScorer.includes(team.id)">{{ team.name }}</option>
+            }
+          </select>
+        }
       </div>
     </div>
   </div>
@@ -45,26 +64,30 @@
 
   <h3>Predicciones desde Fase 1</h3>
   <app-nfinals-table
-  [predictionTeams]="predictionTeamsPhase1"
-  [players]="players"
-  [phase]="phases[0]"
-  [teams]="teams"
-  [scorerPredictions]="scorerPredictionsPhase1">
+    [predictionTeams]="predictionTeamsPhase1"
+    [players]="players"
+    [phase]="phases[0]"
+    [teams]="teams"
+    [scorerPredictions]="scorerPredictionsPhase1">
   </app-nfinals-table>
 
-  <h3>Predicciones desde Fase 2</h3>
-  <app-nfinals-table
-  [predictionTeams]="predictionTeamsPhase2"
-  [players]="players"
-  [phase]="phases[1]"
-  [teams]="teams">
-  </app-nfinals-table>
+  @if (phaseUnlocked()[2]) {
+    <h3>Predicciones desde Fase 2</h3>
+    <app-nfinals-table
+      [predictionTeams]="predictionTeamsPhase2"
+      [players]="players"
+      [phase]="phases[1]"
+      [teams]="teams">
+    </app-nfinals-table>
+  }
 
-  <h3>Predicciones desde Fase 3</h3>
-  <app-nfinals-table
-  [predictionTeams]="predictionTeamsPhase3"
-  [players]="players"
-  [phase]="phases[2]"
-  [teams]="teams">
-  </app-nfinals-table>
+  @if (phaseUnlocked()[3]) {
+    <h3>Predicciones desde Fase 3</h3>
+    <app-nfinals-table
+      [predictionTeams]="predictionTeamsPhase3"
+      [players]="players"
+      [phase]="phases[2]"
+      [teams]="teams">
+    </app-nfinals-table>
+  }
 </div>

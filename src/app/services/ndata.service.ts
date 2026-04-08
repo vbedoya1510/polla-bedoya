@@ -33,12 +33,26 @@ readonly playerTotalScores = computed(() => {
 
 #selectedPlayerId = signal<number>(0);
 readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
-  readonly teamScorer = computed(() => this.#ndata()?.teamScorer ?? []);
+  readonly teamScorer = computed(() => this.#ndata()?.teamScorer ?? { idTeams: [], scorer_points: 40 });
   readonly teamsPositions = computed(() => this.#ndata()?.teamsPositions ?? []);
   readonly phases = computed(() => this.#ndata()?.phases ?? []);
   readonly teams = computed(() => this.#ndata()?.teams ?? []);
   readonly players = computed(() => this.#ndata()?.players ?? []);
   readonly games = computed(() => this.#ndata()?.games ?? []);
+  readonly phaseUnlocked = computed(() => {
+  const games = this.#ndata()?.games ?? [];
+  
+  // Fase 1 siempre desbloqueada
+  const unlocked: Record<number, boolean> = { 1: true };
+
+  // Para cada fase N, verifica que todos los juegos de fase N-1 tengan end_game: true
+  [2, 3, 4, 5, 6].forEach(phase => {
+    const prevGames = games.filter((g: any) => g.phase === phase - 1);
+    unlocked[phase] = prevGames.length > 0 && prevGames.every((g: any) => g.end_game === true);
+  });
+
+  return unlocked;
+});
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: any) {
     this.initializeData();
@@ -94,7 +108,7 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
     }
   }
 
-updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idTeam: number; scorer_points: number }) {
+updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idTeams: number[]; scorer_points: number }) {
   const current = this.#ndata();
   if (!current) return;
   this.#ndata.set({ ...current, teamsPositions, teamScorer });

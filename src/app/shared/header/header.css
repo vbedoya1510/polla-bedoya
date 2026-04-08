@@ -6,3 +6,9 @@
   color: white;
   border-color: #6c757d;
 }
+
+.active-link {
+  font-weight: bold;
+  color: white !important;
+  border-bottom: 2px solid white;
+}

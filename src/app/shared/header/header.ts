@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, effect, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Player } from '../models/player.model';
 import { NDataService } from '../../services/ndata.service';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -19,6 +19,7 @@ export class Header {
   private dataService = inject(NDataService);
   private cdr = inject(ChangeDetectorRef);
   players: Player[] = [];
+  readonly phaseUnlocked = this.dataService.phaseUnlocked;
 
   constructor() {
     effect(() => {

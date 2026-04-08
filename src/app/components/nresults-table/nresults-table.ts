@@ -82,7 +82,12 @@ private buildTable() {
       const prediction = this.predictionsGame.find(
         p => p.idPlayer === player.id && p.idGame === game.id
       );
-      const { points, matchType } = this.calculatePoints(game.goals_team1, game.goals_team2, prediction, game.end_game);
+      const { points, matchType } = this.calculatePoints(
+        game.goals_team1, 
+        game.goals_team2, 
+        prediction, 
+        game.end_game || game.team_qualified !== 0
+      );
       return { player, prediction, points, matchType };
     })
   }));

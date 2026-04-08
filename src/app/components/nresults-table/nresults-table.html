@@ -31,13 +31,13 @@
 
         <!-- Resultado real editable -->
         <td class="real-score">
-          <input *ngIf="!row.game.end_game" type="number" min="0" [(ngModel)]="row.editableGoals1"
+          <input *ngIf="!row.game.end_game && row.game.team_qualified === 0" type="number" min="0" [(ngModel)]="row.editableGoals1"
             (ngModelChange)="onScoreChange(row)" class="score-input" />
           <span *ngIf="row.game.end_game">{{ row.editableGoals1 }}</span>
 
           <span class="separator">-</span>
 
-          <input *ngIf="!row.game.end_game" type="number" min="0" [(ngModel)]="row.editableGoals2"
+          <input *ngIf="!row.game.end_game && row.game.team_qualified === 0" type="number" min="0" [(ngModel)]="row.editableGoals2"
             (ngModelChange)="onScoreChange(row)" class="score-input" />
           <span *ngIf="row.game.end_game">{{ row.editableGoals2 }}</span>
         </td>

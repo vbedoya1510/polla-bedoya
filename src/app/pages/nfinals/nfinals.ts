@@ -1,5 +1,4 @@
 import { Component, effect, inject, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import { NDataService } from '../../services/ndata.service';
@@ -11,12 +10,13 @@ import { NfinalsTable } from '../../components/nfinals-table/nfinals-table';
 @Component({
   selector: 'app-nfinals',
   standalone: true,
-  imports: [CommonModule, FormsModule, NfinalsTable],
+  imports: [FormsModule, NfinalsTable],
   templateUrl: './nfinals.html',
   styleUrls: ['./nfinals.css'],
 })
 export class NFinals {
   public dataService = inject(NDataService);
+  readonly phaseUnlocked = this.dataService.phaseUnlocked;
   private cdr = inject(ChangeDetectorRef);
 
   scorerPredictionsPhase1: { [playerId: number]: number } = {};
@@ -25,9 +25,14 @@ export class NFinals {
   players: Player[] = [];
   phases: Phase[] = [];
   positions = [1, 2, 3, 4];
+  selectedScorer: number[] = [];
+  hasRealScorer = false;
+  hasRealPositions: { [pos: number]: boolean } = { 1: false, 2: false, 3: false, 4: false };
+  private initialized = false;
+
 
   selectedTeams: { [position: number]: number } = { 1: 0, 2: 0, 3: 0, 4: 0 };
-  selectedScorer: number = 0;
+ 
 
   predictionTeamsPhase1: NPredictionTeam[] = [];
   predictionTeamsPhase2: NPredictionTeam[] = [];
@@ -51,8 +56,13 @@ export class NFinals {
 
       data.teamsPositions.forEach((tp: any) => {
         if (tp.idTeam) this.selectedTeams[tp.id] = tp.idTeam;
+        if (!this.initialized) this.hasRealPositions[tp.id] = tp.idTeam !== 0;
       });
-      this.selectedScorer = data.teamScorer?.idTeam ?? 0;
+      if (!this.initialized) {
+        this.selectedScorer = (data.teamScorer?.idTeams ?? []).map(Number);
+        this.hasRealScorer = this.selectedScorer.length > 0;
+        this.initialized = true;
+      }
 
       this.loadPredictions();
       this.cdr.detectChanges();
@@ -94,17 +104,17 @@ private mapPredictions(data: any, phase: number): NPredictionTeam[] {
     return this.teams.filter(t => !others.includes(t.id));
   }
 
-  onSelectionChange() {
-    const teamsPositions = this.positions.map(pos => ({
-      id: pos,
-      idTeam: + this.selectedTeams[pos] || 0,
-    }));
-    const currentScorer = this.dataService.worldCupData()?.teamScorer;
-    this.dataService.updateFinals(teamsPositions, {
-      idTeam: this.selectedScorer,
-      scorer_points: currentScorer?.scorer_points ?? 40,
-    });
-  }
+onSelectionChange() {
+  const teamsPositions = this.positions.map(pos => ({
+    id: pos,
+    idTeam: +(this.selectedTeams[pos] || 0),
+  }));
+  const currentScorer = this.dataService.worldCupData()?.teamScorer;
+  this.dataService.updateFinals(teamsPositions, {
+    idTeams: this.selectedScorer.map(Number),
+    scorer_points: currentScorer?.scorer_points ?? 40,
+  });
+}
 
 private mapScorers(data: any): { [playerId: number]: number } {
   const obj: { [playerId: number]: number } = {};

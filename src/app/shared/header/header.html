@@ -1,21 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Polla Bedoya</a>
-<select class="form-select form-select-sm player-filter" (change)="onPlayerSelect($event)">
-  <option [value]="0">Todos</option>
-  <option *ngFor="let p of players" [value]="p.id">{{ p.name }}</option>
-</select>
+  <a class="navbar-brand" routerLink="/">Polla Bedoya</a>
+  <select class="form-select form-select-sm player-filter" (change)="onPlayerSelect($event)">
+    <option [value]="0">Todos</option>
+    <option *ngFor="let p of players" [value]="p.id">{{ p.name }}</option>
+  </select>
   <button class="navbar-toggler" type="button" (click)="toggleMenu()">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
     <ul class="navbar-nav ms-auto">
-      <li class="nav-item"><a class="nav-link" (click)="goTo('fase1'); isMenuOpen=false">1ra Ronda</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('fase2'); isMenuOpen=false">16avos</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('fase3'); isMenuOpen=false">8vos</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('finales'); isMenuOpen=false">4tos + Finales</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('posiciones'); isMenuOpen=false">Pos Finales</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="goTo('participantes'); isMenuOpen=false">Participantes</a></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/fase1" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"
+          (click)="isMenuOpen=false">1ra Ronda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.disabled]="!phaseUnlocked()[2]" [style.opacity]="phaseUnlocked()[2] ? '1' : '0.4'"
+          [style.pointer-events]="phaseUnlocked()[2] ? 'auto' : 'none'" routerLink="/fase2"
+          routerLinkActive="active-link" (click)="isMenuOpen=false">16avos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.disabled]="!phaseUnlocked()[3]" [style.opacity]="phaseUnlocked()[3] ? '1' : '0.4'"
+          [style.pointer-events]="phaseUnlocked()[3] ? 'auto' : 'none'" routerLink="/fase3"
+          routerLinkActive="active-link" (click)="isMenuOpen=false">8vos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.disabled]="!phaseUnlocked()[4]" [style.opacity]="phaseUnlocked()[4] ? '1' : '0.4'"
+          [style.pointer-events]="phaseUnlocked()[4] ? 'auto' : 'none'" routerLink="/finales"
+          routerLinkActive="active-link" (click)="isMenuOpen=false">4tos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/posiciones" routerLinkActive="active-link" (click)="isMenuOpen=false">Pos
+          Finales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/participantes" routerLinkActive="active-link"
+          (click)="isMenuOpen=false">Participantes</a>
+      </li>
     </ul>
   </div>
 </nav>

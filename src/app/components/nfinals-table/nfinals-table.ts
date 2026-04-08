@@ -85,11 +85,11 @@ export class NfinalsTable implements OnChanges {
     this.dataService.setFinalistPoints(this.phase.id, points);
   }
 
-  isScorerCorrect(playerId: number): boolean {
-    const predicted = +(this.scorerPredictions[playerId] ?? 0);
-    const actual = +(this.dataService.teamScorer()?.idTeam ?? 0);
-    return predicted !== 0 && actual !== 0 && predicted === actual;
-  }
+ isScorerCorrect(playerId: number): boolean {
+  const predicted = +(this.scorerPredictions[playerId] ?? 0);
+  const actuals: number[] = this.dataService.teamScorer()?.idTeams ?? [];
+  return predicted !== 0 && actuals.length > 0 && actuals.map(Number).includes(predicted);
+}
 
   get visiblePlayers(): Player[] {
     const id = this.dataService.selectedPlayerId();
