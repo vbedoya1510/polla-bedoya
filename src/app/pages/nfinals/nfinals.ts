@@ -28,24 +28,33 @@ export class NFinals {
   selectedScorer: number[] = [];
   hasRealScorer = false;
   hasRealPositions: { [pos: number]: boolean } = { 1: false, 2: false, 3: false, 4: false };
-  private initialized = false;
-
 
   selectedTeams: { [position: number]: number } = { 1: 0, 2: 0, 3: 0, 4: 0 };
- 
 
   predictionTeamsPhase1: NPredictionTeam[] = [];
   predictionTeamsPhase2: NPredictionTeam[] = [];
   predictionTeamsPhase3: NPredictionTeam[] = [];
 
   constructor() {
+    // Los estados bloqueados vienen siempre del ndata.json original (no del cache sessionStorage)
+    this.dataService.getData().subscribe({
+      next: (data) => {
+        data.teamsPositions.forEach((tp: any) => {
+          this.hasRealPositions[tp.id] = tp.idTeam !== 0;
+        });
+        this.selectedScorer = (data.teamScorer?.idTeams ?? []).map(Number);
+        this.hasRealScorer = this.selectedScorer.length > 0;
+        this.cdr.detectChanges();
+      }
+    });
+
     effect(() => {
       const data = this.dataService.worldCupData();
       if (!data) return;
 
       this.teams = data.teams
         .map((t: any) => new Team(t.id, t.name, t.group))
-        .sort((a: { name: string; }, b: { name: any; }) => a.name.localeCompare(b.name));      
+        .sort((a: { name: string; }, b: { name: any; }) => a.name.localeCompare(b.name));
 
       this.players = data.players.map((p: any) =>
         new Player(p.id, p.name, p.phone, p.email, p.pay, p.total_score, p.position)
@@ -56,13 +65,7 @@ export class NFinals {
 
       data.teamsPositions.forEach((tp: any) => {
         if (tp.idTeam) this.selectedTeams[tp.id] = tp.idTeam;
-        if (!this.initialized) this.hasRealPositions[tp.id] = tp.idTeam !== 0;
       });
-      if (!this.initialized) {
-        this.selectedScorer = (data.teamScorer?.idTeams ?? []).map(Number);
-        this.hasRealScorer = this.selectedScorer.length > 0;
-        this.initialized = true;
-      }
 
       this.loadPredictions();
       this.cdr.detectChanges();

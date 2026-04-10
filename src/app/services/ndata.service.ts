@@ -7,6 +7,7 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class NDataService {
   private readonly STORAGE_KEY = 'data';
+  private readonly SCORES_KEY = 'scores';
 
   #ndata = signal<any | null>(null);
   readonly worldCupData = this.#ndata.asReadonly();
@@ -17,6 +18,41 @@ export class NDataService {
   #groupPoints = signal<Map<number, number>>(new Map());
   #qualifiedPoints = signal<Map<number, number>>(new Map());
   #finalistPointsMap = signal<Map<number, Map<number, number>>>(new Map());
+
+  private mapToArray(m: Map<number, number>): [number, number][] {
+    return [...m.entries()];
+  }
+
+  private saveScores(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const finalistObj: Record<number, [number, number][]> = {};
+    this.#finalistPointsMap().forEach((phaseMap, phase) => {
+      finalistObj[phase] = this.mapToArray(phaseMap);
+    });
+    sessionStorage.setItem(this.SCORES_KEY, JSON.stringify({
+      game: this.mapToArray(this.#gamePoints()),
+      group: this.mapToArray(this.#groupPoints()),
+      qualified: this.mapToArray(this.#qualifiedPoints()),
+      finalist: finalistObj,
+    }));
+  }
+
+  private restoreScores(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const raw = sessionStorage.getItem(this.SCORES_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    if (saved.game) this.#gamePoints.set(new Map(saved.game));
+    if (saved.group) this.#groupPoints.set(new Map(saved.group));
+    if (saved.qualified) this.#qualifiedPoints.set(new Map(saved.qualified));
+    if (saved.finalist) {
+      const finalistMap = new Map<number, Map<number, number>>();
+      Object.entries(saved.finalist).forEach(([phase, entries]) => {
+        finalistMap.set(Number(phase), new Map(entries as [number, number][]));
+      });
+      this.#finalistPointsMap.set(finalistMap);
+    }
+  }
 
 readonly playerTotalScores = computed(() => {
   const scores = new Map<number, number>();
@@ -74,10 +110,12 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
 
   setGamePoints(points: Map<number, number>) {
     this.#gamePoints.set(new Map(points));
+    this.saveScores();
   }
 
   setGroupPoints(points: Map<number, number>) {
     this.#groupPoints.set(new Map(points));
+    this.saveScores();
   }
 
   getPrediction(idPhase: number) {
@@ -91,6 +129,7 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
 
   setQualifiedPoints(points: Map<number, number>) {
     this.#qualifiedPoints.set(new Map(points));
+    this.saveScores();
   }
 
   private initializeData(): void {
@@ -106,6 +145,8 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
         error: (err) => console.error('Error cargando JSON inicial', err)
       });
     }
+    this.restoreScores();
+    this.initBaseScores();
   }
 
 updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idTeams: number[]; scorer_points: number }) {
@@ -118,7 +159,8 @@ updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idT
     const current = new Map(this.#finalistPointsMap());
     current.set(phase, new Map(points));
     this.#finalistPointsMap.set(current);
-}
+    this.saveScores();
+  }
 
 setSelectedPlayer(id: number) {
   this.#selectedPlayerId.set(id);
