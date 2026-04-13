@@ -6,6 +6,7 @@ import { Nphase3 } from './pages/nphase-3/nphase-3';
 import { NphaseFinals } from './pages/nphase-finals/nphase-finals';
 import { NFinals } from './pages/nfinals/nfinals';
 import { Npositions } from './pages/npositions/npositions';
+import { NAdmin } from './pages/nadmin/nadmin';
 import { phaseGuard } from './guards/phase.guard';
 
 export const routes: Routes = [
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'finales', component: NphaseFinals, canActivate: [phaseGuard(4)] },
   { path: 'posiciones', component: NFinals },
   { path: 'participantes', component: Npositions },
+  { path: 'admin', component: NAdmin },
 ];
 
 @NgModule({

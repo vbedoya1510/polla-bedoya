@@ -141,7 +141,7 @@ private buildTable() {
     this.players.forEach(p => this.playerScores.set(p.id, 0));
 
     this.gameRows.forEach(row => {
-      if (!row.edited) return;
+      if (!row.edited && !row.game.end_game) return;
       row.playerPredictions.forEach(pp => {
         const current = this.playerScores.get(pp.player.id) ?? 0;
         this.playerScores.set(pp.player.id, current + pp.points);
@@ -150,7 +150,18 @@ private buildTable() {
   }
 
   private persistScores() {
-    this.dataService.setGamePoints(this.playerScores);
+    // Solo persistir puntos de partidos editados (no finalizados),
+    // porque los finalizados ya están incluidos en total_score de ndata.json
+    const editedScores = new Map<number, number>();
+    this.players.forEach(p => editedScores.set(p.id, 0));
+    this.gameRows.forEach(row => {
+      if (!row.edited || row.game.end_game) return;
+      row.playerPredictions.forEach(pp => {
+        const current = editedScores.get(pp.player.id) ?? 0;
+        editedScores.set(pp.player.id, current + pp.points);
+      });
+    });
+    this.dataService.setGamePoints(editedScores);
   }
 
   getPlayerScore(playerId: number): number {

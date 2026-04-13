@@ -1,0 +1,27 @@
+.admin-container {
+  max-width: 500px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+.admin-container p {
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.export-btn {
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.export-btn:hover {
+  background-color: #1d4ed8;
+}

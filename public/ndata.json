@@ -359,8 +359,8 @@
       "phone": "3001234567",
       "email": "carlos.perez@mail.com",
       "pay": false,
-      "total_score": 0,
-      "position": 0
+      "total_score": 24,
+      "position": 2
     },
     {
       "id": 2,
@@ -368,8 +368,8 @@
       "phone": "3017654321",
       "email": "ana.gomez@mail.com",
       "pay": false,
-      "total_score": 0,
-      "position": 0
+      "total_score": 26,
+      "position": 1
     },
     {
       "id": 3,
@@ -377,8 +377,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 0,
-      "position": 0
+      "total_score": 6,
+      "position": 6
     },
     {
       "id": 4,
@@ -386,8 +386,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 0,
-      "position": 0
+      "total_score": 8,
+      "position": 5
     },
     {
       "id": 5,
@@ -395,8 +395,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 0,
-      "position": 0
+      "total_score": 22,
+      "position": 3
     },
     {
       "id": 6,
@@ -404,8 +404,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 0,
-      "position": 0
+      "total_score": 4,
+      "position": 7
     },
     {
       "id": 7,
@@ -413,8 +413,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 0,
-      "position": 0
+      "total_score": 12,
+      "position": 4
     }
   ],
   "games": [
@@ -424,8 +424,8 @@
       "team1": 1,
       "team2": 2,
       "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false,
+      "goals_team2": 1,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -433,9 +433,9 @@
       "phase": 1,
       "team1": 3,
       "team2": 4,
-      "goals_team1": 0,
+      "goals_team1": 2,
       "goals_team2": 0,
-      "end_game": false,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -443,9 +443,9 @@
       "phase": 1,
       "team1": 5,
       "team2": 6,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false,
+      "goals_team1": 1,
+      "goals_team2": 2,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -453,9 +453,9 @@
       "phase": 1,
       "team1": 13,
       "team2": 14,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false,
+      "goals_team1": 3,
+      "goals_team2": 1,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -465,7 +465,7 @@
       "team2": 8,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": false,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -473,9 +473,9 @@
       "phase": 1,
       "team1": 9,
       "team2": 10,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false,
+      "goals_team1": 2,
+      "goals_team2": 1,
+      "end_game": true,
       "team_qualified": 0
     },
     {
@@ -483,9 +483,9 @@
       "phase": 1,
       "team1": 11,
       "team2": 12,
-      "goals_team1": 0,
-      "goals_team2": 0,
-      "end_game": false,
+      "goals_team1": 3,
+      "goals_team2": 2,
+      "end_game": true,
       "team_qualified": 0
     },
     {
