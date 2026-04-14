@@ -29,7 +29,8 @@
 
           <td class="real-position">
             <input type="number" min="1" max="4" [(ngModel)]="teamRow.realPosition"
-              (ngModelChange)="onPositionChange(teamRow,groupRow)" class="position-input" placeholder="-" />
+              (ngModelChange)="onPositionChange(teamRow,groupRow)" class="position-input" placeholder="-"
+              [disabled]="teamRow.locked" [class.locked-position]="teamRow.locked" />
           </td>
 
           <td *ngFor="let pp of visiblePredictions(teamRow.playerPredictions)" [class.winner-match]="pp.correct" class="prediction-cell">

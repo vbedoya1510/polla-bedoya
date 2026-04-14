@@ -1,4 +1,14 @@
-<div class="admin-container">
+<div class="login-overlay" *ngIf="!isAuthenticated">
+  <div class="login-box">
+    <h3>Administración</h3>
+    <input type="text" [(ngModel)]="username" placeholder="Usuario" name="username" autocomplete="username" (keyup.enter)="login()" />
+    <input type="password" [(ngModel)]="password" placeholder="Contraseña" name="password" autocomplete="current-password" (keyup.enter)="login()" />
+    <p class="login-error" *ngIf="loginError">Usuario o contraseña incorrectos</p>
+    <button (click)="login()">Ingresar</button>
+  </div>
+</div>
+
+<div class="admin-container" *ngIf="isAuthenticated">
   <h2>Administración</h2>
   <p>Genera el archivo <strong>ndata.json</strong> con todos los cambios aplicados: marcadores editados, posiciones de equipos, puntajes y ranking de participantes.</p>
   <button class="export-btn" (click)="exportNdata()">

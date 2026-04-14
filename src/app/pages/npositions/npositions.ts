@@ -27,7 +27,7 @@ export class Npositions {
       this.dataService.initBaseScores();
 
       this.players = data.players.map((p: any) => {
-        const player = new Player(p.id, p.name, p.phone, p.email, p.pay, p.total_score, p.position);
+        const player = new Player(p.id, p.name, p.phone, p.email, p.pay, p.total_score, null as any, p.position);
         player.total_score = scores.get(p.id) ?? p.total_score;
         return player;
       });

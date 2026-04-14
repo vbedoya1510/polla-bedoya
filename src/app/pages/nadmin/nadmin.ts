@@ -1,18 +1,38 @@
 import { Component, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { NDataService } from '../../services/ndata.service';
+
+const ADMIN_USER = 'admin';
+const ADMIN_PASS = '123456';
 
 @Component({
   selector: 'app-nadmin',
   standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './nadmin.html',
   styleUrls: ['./nadmin.css'],
 })
 export class NAdmin {
   private dataService = inject(NDataService);
 
+  isAuthenticated = false;
+  loginError = false;
+  username = '';
+  password = '';
+
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+
+  login(): void {
+    if (this.username === ADMIN_USER && this.password === ADMIN_PASS) {
+      this.isAuthenticated = true;
+      this.loginError = false;
+    } else {
+      this.loginError = true;
+      this.password = '';
+    }
+  }
 
   exportNdata(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -93,8 +113,14 @@ export class NAdmin {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'ndata.json';
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    a.download = `ndata_${dateStr}.json`;
     a.click();
     URL.revokeObjectURL(url);
+
+    // 6. Limpiar caché y reiniciar la app desde ndata.json
+    this.dataService.resetSession();
+    window.location.href = '/';
   }
 }

@@ -24,7 +24,7 @@
   "phases": [
     {
       "id": 1,
-      "classified_points": 8,
+      "classified_points": 4,
       "finalist_points": 32,
       "result_points": 10,
       "winner_points": 2
@@ -359,8 +359,8 @@
       "phone": "3001234567",
       "email": "carlos.perez@mail.com",
       "pay": false,
-      "total_score": 24,
-      "position": 2
+      "total_score": 0,
+      "position": 0
     },
     {
       "id": 2,
@@ -368,8 +368,8 @@
       "phone": "3017654321",
       "email": "ana.gomez@mail.com",
       "pay": false,
-      "total_score": 26,
-      "position": 1
+      "total_score": 0,
+      "position": 0
     },
     {
       "id": 3,
@@ -377,8 +377,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 6,
-      "position": 6
+      "total_score": 0,
+      "position": 0
     },
     {
       "id": 4,
@@ -386,8 +386,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 8,
-      "position": 5
+      "total_score": 0,
+      "position": 0
     },
     {
       "id": 5,
@@ -395,8 +395,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 22,
-      "position": 3
+      "total_score": 0,
+      "position": 0
     },
     {
       "id": 6,
@@ -404,8 +404,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 4,
-      "position": 7
+      "total_score": 0,
+      "position": 0
     },
     {
       "id": 7,
@@ -413,8 +413,8 @@
       "phone": "3029876543",
       "email": "luis.rodriguez@mail.com",
       "pay": true,
-      "total_score": 12,
-      "position": 4
+      "total_score": 0,
+      "position": 0
     }
   ],
   "games": [
@@ -424,8 +424,8 @@
       "team1": 1,
       "team2": 2,
       "goals_team1": 0,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -433,9 +433,9 @@
       "phase": 1,
       "team1": 3,
       "team2": 4,
-      "goals_team1": 2,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -443,9 +443,9 @@
       "phase": 1,
       "team1": 5,
       "team2": 6,
-      "goals_team1": 1,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -453,9 +453,9 @@
       "phase": 1,
       "team1": 13,
       "team2": 14,
-      "goals_team1": 3,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -465,7 +465,7 @@
       "team2": 8,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -473,9 +473,9 @@
       "phase": 1,
       "team1": 9,
       "team2": 10,
-      "goals_team1": 2,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -483,9 +483,9 @@
       "phase": 1,
       "team1": 11,
       "team2": 12,
-      "goals_team1": 3,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -921,8 +921,8 @@
     {
       "id": 51,
       "phase": 1,
-      "team1": 9,
-      "team2": 12,
+      "team1": 12,
+      "team2": 9,
       "goals_team1": 0,
       "goals_team2": 0,
       "end_game": false,
@@ -1081,7 +1081,7 @@
     {
       "id": 67,
       "phase": 1,
-      "team1": 47,
+      "team1": 48,
       "team2": 45,
       "goals_team1": 0,
       "goals_team2": 0,
@@ -1092,7 +1092,7 @@
       "id": 68,
       "phase": 1,
       "team1": 46,
-      "team2": 48,
+      "team2": 47,
       "goals_team1": 0,
       "goals_team2": 0,
       "end_game": false,

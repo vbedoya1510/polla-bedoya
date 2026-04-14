@@ -11,6 +11,7 @@ interface TeamRow {
   team: Team;
   realPosition: number;
   edited: boolean;
+  locked: boolean;
   playerPredictions: {
     player: Player;
     predictedPosition: number;
@@ -56,6 +57,7 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.saveEditsToStorage();
+    this.persistScores();
     this.scoreChange$.complete();
   }
 
@@ -84,25 +86,37 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
       .sort((a, b) => a[0].localeCompare(b[0]))
       .map(([group, teams]) => ({
         group,
-        teams: teams.map(team => ({
-          team,
-          realPosition: 0,
-          edited: false,
-          playerPredictions: this.players.map(player => {
-            const pred = this.predictionTeam.find(
-              p => p.idPlayer === player.id && p.idTeam === team.id
-            );
-            return {
-              player,
-              predictedPosition: pred?.position ?? 0,
-              points: 0,
-              correct: false,
-              fullGroupMatch: false
-            };
-          })
-        }))
+        teams: teams.map(team => {
+          const locked = team.position > 0;
+          const realPosition = locked ? team.position : 0;
+          return {
+            team,
+            realPosition,
+            edited: locked,
+            locked,
+            playerPredictions: this.players.map(player => {
+              const pred = this.predictionTeam.find(
+                p => p.idPlayer === player.id && p.idTeam === team.id
+              );
+              const predictedPosition = pred?.position ?? 0;
+              const correct = locked && predictedPosition === realPosition;
+              return {
+                player,
+                predictedPosition,
+                points: correct ? (this.phase?.classified_points ?? 0) : 0,
+                correct,
+                fullGroupMatch: false
+              };
+            })
+          };
+        })
       }));
 
+    // Verificar fullGroupMatch para grupos con posiciones ya bloqueadas desde el JSON
+    this.groupRows.forEach(groupRow => {
+      const hasAnyLocked = groupRow.teams.some(t => t.locked);
+      if (hasAnyLocked) this.checkFullGroupMatch(groupRow);
+    });
     this.recalculateAllScores();
     this.restoreEditsFromStorage();
   }
@@ -136,7 +150,19 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
   }
 
   private persistScores() {
-    this.dataService.setGroupPoints(this.playerPhaseScores);
+    // Solo contar puntos de equipos NO bloqueados; los bloqueados ya están en total_score del JSON
+    const nonLockedScores = new Map<number, number>();
+    this.players.forEach(p => nonLockedScores.set(p.id, 0));
+    this.groupRows.forEach(group => {
+      group.teams.forEach(teamRow => {
+        if (teamRow.locked) return;
+        teamRow.playerPredictions.forEach(pp => {
+          const current = nonLockedScores.get(pp.player.id) ?? 0;
+          nonLockedScores.set(pp.player.id, current + pp.points);
+        });
+      });
+    });
+    this.dataService.setGroupPoints(nonLockedScores);
   }
 
   getGroupScore(playerId: number): number {
@@ -188,7 +214,7 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
     edits.forEach(edit => {
       this.groupRows.forEach(groupRow => {
         const teamRow = groupRow.teams.find(t => t.team.id === edit.id);
-        if (!teamRow) return;
+        if (!teamRow || teamRow.locked) return;
         teamRow.realPosition = edit.pos;
         teamRow.edited = true;
         teamRow.playerPredictions = teamRow.playerPredictions.map(pp => {
@@ -199,6 +225,7 @@ export class NgroupsTable implements OnInit, OnChanges, OnDestroy {
       });
     });
     this.recalculateAllScores();
+    this.persistScores();
   }
 
   hasFullGroupMatch(playerId: number, groupRow: GroupRow): boolean {

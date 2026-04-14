@@ -6,15 +6,18 @@ export class Team {
   id: number;
   name: string;
   group: string;
+  position: number;
 
   constructor(
     id: number,
     name: string,
-    group: string
+    group: string,
+    position: number = 0
   ) {
     this.id = id;
     this.name = name;
     this.group = group;
+    this.position = position;
   }
 }
 

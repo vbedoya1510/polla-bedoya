@@ -13,7 +13,7 @@ export class NDataService {
   readonly worldCupData = this.#ndata.asReadonly();
 
   // Scores separados — nunca tocan #ndata
-  #baseScores = new Map<number, number>();
+  #baseScores = signal(new Map<number, number>());
   #gamePoints = signal<Map<number, number>>(new Map());
   #groupPoints = signal<Map<number, number>>(new Map());
   #qualifiedPoints = signal<Map<number, number>>(new Map());
@@ -56,7 +56,7 @@ export class NDataService {
 
 readonly playerTotalScores = computed(() => {
   const scores = new Map<number, number>();
-  this.#baseScores.forEach((base, playerId) => {
+  this.#baseScores().forEach((base: number, playerId: number) => {
     const games = this.#gamePoints().get(playerId) ?? 0;
     const groups = this.#groupPoints().get(playerId) ?? 0;
     const qualified = this.#qualifiedPoints().get(playerId) ?? 0;
@@ -97,15 +97,18 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
       const currentData = this.#ndata();
       if (currentData && isPlatformBrowser(this.platformId)) {
         sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(currentData));
+        this.initBaseScores();
       }
     });
   }
 
   initBaseScores() {
-    if (this.#baseScores.size > 0) return;
+    if (this.#baseScores().size > 0) return;
     const players = this.#ndata()?.players ?? [];
     if (!players.length) return;
-    players.forEach((p: any) => this.#baseScores.set(p.id, p.total_score));
+    const newMap = new Map<number, number>();
+    players.forEach((p: any) => newMap.set(p.id, p.total_score));
+    this.#baseScores.set(newMap);
   }
 
   setGamePoints(points: Map<number, number>) {
@@ -132,7 +135,21 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
     this.saveScores();
   }
 
+  private clearCacheIfNewVersion(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('nuevaVersion') === 'true') {
+      sessionStorage.removeItem(this.STORAGE_KEY);
+      sessionStorage.removeItem(this.SCORES_KEY);
+      params.delete('nuevaVersion');
+      const newSearch = params.toString();
+      const newUrl = window.location.pathname + (newSearch ? '?' + newSearch : '');
+      history.replaceState(null, '', newUrl);
+    }
+  }
+
   private initializeData(): void {
+    this.clearCacheIfNewVersion();
     let savedData = null;
     if (isPlatformBrowser(this.platformId)) {
       savedData = sessionStorage.getItem(this.STORAGE_KEY);
@@ -164,5 +181,16 @@ updateFinals(teamsPositions: { id: number; idTeam: number }[], teamScorer: { idT
 
 setSelectedPlayer(id: number) {
   this.#selectedPlayerId.set(id);
+}
+
+resetSession(): void {
+  if (!isPlatformBrowser(this.platformId)) return;
+  sessionStorage.removeItem(this.STORAGE_KEY);
+  sessionStorage.removeItem(this.SCORES_KEY);
+  for (let phase = 1; phase <= 6; phase++) {
+    sessionStorage.removeItem(`game_edits_phase_${phase}`);
+    sessionStorage.removeItem(`group_edits_phase_${phase}`);
+  }
+  sessionStorage.removeItem('positions_snapshot');
 }
 }

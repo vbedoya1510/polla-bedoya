@@ -32,6 +32,7 @@ export class NpositionsTable implements OnChanges {
   private cdr = inject(ChangeDetectorRef);
   private savedRanks = new Map<number, number>();
   private savedTrends = new Map<number, 'up' | 'down' | 'neutral'>();
+  private baseRankMap: Map<number, number> | null = null;
   private readonly SNAPSHOT_KEY = 'positions_snapshot';
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
@@ -95,12 +96,19 @@ export class NpositionsTable implements OnChanges {
         // Sin cambio: mantener tendencias guardadas
         trend = this.savedTrends.get(player.id) ?? 'neutral';
       } else {
-        // Primera vez (sin snapshot): usar position de ndata.json
-        const basePosition = player.position > 0 ? player.position : undefined;
+        // Primera vez (sin snapshot): comparar contra rank base de ndata
+        let baseRank: number | undefined;
+        if (player.position > 0) {
+          baseRank = player.position;
+        } else {
+          if (!this.baseRankMap) {
+            this.baseRankMap = this.computeNdataBaseRanks();
+          }
+          baseRank = this.baseRankMap.get(player.id);
+        }
         trend = 'neutral';
-        if (basePosition !== undefined) {
-          if (currentRank < basePosition) trend = 'up';
-          else if (currentRank > basePosition) trend = 'down';
+        if (baseRank !== undefined && baseRank !== currentRank) {
+          trend = currentRank < baseRank ? 'up' : 'down';
         }
       }
 
@@ -111,6 +119,17 @@ export class NpositionsTable implements OnChanges {
     if (ranksChanged || this.savedRanks.size === 0) {
       this.saveSnapshot();
     }
+  }
+
+  private computeNdataBaseRanks(): Map<number, number> {
+    const data = this.dataService.worldCupData();
+    if (!data) return new Map();
+    const sorted = [...data.players].sort((a: any, b: any) =>
+      b.total_score - a.total_score || a.id - b.id
+    );
+    const map = new Map<number, number>();
+    sorted.forEach((p: any, i: number) => map.set(p.id, i + 1));
+    return map;
   }
 
   private saveSnapshot(): void {

@@ -54,6 +54,7 @@ export class NresultsTable implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.saveEditsToStorage();
+    this.persistScores();
     this.destroy$.next();
     this.destroy$.complete();
   }
@@ -200,6 +201,7 @@ private restoreEditsFromStorage() {
     });
   });
   this.recalculateAllScores();
+  this.persistScores();
 }
 
 get visiblePlayers(): Player[] {
