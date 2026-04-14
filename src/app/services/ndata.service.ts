@@ -14,9 +14,9 @@ export class NDataService {
 
   // Scores separados — nunca tocan #ndata
   #baseScores = signal(new Map<number, number>());
-  #gamePoints = signal<Map<number, number>>(new Map());
+  #gamePoints = signal<Map<number, Map<number, number>>>(new Map());
   #groupPoints = signal<Map<number, number>>(new Map());
-  #qualifiedPoints = signal<Map<number, number>>(new Map());
+  #qualifiedPoints = signal<Map<number, Map<number, number>>>(new Map());
   #finalistPointsMap = signal<Map<number, Map<number, number>>>(new Map());
 
   private mapToArray(m: Map<number, number>): [number, number][] {
@@ -25,14 +25,22 @@ export class NDataService {
 
   private saveScores(): void {
     if (!isPlatformBrowser(this.platformId)) return;
+    const gameObj: Record<number, [number, number][]> = {};
+    this.#gamePoints().forEach((phaseMap, phase) => {
+      gameObj[phase] = this.mapToArray(phaseMap);
+    });
+    const qualifiedObj: Record<number, [number, number][]> = {};
+    this.#qualifiedPoints().forEach((phaseMap, phase) => {
+      qualifiedObj[phase] = this.mapToArray(phaseMap);
+    });
     const finalistObj: Record<number, [number, number][]> = {};
     this.#finalistPointsMap().forEach((phaseMap, phase) => {
       finalistObj[phase] = this.mapToArray(phaseMap);
     });
     sessionStorage.setItem(this.SCORES_KEY, JSON.stringify({
-      game: this.mapToArray(this.#gamePoints()),
+      game: gameObj,
       group: this.mapToArray(this.#groupPoints()),
-      qualified: this.mapToArray(this.#qualifiedPoints()),
+      qualified: qualifiedObj,
       finalist: finalistObj,
     }));
   }
@@ -42,9 +50,21 @@ export class NDataService {
     const raw = sessionStorage.getItem(this.SCORES_KEY);
     if (!raw) return;
     const saved = JSON.parse(raw);
-    if (saved.game) this.#gamePoints.set(new Map(saved.game));
+    if (saved.game) {
+      const gameMap = new Map<number, Map<number, number>>();
+      Object.entries(saved.game).forEach(([phase, entries]) => {
+        gameMap.set(Number(phase), new Map(entries as [number, number][]));
+      });
+      this.#gamePoints.set(gameMap);
+    }
     if (saved.group) this.#groupPoints.set(new Map(saved.group));
-    if (saved.qualified) this.#qualifiedPoints.set(new Map(saved.qualified));
+    if (saved.qualified) {
+      const qualMap = new Map<number, Map<number, number>>();
+      Object.entries(saved.qualified).forEach(([phase, entries]) => {
+        qualMap.set(Number(phase), new Map(entries as [number, number][]));
+      });
+      this.#qualifiedPoints.set(qualMap);
+    }
     if (saved.finalist) {
       const finalistMap = new Map<number, Map<number, number>>();
       Object.entries(saved.finalist).forEach(([phase, entries]) => {
@@ -57,9 +77,11 @@ export class NDataService {
 readonly playerTotalScores = computed(() => {
   const scores = new Map<number, number>();
   this.#baseScores().forEach((base: number, playerId: number) => {
-    const games = this.#gamePoints().get(playerId) ?? 0;
+    const games = [...this.#gamePoints().values()]
+      .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
     const groups = this.#groupPoints().get(playerId) ?? 0;
-    const qualified = this.#qualifiedPoints().get(playerId) ?? 0;
+    const qualified = [...this.#qualifiedPoints().values()]
+      .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
     const finalist = [...this.#finalistPointsMap().values()]
       .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
     scores.set(playerId, base + games + groups + qualified + finalist);
@@ -111,8 +133,10 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
     this.#baseScores.set(newMap);
   }
 
-  setGamePoints(points: Map<number, number>) {
-    this.#gamePoints.set(new Map(points));
+  setGamePoints(phase: number, points: Map<number, number>) {
+    const current = new Map(this.#gamePoints());
+    current.set(phase, new Map(points));
+    this.#gamePoints.set(current);
     this.saveScores();
   }
 
@@ -130,8 +154,10 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
     return this.http.get<any>('ndata.json');
   }
 
-  setQualifiedPoints(points: Map<number, number>) {
-    this.#qualifiedPoints.set(new Map(points));
+  setQualifiedPoints(phase: number, points: Map<number, number>) {
+    const current = new Map(this.#qualifiedPoints());
+    current.set(phase, new Map(points));
+    this.#qualifiedPoints.set(current);
     this.saveScores();
   }
 
@@ -190,6 +216,7 @@ resetSession(): void {
   for (let phase = 1; phase <= 6; phase++) {
     sessionStorage.removeItem(`game_edits_phase_${phase}`);
     sessionStorage.removeItem(`group_edits_phase_${phase}`);
+    sessionStorage.removeItem(`qualified_edits_phase_${phase}`);
   }
   sessionStorage.removeItem('positions_snapshot');
 }

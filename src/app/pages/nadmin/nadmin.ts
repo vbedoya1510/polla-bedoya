@@ -49,7 +49,16 @@ export class NAdmin {
       edits.forEach(e => gameEdits.set(e.id, { g1: e.g1, g2: e.g2 }));
     }
 
-    // 2. Edits de posiciones de equipos en grupos por fase
+    // 2. Edits de equipo clasificado por fase (fase 2 en adelante)
+    const qualifiedEdits = new Map<number, number>(); // gameId → teamId
+    for (let phase = 2; phase <= 6; phase++) {
+      const raw = sessionStorage.getItem(`qualified_edits_phase_${phase}`);
+      if (!raw) continue;
+      const edits: { gameId: number; teamId: number }[] = JSON.parse(raw);
+      edits.forEach(e => qualifiedEdits.set(e.gameId, e.teamId));
+    }
+
+    // 3. Edits de posiciones de equipos en grupos por fase
     const teamPositionEdits = new Map<number, number>();
     for (let phase = 1; phase <= 6; phase++) {
       const raw = sessionStorage.getItem(`group_edits_phase_${phase}`);
@@ -58,7 +67,7 @@ export class NAdmin {
       edits.forEach(e => teamPositionEdits.set(e.id, e.pos));
     }
 
-    // 3. Ranking de participantes desde positions_snapshot
+    // 4. Ranking de participantes desde positions_snapshot
     const playerRankMap = new Map<number, number>();
     const snapshotRaw = sessionStorage.getItem('positions_snapshot');
     if (snapshotRaw) {
@@ -69,19 +78,19 @@ export class NAdmin {
       ranks.forEach(r => playerRankMap.set(r.id, r.rank));
     }
 
-    // 4. Puntajes totales calculados
+    // 5. Puntajes totales calculados
     const totalScores = this.dataService.playerTotalScores();
 
     // --- Construir el ndata exportado ---
 
     const games = base.games.map((g: any) => {
       const edit = gameEdits.get(g.id);
-      if (!edit) return g;
+      const qualEdit = qualifiedEdits.get(g.id);
+      if (!edit && qualEdit === undefined) return g;
       return {
         ...g,
-        goals_team1: edit.g1,
-        goals_team2: edit.g2,
-        end_game: true,
+        ...(edit ? { goals_team1: edit.g1, goals_team2: edit.g2, end_game: true } : {}),
+        ...(qualEdit !== undefined ? { team_qualified: qualEdit } : {}),
       };
     });
 
@@ -108,7 +117,7 @@ export class NAdmin {
       players,
     };
 
-    // 5. Descargar como archivo JSON
+    // 6. Descargar como archivo JSON
     const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -119,7 +128,7 @@ export class NAdmin {
     a.click();
     URL.revokeObjectURL(url);
 
-    // 6. Limpiar caché y reiniciar la app desde ndata.json
+    // 7. Limpiar caché y reiniciar la app desde ndata.json
     this.dataService.resetSession();
     window.location.href = '/';
   }

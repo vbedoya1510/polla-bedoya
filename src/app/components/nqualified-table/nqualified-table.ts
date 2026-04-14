@@ -62,26 +62,33 @@ export class NqualifiedTable implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.saveToStorage();
+    this.persistScores();
     this.scoreChange$.complete();
   }
 
   private buildTable() {
-    this.qualifiedRows = this.games.map(game => ({
-      game,
-      selectedTeamId: game.team_qualified ?? 0,
-      locked: (game.team_qualified ?? 0) !== 0,
-      playerPredictions: this.players.map(player => {
-        const pred = this.predictionsGame.find(
-          p => p.idPlayer === player.id && p.idGame === game.id
-        );
-        return {
-          player,
-          predictedTeamId: pred?.team_qualified?.id ?? 0,
-          points: 0,
-          correct: false
-        };
-      })
-    }));
+    this.qualifiedRows = this.games.map(game => {
+      const locked = (game.team_qualified ?? 0) !== 0;
+      const selectedTeamId = game.team_qualified ?? 0;
+      return {
+        game,
+        selectedTeamId,
+        locked,
+        playerPredictions: this.players.map(player => {
+          const pred = this.predictionsGame.find(
+            p => p.idPlayer === player.id && p.idGame === game.id
+          );
+          const predictedTeamId = pred?.team_qualified?.id ?? 0;
+          const correct = locked && predictedTeamId !== 0 && predictedTeamId === selectedTeamId;
+          return {
+            player,
+            predictedTeamId,
+            points: correct ? (this.phase?.classified_points ?? 0) : 0,
+            correct
+          };
+        })
+      };
+    });
 
     this.recalculateAllScores();
     this.restoreFromStorage();
@@ -109,7 +116,16 @@ export class NqualifiedTable implements OnInit, OnChanges, OnDestroy {
   }
 
   private persistScores() {
-    this.dataService.setQualifiedPoints(this.playerScores);
+    const nonLockedScores = new Map<number, number>();
+    this.players.forEach(p => nonLockedScores.set(p.id, 0));
+    this.qualifiedRows.forEach(row => {
+      if (row.locked) return;
+      row.playerPredictions.forEach(pp => {
+        const current = nonLockedScores.get(pp.player.id) ?? 0;
+        nonLockedScores.set(pp.player.id, current + pp.points);
+      });
+    });
+    this.dataService.setQualifiedPoints(this.phase?.id ?? 2, nonLockedScores);
   }
 
   private saveToStorage() {
@@ -135,6 +151,7 @@ export class NqualifiedTable implements OnInit, OnChanges, OnDestroy {
       });
     });
     this.recalculateAllScores();
+    this.persistScores();
   }
 
   getPlayerScore(playerId: number): number {

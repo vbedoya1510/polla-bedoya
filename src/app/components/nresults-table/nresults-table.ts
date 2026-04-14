@@ -162,7 +162,7 @@ private buildTable() {
         editedScores.set(pp.player.id, current + pp.points);
       });
     });
-    this.dataService.setGamePoints(editedScores);
+    this.dataService.setGamePoints(this.phase?.id ?? 1, editedScores);
   }
 
   getPlayerScore(playerId: number): number {
