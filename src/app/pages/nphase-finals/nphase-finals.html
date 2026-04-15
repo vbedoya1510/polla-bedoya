@@ -17,6 +17,7 @@
 </div>
 
 <!-- SEMIFINALES -->
+@if (phaseUnlocked()[5]) {
 <div class="phase-section">
   <div class="phase-title">SEMIFINALES</div>
   <app-nresults-table
@@ -32,10 +33,12 @@
     [phase]="phase5">
   </app-nqualified-table>
 </div>
+}
 
 <!-- 3ER PUESTO Y FINAL -->
+@if (phaseUnlocked()[6]) {
 <div class="phase-section">
-  <div class="phase-title">3ER PUESTO Y FINAL</div>
+  <div class="phase-title-final">3ER PUESTO Y FINAL</div>
   <app-nresults-table
     [games]="gamesPhase6"
     [players]="players"
@@ -43,3 +46,4 @@
     [phase]="phase6">
   </app-nresults-table>
 </div>
+}

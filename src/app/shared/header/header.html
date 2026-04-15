@@ -27,11 +27,11 @@
       <li class="nav-item">
         <a class="nav-link" [class.disabled]="!phaseUnlocked()[4]" [style.opacity]="phaseUnlocked()[4] ? '1' : '0.4'"
           [style.pointer-events]="phaseUnlocked()[4] ? 'auto' : 'none'" routerLink="/finales"
-          routerLinkActive="active-link" (click)="isMenuOpen=false">4tos</a>
+          routerLinkActive="active-link" (click)="isMenuOpen=false">4tos + Finales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/posiciones" routerLinkActive="active-link" (click)="isMenuOpen=false">Pos
-          Finales</a>
+        <a class="nav-link" routerLink="/posiciones" routerLinkActive="active-link" (click)="isMenuOpen=false">Posiciones
+          Finalistas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/participantes" routerLinkActive="active-link"

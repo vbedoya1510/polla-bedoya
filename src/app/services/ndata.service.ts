@@ -76,13 +76,18 @@ export class NDataService {
 
 readonly playerTotalScores = computed(() => {
   const scores = new Map<number, number>();
+  const positions = this.#ndata()?.teamsPositions ?? [];
+  const positionsLocked = positions.length > 0 && positions.every((p: any) => p.idTeam !== 0);
+
   this.#baseScores().forEach((base: number, playerId: number) => {
     const games = [...this.#gamePoints().values()]
       .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
     const groups = this.#groupPoints().get(playerId) ?? 0;
     const qualified = [...this.#qualifiedPoints().values()]
       .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
-    const finalist = [...this.#finalistPointsMap().values()]
+    // Cuando las posiciones finales ya están cerradas en ndata (idTeam !== 0),
+    // esos puntos ya están incluidos en total_score — no sumar de nuevo
+    const finalist = positionsLocked ? 0 : [...this.#finalistPointsMap().values()]
       .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
     scores.set(playerId, base + games + groups + qualified + finalist);
   });
@@ -146,7 +151,7 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
   }
 
   getPrediction(idPhase: number) {
-    const phase = idPhase >= 1 && idPhase <= 5 ? idPhase : 1;
+    const phase = idPhase >= 1 && idPhase <= 6 ? idPhase : 1;
     return this.http.get<any>(`npredictionPhase${phase}.json`);
   }
 

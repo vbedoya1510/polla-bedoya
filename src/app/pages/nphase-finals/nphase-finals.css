@@ -43,3 +43,11 @@
   padding: 8px 12px;
   margin-bottom: 8px;
 }
+.phase-title-final {
+  background-color: #f4f5b7;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}

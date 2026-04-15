@@ -18,6 +18,7 @@ import { NqualifiedTable } from '../../components/nqualified-table/nqualified-ta
 export class NphaseFinals {
   private dataService = inject(NDataService);
   private cdr = inject(ChangeDetectorRef);
+  readonly phaseUnlocked = this.dataService.phaseUnlocked;
 
   teams: Team[] = [];
   players: Player[] = [];
