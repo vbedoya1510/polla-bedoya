@@ -1,3 +1,8 @@
+.navbar {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .player-filter {
   width: auto;
   min-width: 150px;

@@ -56,3 +56,20 @@ select {
   margin-bottom: 12px;
   font-weight: 600;
 }
+
+@media (max-width: 600px) {
+  .finals-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .panel-image {
+    width: 100%;
+    height: 160px;
+  }
+
+  .scorer-panel {
+    min-width: unset;
+    width: 100%;
+  }
+}
