@@ -18,6 +18,8 @@ export class NDataService {
   #groupPoints = signal<Map<number, number>>(new Map());
   #qualifiedPoints = signal<Map<number, Map<number, number>>>(new Map());
   #finalistPointsMap = signal<Map<number, Map<number, number>>>(new Map());
+  // Estado locked de las posiciones finales al momento de la carga inicial
+  #originalPositionsLocked = signal(false);
 
   private mapToArray(m: Map<number, number>): [number, number][] {
     return [...m.entries()];
@@ -76,8 +78,8 @@ export class NDataService {
 
 readonly playerTotalScores = computed(() => {
   const scores = new Map<number, number>();
-  const positions = this.#ndata()?.teamsPositions ?? [];
-  const positionsLocked = positions.length > 0 && positions.every((p: any) => p.idTeam !== 0);
+  // Usar el estado locked de la carga inicial, no el actual (evita que ediciones de sesión anulen los puntos)
+  const positionsLocked = this.#originalPositionsLocked();
 
   this.#baseScores().forEach((base: number, playerId: number) => {
     const games = [...this.#gamePoints().values()]
@@ -136,6 +138,10 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
     const newMap = new Map<number, number>();
     players.forEach((p: any) => newMap.set(p.id, p.total_score));
     this.#baseScores.set(newMap);
+    // Capturar el estado locked de las posiciones tal como vienen del JSON original
+    const positions = this.#ndata()?.teamsPositions ?? [];
+    const locked = positions.length > 0 && positions.every((p: any) => p.idTeam !== 0);
+    this.#originalPositionsLocked.set(locked);
   }
 
   setGamePoints(phase: number, points: Map<number, number>) {
