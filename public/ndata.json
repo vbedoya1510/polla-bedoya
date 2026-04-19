@@ -541,6 +541,15 @@
       "pay": false,
       "total_score": 0,
       "position": 0
+    },
+    {
+      "id": 22,
+      "name": "Nelson Loaiza V.",
+      "phone": "3003704031",
+      "email": "nelsonloaiza656valencia@gmail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 0
     }
   ],
   "games": [

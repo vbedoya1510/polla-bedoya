@@ -12137,6 +12137,584 @@
         }
       ],
       "teamScorer": 36
+    },
+    {
+      "id": 22,
+      "teamsGroupOrder": [
+        {
+          "team": 1,
+          "position": 1
+        },
+        {
+          "team": 4,
+          "position": 2
+        },
+        {
+          "team": 3,
+          "position": 3
+        },
+        {
+          "team": 2,
+          "position": 4
+        },
+        {
+          "team": 8,
+          "position": 1
+        },
+        {
+          "team": 5,
+          "position": 2
+        },
+        {
+          "team": 6,
+          "position": 3
+        },
+        {
+          "team": 7,
+          "position": 4
+        },
+        {
+          "team": 9,
+          "position": 1
+        },
+        {
+          "team": 12,
+          "position": 2
+        },
+        {
+          "team": 10,
+          "position": 3
+        },
+        {
+          "team": 11,
+          "position": 4
+        },
+        {
+          "team": 13,
+          "position": 1
+        },
+        {
+          "team": 14,
+          "position": 2
+        },
+        {
+          "team": 15,
+          "position": 3
+        },
+        {
+          "team": 16,
+          "position": 4
+        },
+        {
+          "team": 17,
+          "position": 1
+        },
+        {
+          "team": 20,
+          "position": 2
+        },
+        {
+          "team": 19,
+          "position": 3
+        },
+        {
+          "team": 18,
+          "position": 4
+        },
+        {
+          "team": 21,
+          "position": 1
+        },
+        {
+          "team": 23,
+          "position": 2
+        },
+        {
+          "team": 22,
+          "position": 3
+        },
+        {
+          "team": 24,
+          "position": 4
+        },
+        {
+          "team": 25,
+          "position": 1
+        },
+        {
+          "team": 26,
+          "position": 2
+        },
+        {
+          "team": 27,
+          "position": 3
+        },
+        {
+          "team": 28,
+          "position": 4
+        },
+        {
+          "team": 29,
+          "position": 1
+        },
+        {
+          "team": 32,
+          "position": 2
+        },
+        {
+          "team": 31,
+          "position": 3
+        },
+        {
+          "team": 30,
+          "position": 4
+        },
+        {
+          "team": 33,
+          "position": 1
+        },
+        {
+          "team": 36,
+          "position": 2
+        },
+        {
+          "team": 35,
+          "position": 3
+        },
+        {
+          "team": 34,
+          "position": 4
+        },
+        {
+          "team": 37,
+          "position": 1
+        },
+        {
+          "team": 39,
+          "position": 2
+        },
+        {
+          "team": 38,
+          "position": 3
+        },
+        {
+          "team": 40,
+          "position": 4
+        },
+        {
+          "team": 41,
+          "position": 1
+        },
+        {
+          "team": 44,
+          "position": 2
+        },
+        {
+          "team": 42,
+          "position": 3
+        },
+        {
+          "team": 43,
+          "position": 4
+        },
+        {
+          "team": 45,
+          "position": 1
+        },
+        {
+          "team": 46,
+          "position": 2
+        },
+        {
+          "team": 48,
+          "position": 3
+        },
+        {
+          "team": 47,
+          "position": 4
+        }
+      ],
+      "teamsFinalsOrder": [
+        {
+          "team": 29,
+          "position": 1
+        },
+        {
+          "team": 33,
+          "position": 2
+        },
+        {
+          "team": 9,
+          "position": 3
+        },
+        {
+          "team": 37,
+          "position": 4
+        }
+      ],
+      "games": [
+        {
+          "game": 1,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 2,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 3,
+          "goals_team1": 1,
+          "goals_team2": 0
+        },
+        {
+          "game": 4,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 5,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 6,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 7,
+          "goals_team1": 0,
+          "goals_team2": 2
+        },
+        {
+          "game": 8,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 9,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 10,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 11,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 12,
+          "goals_team1": 1,
+          "goals_team2": 0
+        },
+        {
+          "game": 13,
+          "goals_team1": 3,
+          "goals_team2": 0
+        },
+        {
+          "game": 14,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 15,
+          "goals_team1": 0,
+          "goals_team2": 2
+        },
+        {
+          "game": 16,
+          "goals_team1": 1,
+          "goals_team2": 0
+        },
+        {
+          "game": 17,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 18,
+          "goals_team1": 0,
+          "goals_team2": 2
+        },
+        {
+          "game": 19,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 20,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 21,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 22,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 23,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 24,
+          "goals_team1": 0,
+          "goals_team2": 2
+        },
+        {
+          "game": 25,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 26,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 27,
+          "goals_team1": 1,
+          "goals_team2": 1
+        },
+        {
+          "game": 28,
+          "goals_team1": 1,
+          "goals_team2": 0
+        },
+        {
+          "game": 29,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 30,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 31,
+          "goals_team1": 3,
+          "goals_team2": 0
+        },
+        {
+          "game": 32,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 33,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 34,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 35,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 36,
+          "goals_team1": 0,
+          "goals_team2": 1
+        },
+        {
+          "game": 37,
+          "goals_team1": 3,
+          "goals_team2": 0
+        },
+        {
+          "game": 38,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 39,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 40,
+          "goals_team1": 1,
+          "goals_team2": 1
+        },
+        {
+          "game": 41,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 42,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 43,
+          "goals_team1": 1,
+          "goals_team2": 0
+        },
+        {
+          "game": 44,
+          "goals_team1": 0,
+          "goals_team2": 1
+        },
+        {
+          "game": 45,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 46,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 47,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 48,
+          "goals_team1": 3,
+          "goals_team2": 1
+        },
+        {
+          "game": 49,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 50,
+          "goals_team1": 1,
+          "goals_team2": 1
+        },
+        {
+          "game": 51,
+          "goals_team1": 1,
+          "goals_team2": 3
+        },
+        {
+          "game": 52,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 53,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 54,
+          "goals_team1": 1,
+          "goals_team2": 1
+        },
+        {
+          "game": 55,
+          "goals_team1": 0,
+          "goals_team2": 1
+        },
+        {
+          "game": 56,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 57,
+          "goals_team1": 0,
+          "goals_team2": 1
+        },
+        {
+          "game": 58,
+          "goals_team1": 0,
+          "goals_team2": 2
+        },
+        {
+          "game": 59,
+          "goals_team1": 1,
+          "goals_team2": 3
+        },
+        {
+          "game": 60,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 61,
+          "goals_team1": 1,
+          "goals_team2": 3
+        },
+        {
+          "game": 62,
+          "goals_team1": 0,
+          "goals_team2": 1
+        },
+        {
+          "game": 63,
+          "goals_team1": 0,
+          "goals_team2": 2
+        },
+        {
+          "game": 64,
+          "goals_team1": 1,
+          "goals_team2": 2
+        },
+        {
+          "game": 65,
+          "goals_team1": 2,
+          "goals_team2": 1
+        },
+        {
+          "game": 66,
+          "goals_team1": 1,
+          "goals_team2": 3
+        },
+        {
+          "game": 67,
+          "goals_team1": 1,
+          "goals_team2": 3
+        },
+        {
+          "game": 68,
+          "goals_team1": 2,
+          "goals_team2": 0
+        },
+        {
+          "game": 69,
+          "goals_team1": 1,
+          "goals_team2": 1
+        },
+        {
+          "game": 70,
+          "goals_team1": 1,
+          "goals_team2": 1
+        },
+        {
+          "game": 71,
+          "goals_team1": 0,
+          "goals_team2": 1
+        },
+        {
+          "game": 72,
+          "goals_team1": 1,
+          "goals_team2": 3
+        }
+      ],
+      "teamScorer": 33
     }
   ]
 }
