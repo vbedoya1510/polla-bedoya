@@ -4,7 +4,7 @@
   "outputDirectory": "dist/polla-bedoya/browser",
   "functions": {
     "dist/polla-bedoya/server/server.mjs": {
-      "runtime": "nodejs20.x"
+      "runtime": "@vercel/node@3"
     }
   },
   "routes": [
