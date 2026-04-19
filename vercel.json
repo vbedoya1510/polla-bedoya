@@ -1,8 +1,24 @@
 {
-  "rewrites": [
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "dist/polla-bedoya/browser",
+  "functions": {
+    "dist/polla-bedoya/server/server.mjs": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)\\.(js|css|ico|png|jpg|jpeg|svg|json|webp)$",
+      "dest": "/$0"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.mjs"
     }
   ]
 }
