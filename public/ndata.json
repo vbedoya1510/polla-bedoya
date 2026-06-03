@@ -67,73 +67,73 @@
       "id": 1,
       "name": "México",
       "group": "A",
-      "position": 1
+      "position": 0
     },
     {
       "id": 2,
       "name": "Sudáfrica",
       "group": "A",
-      "position": 2
+      "position": 0
     },
     {
       "id": 3,
       "name": "Corea del Sur",
       "group": "A",
-      "position": 3
+      "position": 0
     },
     {
       "id": 4,
       "name": "República Checa",
       "group": "A",
-      "position": 4
+      "position": 0
     },
     {
       "id": 5,
       "name": "Canadá",
       "group": "B",
-      "position": 1
+      "position": 0
     },
     {
       "id": 6,
       "name": "Bosnia",
       "group": "B",
-      "position": 3
+      "position": 0
     },
     {
       "id": 7,
       "name": "Qatar",
       "group": "B",
-      "position": 4
+      "position": 0
     },
     {
       "id": 8,
       "name": "Suiza",
       "group": "B",
-      "position": 2
+      "position": 0
     },
     {
       "id": 9,
       "name": "Brasil",
       "group": "C",
-      "position": 1
+      "position": 0
     },
     {
       "id": 10,
       "name": "Marruecos",
       "group": "C",
-      "position": 3
+      "position": 0
     },
     {
       "id": 11,
       "name": "Haití",
       "group": "C",
-      "position": 4
+      "position": 0
     },
     {
       "id": 12,
       "name": "Escocia",
       "group": "C",
-      "position": 2
+      "position": 0
     },
     {
       "id": 13,
@@ -163,230 +163,230 @@
       "id": 17,
       "name": "Alemania",
       "group": "E",
-      "position": 1
+      "position": 0
     },
     {
       "id": 18,
       "name": "Curazao",
       "group": "E",
-      "position": 4
+      "position": 0
     },
     {
       "id": 19,
       "name": "Costa de Marfil",
       "group": "E",
-      "position": 3
+      "position": 0
     },
     {
       "id": 20,
       "name": "Ecuador",
       "group": "E",
-      "position": 4
+      "position": 0
     },
     {
       "id": 21,
       "name": "Países Bajos",
       "group": "F",
-      "position": 1
+      "position": 0
     },
     {
       "id": 22,
       "name": "Japón",
       "group": "F",
-      "position": 2
+      "position": 0
     },
     {
       "id": 23,
       "name": "Suecia",
       "group": "F",
-      "position": 3
+      "position": 0
     },
     {
       "id": 24,
       "name": "Túnez",
       "group": "F",
-      "position": 4
+      "position": 0
     },
     {
       "id": 25,
       "name": "Bélgica",
       "group": "G",
-      "position": 2
+      "position": 0
     },
     {
       "id": 26,
       "name": "Egipto",
       "group": "G",
-      "position": 1
+      "position": 0
     },
     {
       "id": 27,
       "name": "Irán",
       "group": "G",
-      "position": 3
+      "position": 0
     },
     {
       "id": 28,
       "name": "Nueva Zelanda",
       "group": "G",
-      "position": 4
+      "position": 0
     },
     {
       "id": 29,
       "name": "España",
       "group": "H",
-      "position": 1
+      "position": 0
     },
     {
       "id": 30,
       "name": "Cabo Verde",
       "group": "H",
-      "position": 4
+      "position": 0
     },
     {
       "id": 31,
       "name": "Arabia Saudita",
       "group": "H",
-      "position": 3
+      "position": 0
     },
     {
       "id": 32,
       "name": "Uruguay",
       "group": "H",
-      "position": 2
+      "position": 0
     },
     {
       "id": 33,
       "name": "Francia",
       "group": "I",
-      "position": 1
+      "position": 0
     },
     {
       "id": 34,
       "name": "Senegal",
       "group": "I",
-      "position": 2
+      "position": 0
     },
     {
       "id": 35,
       "name": "Irak",
       "group": "I",
-      "position": 4
+      "position": 0
     },
     {
       "id": 36,
       "name": "Noruega",
       "group": "I",
-      "position": 3
+      "position": 0
     },
     {
       "id": 37,
       "name": "Argentina",
       "group": "J",
-      "position": 1
+      "position": 0
     },
     {
       "id": 38,
       "name": "Argelia",
       "group": "J",
-      "position": 3
+      "position": 0
     },
     {
       "id": 39,
       "name": "Austria",
       "group": "J",
-      "position": 2
+      "position": 0
     },
     {
       "id": 40,
       "name": "Jordania",
       "group": "J",
-      "position": 4
+      "position": 0
     },
     {
       "id": 41,
       "name": "Portugal",
       "group": "K",
-      "position": 2
+      "position": 0
     },
     {
       "id": 42,
       "name": "RD de Congo",
       "group": "K",
-      "position": 4
+      "position": 0
     },
     {
       "id": 43,
       "name": "Uzbekistán",
       "group": "K",
-      "position": 3
+      "position": 0
     },
     {
       "id": 44,
       "name": "Colombia",
       "group": "K",
-      "position": 1
+      "position": 0
     },
     {
       "id": 45,
       "name": "Inglaterra",
       "group": "L",
-      "position": 2
+      "position": 0
     },
     {
       "id": 46,
       "name": "Croacia",
       "group": "L",
-      "position": 1
+      "position": 0
     },
     {
       "id": 47,
       "name": "Ghana",
       "group": "L",
-      "position": 3
+      "position": 0
     },
     {
       "id": 48,
       "name": "Panamá",
       "group": "L",
-      "position": 4
+      "position": 0
     }
   ],
-  "players": [
+"players": [
     {
       "id": 1,
-      "name": "Andres Bedoya",
+      "name": "Ana Maria",
       "phone": "3013356886",
       "email": "player1@mail.com",
       "pay": false,
-      "total_score": 182,
+      "total_score": 0,
       "position": 13
     },
     {
       "id": 2,
-      "name": "Nelson Hernandez",
+      "name": "Pepito Perez",
       "phone": "3039958838",
       "email": "player2@mail.com",
       "pay": true,
-      "total_score": 244,
+      "total_score": 0,
       "position": 1
     },
     {
       "id": 3,
-      "name": "Henry Bedoya",
-      "phone": "3083197857",
+      "name": "Julian Abadia",
+      "phone": "3137131983",
       "email": "player3@mail.com",
       "pay": true,
-      "total_score": 186,
+      "total_score": 0,
       "position": 10
     },
     {
       "id": 4,
-      "name": "Victor Reyes",
+      "name": "Juanito Alimana",
       "phone": "3066629388",
       "email": "player4@mail.com",
       "pay": true,
-      "total_score": 168,
+      "total_score": 0,
       "position": 18
     },
     {
@@ -395,7 +395,7 @@
       "phone": "3022575562",
       "email": "player5@mail.com",
       "pay": true,
-      "total_score": 170,
+      "total_score": 0,
       "position": 17
     },
     {
@@ -404,7 +404,7 @@
       "phone": "3077827638",
       "email": "player6@mail.com",
       "pay": true,
-      "total_score": 174,
+      "total_score": 0,
       "position": 15
     },
     {
@@ -413,16 +413,16 @@
       "phone": "3036687537",
       "email": "player7@mail.com",
       "pay": false,
-      "total_score": 182,
+      "total_score": 0,
       "position": 14
     },
     {
       "id": 8,
-      "name": "Carlos Hernandez",
+      "name": "Alex Duarte",
       "phone": "3070291817",
       "email": "player8@mail.com",
       "pay": false,
-      "total_score": 120,
+      "total_score": 0,
       "position": 22
     },
     {
@@ -431,25 +431,25 @@
       "phone": "3031429110",
       "email": "player9@mail.com",
       "pay": false,
-      "total_score": 190,
+      "total_score": 0,
       "position": 9
     },
     {
       "id": 10,
-      "name": "Luis Vargas",
-      "phone": "3047295260",
+      "name": "Pablo y Valeria",
+      "phone": "3016824179",
       "email": "player10@mail.com",
       "pay": true,
-      "total_score": 220,
+      "total_score": 0,
       "position": 5
     },
     {
       "id": 11,
-      "name": "Juan Garcia",
+      "name": "Gonzalo Gomez",
       "phone": "3055176955",
       "email": "player11@mail.com",
       "pay": true,
-      "total_score": 144,
+      "total_score": 0,
       "position": 21
     },
     {
@@ -458,16 +458,16 @@
       "phone": "3060992979",
       "email": "player12@mail.com",
       "pay": true,
-      "total_score": 172,
+      "total_score": 0,
       "position": 16
     },
     {
       "id": 13,
-      "name": "Pedro Castro",
+      "name": "Pedro Pablo",
       "phone": "3056164955",
       "email": "player13@mail.com",
       "pay": false,
-      "total_score": 194,
+      "total_score": 0,
       "position": 8
     },
     {
@@ -476,16 +476,16 @@
       "phone": "3071662963",
       "email": "player14@mail.com",
       "pay": true,
-      "total_score": 212,
+      "total_score": 0,
       "position": 6
     },
     {
       "id": 15,
-      "name": "Jorge Morales",
-      "phone": "3020576383",
-      "email": "player15@mail.com",
-      "pay": false,
-      "total_score": 184,
+      "name": "Victor Bedoya",
+      "phone": "3117302366",
+      "email": "victorbedoya1510@mail.com",
+      "pay": true,
+      "total_score": 0,
       "position": 11
     },
     {
@@ -494,7 +494,7 @@
       "phone": "3058537831",
       "email": "player16@mail.com",
       "pay": true,
-      "total_score": 234,
+      "total_score": 0,
       "position": 2
     },
     {
@@ -503,7 +503,7 @@
       "phone": "3016150444",
       "email": "player17@mail.com",
       "pay": true,
-      "total_score": 156,
+      "total_score": 0,
       "position": 20
     },
     {
@@ -512,7 +512,7 @@
       "phone": "3020709497",
       "email": "player18@mail.com",
       "pay": true,
-      "total_score": 234,
+      "total_score": 0,
       "position": 3
     },
     {
@@ -521,35 +521,17 @@
       "phone": "3061019678",
       "email": "player19@mail.com",
       "pay": false,
-      "total_score": 164,
+      "total_score": 0,
       "position": 19
     },
     {
       "id": 20,
-      "name": "Valentina Romero",
+      "name": "Lina Bedoya",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 184,
+      "total_score": 0,
       "position": 12
-    },
-    {
-      "id": 21,
-      "name": "Querubin Bedoya M.",
-      "phone": "3043733559",
-      "email": "querubin.bedoya69@gmail.com",
-      "pay": false,
-      "total_score": 204,
-      "position": 7
-    },
-    {
-      "id": 22,
-      "name": "Nelson Loaiza V.",
-      "phone": "3003704031",
-      "email": "nelsonloaiza656valencia@gmail.com",
-      "pay": false,
-      "total_score": 224,
-      "position": 4
     }
   ],
   "games": [
@@ -558,9 +540,9 @@
       "phase": 1,
       "team1": 1,
       "team2": 2,
-      "goals_team1": 2,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -568,9 +550,9 @@
       "phase": 1,
       "team1": 3,
       "team2": 4,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -578,9 +560,9 @@
       "phase": 1,
       "team1": 5,
       "team2": 6,
-      "goals_team1": 1,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -590,7 +572,7 @@
       "team2": 14,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -600,7 +582,7 @@
       "team2": 8,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -609,8 +591,8 @@
       "team1": 9,
       "team2": 10,
       "goals_team1": 0,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -618,9 +600,9 @@
       "phase": 1,
       "team1": 11,
       "team2": 12,
-      "goals_team1": 3,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -628,9 +610,9 @@
       "phase": 1,
       "team1": 15,
       "team2": 16,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -638,9 +620,9 @@
       "phase": 1,
       "team1": 17,
       "team2": 18,
-      "goals_team1": 2,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -650,7 +632,7 @@
       "team2": 22,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -658,9 +640,9 @@
       "phase": 1,
       "team1": 19,
       "team2": 20,
-      "goals_team1": 3,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -668,9 +650,9 @@
       "phase": 1,
       "team1": 23,
       "team2": 24,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -678,9 +660,9 @@
       "phase": 1,
       "team1": 29,
       "team2": 30,
-      "goals_team1": 4,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -688,9 +670,9 @@
       "phase": 1,
       "team1": 25,
       "team2": 26,
-      "goals_team1": 3,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -700,7 +682,7 @@
       "team2": 32,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -708,9 +690,9 @@
       "phase": 1,
       "team1": 27,
       "team2": 28,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -718,9 +700,9 @@
       "phase": 1,
       "team1": 33,
       "team2": 34,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -728,9 +710,9 @@
       "phase": 1,
       "team1": 35,
       "team2": 36,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -739,8 +721,8 @@
       "team1": 37,
       "team2": 38,
       "goals_team1": 0,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -748,9 +730,9 @@
       "phase": 1,
       "team1": 39,
       "team2": 40,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -758,9 +740,9 @@
       "phase": 1,
       "team1": 41,
       "team2": 42,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -768,9 +750,9 @@
       "phase": 1,
       "team1": 45,
       "team2": 46,
-      "goals_team1": 2,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -780,7 +762,7 @@
       "team2": 48,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -788,9 +770,9 @@
       "phase": 1,
       "team1": 43,
       "team2": 44,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -800,7 +782,7 @@
       "team2": 2,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -809,8 +791,8 @@
       "team1": 8,
       "team2": 6,
       "goals_team1": 0,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -818,9 +800,9 @@
       "phase": 1,
       "team1": 5,
       "team2": 7,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -828,9 +810,9 @@
       "phase": 1,
       "team1": 1,
       "team2": 3,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -838,9 +820,9 @@
       "phase": 1,
       "team1": 13,
       "team2": 15,
-      "goals_team1": 3,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -850,7 +832,7 @@
       "team2": 10,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -858,9 +840,9 @@
       "phase": 1,
       "team1": 9,
       "team2": 11,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -868,9 +850,9 @@
       "phase": 1,
       "team1": 16,
       "team2": 14,
-      "goals_team1": 1,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -878,9 +860,9 @@
       "phase": 1,
       "team1": 21,
       "team2": 23,
-      "goals_team1": 1,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -889,8 +871,8 @@
       "team1": 17,
       "team2": 19,
       "goals_team1": 0,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -898,9 +880,9 @@
       "phase": 1,
       "team1": 20,
       "team2": 18,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -910,7 +892,7 @@
       "team2": 22,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -918,9 +900,9 @@
       "phase": 1,
       "team1": 29,
       "team2": 31,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -929,8 +911,8 @@
       "team1": 25,
       "team2": 27,
       "goals_team1": 0,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -938,9 +920,9 @@
       "phase": 1,
       "team1": 32,
       "team2": 30,
-      "goals_team1": 2,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -948,9 +930,9 @@
       "phase": 1,
       "team1": 28,
       "team2": 26,
-      "goals_team1": 2,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -960,7 +942,7 @@
       "team2": 39,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -968,9 +950,9 @@
       "phase": 1,
       "team1": 33,
       "team2": 35,
-      "goals_team1": 2,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -978,9 +960,9 @@
       "phase": 1,
       "team1": 36,
       "team2": 34,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -990,7 +972,7 @@
       "team2": 38,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -999,8 +981,8 @@
       "team1": 41,
       "team2": 43,
       "goals_team1": 0,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1008,9 +990,9 @@
       "phase": 1,
       "team1": 45,
       "team2": 47,
-      "goals_team1": 2,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1018,9 +1000,9 @@
       "phase": 1,
       "team1": 48,
       "team2": 46,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1028,9 +1010,9 @@
       "phase": 1,
       "team1": 44,
       "team2": 42,
-      "goals_team1": 3,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1038,9 +1020,9 @@
       "phase": 1,
       "team1": 8,
       "team2": 5,
-      "goals_team1": 1,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1050,7 +1032,7 @@
       "team2": 7,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1058,9 +1040,9 @@
       "phase": 1,
       "team1": 12,
       "team2": 9,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1068,9 +1050,9 @@
       "phase": 1,
       "team1": 10,
       "team2": 11,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1079,8 +1061,8 @@
       "team1": 4,
       "team2": 1,
       "goals_team1": 0,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1088,9 +1070,9 @@
       "phase": 1,
       "team1": 2,
       "team2": 3,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1098,9 +1080,9 @@
       "phase": 1,
       "team1": 18,
       "team2": 19,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1108,9 +1090,9 @@
       "phase": 1,
       "team1": 20,
       "team2": 17,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1120,7 +1102,7 @@
       "team2": 23,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1128,9 +1110,9 @@
       "phase": 1,
       "team1": 24,
       "team2": 21,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1138,9 +1120,9 @@
       "phase": 1,
       "team1": 16,
       "team2": 13,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1150,7 +1132,7 @@
       "team2": 15,
       "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1158,9 +1140,9 @@
       "phase": 1,
       "team1": 36,
       "team2": 33,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1169,8 +1151,8 @@
       "team1": 34,
       "team2": 35,
       "goals_team1": 0,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1178,9 +1160,9 @@
       "phase": 1,
       "team1": 30,
       "team2": 31,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1189,8 +1171,8 @@
       "team1": 32,
       "team2": 29,
       "goals_team1": 0,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1198,9 +1180,9 @@
       "phase": 1,
       "team1": 26,
       "team2": 27,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1208,9 +1190,9 @@
       "phase": 1,
       "team1": 28,
       "team2": 25,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1218,9 +1200,9 @@
       "phase": 1,
       "team1": 48,
       "team2": 45,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1229,8 +1211,8 @@
       "team1": 46,
       "team2": 47,
       "goals_team1": 0,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1238,9 +1220,9 @@
       "phase": 1,
       "team1": 44,
       "team2": 41,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1248,9 +1230,9 @@
       "phase": 1,
       "team1": 42,
       "team2": 43,
-      "goals_team1": 1,
-      "goals_team2": 1,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1258,9 +1240,9 @@
       "phase": 1,
       "team1": 38,
       "team2": 39,
-      "goals_team1": 1,
+      "goals_team1": 0,
       "goals_team2": 0,
-      "end_game": true,
+      "end_game": false,
       "team_qualified": 0
     },
     {
@@ -1268,9 +1250,9 @@
       "phase": 1,
       "team1": 40,
       "team2": 37,
-      "goals_team1": 1,
-      "goals_team2": 2,
-      "end_game": true,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
       "team_qualified": 0
     },
     {
