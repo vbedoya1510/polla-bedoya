@@ -364,7 +364,7 @@
     },
     {
       "id": 2,
-      "name": "Pepito Perez",
+      "name": "Jorge E. Salazar",
       "phone": "3039958838",
       "email": "player2@mail.com",
       "pay": true,
@@ -427,7 +427,7 @@
     },
     {
       "id": 9,
-      "name": "Maria Perez",
+      "name": "Nano Loaiza",
       "phone": "3031429110",
       "email": "player9@mail.com",
       "pay": false,
@@ -445,7 +445,7 @@
     },
     {
       "id": 11,
-      "name": "Gonzalo Gomez",
+      "name": "Martha Bedoya",
       "phone": "3055176955",
       "email": "player11@mail.com",
       "pay": true,
