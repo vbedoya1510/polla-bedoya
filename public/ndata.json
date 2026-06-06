@@ -355,7 +355,7 @@
 "players": [
     {
       "id": 1,
-      "name": "Ana Maria",
+      "name": "Clemencia Loaiza",
       "phone": "3013356886",
       "email": "player1@mail.com",
       "pay": false,
@@ -490,7 +490,7 @@
     },
     {
       "id": 16,
-      "name": "Diana Mendez",
+      "name": "Nelson Loaiza",
       "phone": "3058537831",
       "email": "player16@mail.com",
       "pay": true,
