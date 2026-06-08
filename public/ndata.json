@@ -382,7 +382,7 @@
     },
     {
       "id": 4,
-      "name": "Juanito Alimana",
+      "name": "Ana Sofia",
       "phone": "3066629388",
       "email": "player4@mail.com",
       "pay": true,
@@ -409,7 +409,7 @@
     },
     {
       "id": 7,
-      "name": "Santiago Ruiz",
+      "name": "Daniel Trejos",
       "phone": "3036687537",
       "email": "player7@mail.com",
       "pay": false,
@@ -454,7 +454,7 @@
     },
     {
       "id": 12,
-      "name": "Ana Rodriguez",
+      "name": "Mario Jaramillo",
       "phone": "3060992979",
       "email": "player12@mail.com",
       "pay": true,
@@ -472,7 +472,7 @@
     },
     {
       "id": 14,
-      "name": "Laura Gomez",
+      "name": "Jimena Quiceno",
       "phone": "3071662963",
       "email": "player14@mail.com",
       "pay": true,
@@ -499,7 +499,7 @@
     },
     {
       "id": 17,
-      "name": "Miguel Rodriguez",
+      "name": "Francedy Bedoya",
       "phone": "3016150444",
       "email": "player17@mail.com",
       "pay": true,
@@ -527,6 +527,96 @@
     {
       "id": 20,
       "name": "Lina Bedoya",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 22,
+      "name": "Cristian Piedrahita",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 23,
+      "name": "Juanjo y Aleja",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 24,
+      "name": "Luisa Espinal",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+     {
+      "id": 25,
+      "name": "Victor Quiceno",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 26,
+      "name": "Querubin Bedoya",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 27,
+      "name": "Doris Botía",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 29,
+      "name": "Sandra y Jorge",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 30,
+      "name": "Diego Loaiza",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 31,
+      "name": "Gustavo Bedoya",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 32,
+      "name": "Leidy Quiceno",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
