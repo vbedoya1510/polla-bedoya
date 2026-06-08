@@ -463,7 +463,7 @@
     },
     {
       "id": 13,
-      "name": "Pedro Pablo",
+      "name": "Jose L. Rodriguez",
       "phone": "3056164955",
       "email": "player13@mail.com",
       "pay": false,
@@ -508,7 +508,7 @@
     },
     {
       "id": 18,
-      "name": "Paula Ramirez",
+      "name": "Carlos Grajales",
       "phone": "3020709497",
       "email": "player18@mail.com",
       "pay": true,
@@ -517,7 +517,7 @@
     },
     {
       "id": 19,
-      "name": "Sergio Bedoya",
+      "name": "Jorge E. Gomez",
       "phone": "3061019678",
       "email": "player19@mail.com",
       "pay": false,
@@ -571,7 +571,7 @@
     },
     {
       "id": 26,
-      "name": "Querubin Bedoya",
+      "name": "Querubin Bedoya1",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
@@ -617,6 +617,78 @@
     {
       "id": 32,
       "name": "Leidy Quiceno",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 33,
+      "name": "Santiago Raigosa",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 33,
+      "name": "Mariana Bustamante",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 34,
+      "name": "Javier Suarez",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 35,
+      "name": "Ernesto Tabares",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 36,
+      "name": "Marlon Tavera",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 37,
+      "name": "Camila Bedoya",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 36,
+      "name": "Andres E. Perez",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 50,
+      "name": "Querubin Bedoya2",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
