@@ -534,6 +534,15 @@
       "position": 12
     },
     {
+      "id": 21,
+      "name": "Norbey Alzate",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
       "id": 22,
       "name": "Cristian Piedrahita",
       "phone": "3095320121",
@@ -643,7 +652,7 @@
     },
     {
       "id": 34,
-      "name": "Javier Suarez",
+      "name": "Ernesto Tabares",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
@@ -652,7 +661,7 @@
     },
     {
       "id": 35,
-      "name": "Ernesto Tabares",
+      "name": "Carlos A. Toro",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
@@ -679,7 +688,25 @@
     },
     {
       "id": 38,
+      "name": "Javier Suarez",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },    
+    {
+      "id": 39,
       "name": "Andres E. Perez",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
+      "id": 40,
+      "name": "Gladys Bedoya",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
