@@ -597,6 +597,15 @@
       "position": 12
     },
     {
+      "id": 28,
+      "name": "David Jaramillo",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },
+    {
       "id": 29,
       "name": "Sandra y Jorge",
       "phone": "3095320121",
@@ -642,17 +651,8 @@
       "position": 12
     },
     {
-      "id": 33,
-      "name": "Mariana Bustamante",
-      "phone": "3095320121",
-      "email": "player20@mail.com",
-      "pay": false,
-      "total_score": 0,
-      "position": 12
-    },
-    {
       "id": 34,
-      "name": "Ernesto Tabares",
+      "name": "Mariana Bustamante",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
@@ -706,13 +706,22 @@
     },
     {
       "id": 40,
-      "name": "Gladys Bedoya",
+      "name": "Gladys y Luis",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 0,
       "position": 12
     },
+    {
+      "id": 41,
+      "name": "Ernesto Tabares",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 12
+    },    
     {
       "id": 50,
       "name": "Querubin Bedoya2",
