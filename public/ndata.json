@@ -760,16 +760,34 @@
     },
     {
       "id": 46,
-      "name": "Felipe Pineda",
+      "name": "Jorge Chaparro",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 0,
       "position": 46
     },
+    {
+      "id": 47,
+      "name": "Felipe Pineda",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 47
+    },
+     {
+      "id": 48,
+      "name": "Adrian Trejos",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 48
+    },    
      {
       "id": 49,
-      "name": "Adrian Trejos",
+      "name": "Jaime Chaparro",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
