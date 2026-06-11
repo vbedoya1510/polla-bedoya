@@ -684,7 +684,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 0,
-      "position": 27
+      "position": 37
     },
     {
       "id": 38,
@@ -796,12 +796,30 @@
     },    
     {
       "id": 50,
-      "name": "Querubin Bedoya2",
+      "name": "Angela Gaviria",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 0,
       "position": 50
+    },
+    {
+      "id": 51,
+      "name": "Carlos Duque",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 51
+    },
+    {
+      "id": 52,
+      "name": "Querubin Bedoya2",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 52
     }
   ],
   "games": [
