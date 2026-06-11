@@ -812,14 +812,23 @@
       "total_score": 0,
       "position": 51
     },
-    {
+        {
       "id": 52,
-      "name": "Querubin Bedoya2",
+      "name": "William Ramirez",
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 0,
       "position": 52
+    },
+    {
+      "id": 53,
+      "name": "Querubin Bedoya2",
+      "phone": "3095320121",
+      "email": "player20@mail.com",
+      "pay": false,
+      "total_score": 0,
+      "position": 53
     }
   ],
   "games": [
