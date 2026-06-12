@@ -1,22 +1,23 @@
 <div class="table-wrapper">
   <table class="results-table">
-    <col style="width: 200px; min-width: 200px;">
+    <col style="width: 80px; min-width: 80px;">
     <col style="width: 100px; min-width: 100px;">
     <thead>
 
       <tr class="section-header">
-        <th colspan="2">PREDICCIONES FASE {{ phase?.id }}
+        <th class="phase-header-sticky">FASE {{ phase?.id }}
           <div>pts Fase | pts TOTAL</div>
         </th>
-<th *ngFor="let player of visiblePlayers" class="player-header">
-  {{ player.name }}
-  <div class="player-score">{{ getPlayerScore(player.id) }} | {{ dataService.playerTotalScores().get(player.id) ?? 0 }}</div>
-</th>
+        <th class="real-score-header"></th>
+        <th *ngFor="let player of visiblePlayers" class="player-header">
+          {{ player.name }}
+          <div class="player-score">{{ getPlayerScore(player.id) }} | {{ dataService.playerTotalScores().get(player.id) ?? 0 }}</div>
+        </th>
       </tr>
 
       <!-- Fila 2: Labels -->
       <tr class="label-row">
-        <th>PARTIDO</th>
+        <th class="match-col-header">PARTIDO</th>
         <th>Resultado Real</th>
         <th *ngFor="let player of visiblePlayers">PR | Pts</th>
       </tr>
@@ -26,7 +27,7 @@
       <tr *ngFor="let row of gameRows">
         <!-- Nombre del partido -->
         <td class="match-name">
-          {{ row.game.team1.name | slice:0:12 }} - {{ row.game.team2.name | slice:0:12 }}
+          {{ row.game.team1.name | slice:0:10 }}-{{ row.game.team2.name | slice:0:10 }}
         </td>
 
         <!-- Resultado real editable -->
