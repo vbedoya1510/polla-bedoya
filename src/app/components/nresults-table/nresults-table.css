@@ -1,5 +1,7 @@
 .table-wrapper {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
 }
 
 .results-table {
@@ -36,6 +38,9 @@
   background-color: #2e7d32;
   color: white;
   font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 
 .real-score-header {
@@ -80,7 +85,8 @@
 .phase-header-sticky {
   position: sticky;
   left: 0;
-  z-index: 2;
+  top: 0;
+  z-index: 4;
   background-color: #2e7d32;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 }
