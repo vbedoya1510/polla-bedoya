@@ -1,16 +1,22 @@
 .table-wrapper {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
 }
 
 .qualified-table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 13px;
   table-layout: fixed;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
 }
 
 .qualified-table th,
 .qualified-table td {
-  border: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   padding: 6px 4px;
   text-align: center;
   overflow: hidden;
@@ -28,14 +34,61 @@
   width: 100px;
 }
 
+.section-header th {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.phase-header-sticky {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  background-color: #2e7d32;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.real-score-header {
+  background-color: #2e7d32;
+}
+
 .label-row th {
   background-color: #f5f5f5;
   font-weight: 600;
 }
 
+.match-col-header {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #f5f5f5;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.player-header {
+  background-color: #2e7d32;
+  color: white;
+  font-weight: bold;
+}
+
+.player-score {
+  font-size: 12px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
 .match-name {
   text-align: left;
   font-weight: 500;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .qualified-cell {
@@ -64,22 +117,4 @@
 .points-badge {
   font-weight: bold;
   margin-left: 2px;
-}
-
-.section-header th {
-  background-color: #2e7d32;
-  color: white;
-  font-weight: bold;
-}
-
-.player-header {
-  background-color: #2e7d32;
-  color: white;
-  font-weight: bold;
-}
-
-.player-score {
-  font-size: 12px;
-  color: #ffd700;
-  font-weight: bold;
 }

@@ -6,14 +6,15 @@
     </colgroup>
     <thead>
       <tr class="section-header">
-        <th colspan="2">EQUIPOS CLASIFICADOS</th>
+        <th class="phase-header-sticky">EQUIPOS CLASIFICADOS</th>
+        <th class="real-score-header"></th>
         <th *ngFor="let player of visiblePlayers" class="player-header">
           {{ player.name }}
           <div class="player-score">{{ getPlayerScore(player.id) }}</div>
         </th>
       </tr>
       <tr class="label-row">
-        <th>PARTIDO</th>
+        <th class="match-col-header">PARTIDO</th>
         <th>Clasificado</th>
         <th *ngFor="let player of visiblePlayers">{{ player.name }}</th>
       </tr>
