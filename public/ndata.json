@@ -378,7 +378,7 @@
       "email": "player3@mail.com",
       "pay": true,
       "total_score": 58,
-      "position": 25
+      "position": 26
     },
     {
       "id": 4,
@@ -405,7 +405,7 @@
       "email": "player6@mail.com",
       "pay": true,
       "total_score": 64,
-      "position": 16
+      "position": 17
     },
     {
       "id": 7,
@@ -432,7 +432,7 @@
       "email": "player9@mail.com",
       "pay": false,
       "total_score": 62,
-      "position": 18
+      "position": 19
     },
     {
       "id": 10,
@@ -441,7 +441,7 @@
       "email": "player10@mail.com",
       "pay": true,
       "total_score": 62,
-      "position": 19
+      "position": 20
     },
     {
       "id": 11,
@@ -468,7 +468,7 @@
       "email": "player13@mail.com",
       "pay": false,
       "total_score": 58,
-      "position": 26
+      "position": 27
     },
     {
       "id": 14,
@@ -504,7 +504,7 @@
       "email": "player17@mail.com",
       "pay": true,
       "total_score": 58,
-      "position": 27
+      "position": 28
     },
     {
       "id": 18,
@@ -513,7 +513,7 @@
       "email": "player18@mail.com",
       "pay": true,
       "total_score": 64,
-      "position": 17
+      "position": 18
     },
     {
       "id": 19,
@@ -522,7 +522,7 @@
       "email": "player19@mail.com",
       "pay": false,
       "total_score": 58,
-      "position": 28
+      "position": 29
     },
     {
       "id": 20,
@@ -567,7 +567,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 58,
-      "position": 29
+      "position": 30
     },
     {
       "id": 25,
@@ -594,7 +594,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 58,
-      "position": 30
+      "position": 31
     },
     {
       "id": 28,
@@ -612,7 +612,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 66,
-      "position": 13
+      "position": 14
     },
     {
       "id": 30,
@@ -621,7 +621,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 60,
-      "position": 20
+      "position": 21
     },
     {
       "id": 31,
@@ -630,7 +630,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 60,
-      "position": 21
+      "position": 22
     },
     {
       "id": 32,
@@ -648,7 +648,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 60,
-      "position": 22
+      "position": 23
     },
     {
       "id": 34,
@@ -738,7 +738,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 66,
-      "position": 14
+      "position": 15
     },
     {
       "id": 44,
@@ -756,7 +756,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 66,
-      "position": 15
+      "position": 16
     },
     {
       "id": 46,
@@ -765,7 +765,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 60,
-      "position": 23
+      "position": 24
     },
     {
       "id": 47,
@@ -783,7 +783,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 60,
-      "position": 24
+      "position": 25
     },
     {
       "id": 49,
@@ -791,8 +791,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 58,
-      "position": 31
+      "total_score": 68,
+      "position": 12
     },
     {
       "id": 50,
@@ -819,7 +819,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 68,
-      "position": 12
+      "position": 13
     },
     {
       "id": 53,
