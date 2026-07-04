@@ -10,7 +10,7 @@ import { NAdmin } from './pages/nadmin/nadmin';
 import { phaseGuard } from './guards/phase.guard';
 
 export const routes: Routes = [
-  { path: '', component: NPhase2 },
+  { path: '', component: Nphase3 },
   { path: 'fase1', component: NPhase1 },
   { path: 'fase2', component: NPhase2, canActivate: [phaseGuard(2)] },
   { path: 'fase3', component: Nphase3, canActivate: [phaseGuard(3)] },
