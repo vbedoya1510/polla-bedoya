@@ -937,20 +937,20 @@
 },{
   "id": 42,
   "teamsFinalsOrder": [
-    {"team": 44, "position": 1},
-    {"team": 41, "position": 2},
-    {"team": 33, "position": 3},
-    {"team": 9, "position": 4}
+    {"team": 33, "position": 1},
+    {"team": 37, "position": 2},
+    {"team": 9, "position": 3},
+    {"team": 29, "position": 4}
   ],
   "games": [
-    {"game": 89, "goals_team1": 0, "goals_team2": 1, "team_qualified": 10},
-    {"game": 90, "goals_team1": 2, "goals_team2": 2, "team_qualified": 33},
-    {"game": 91, "goals_team1": 1, "goals_team2": 1, "team_qualified": 9},
-    {"game": 92, "goals_team1": 2, "goals_team2": 1, "team_qualified": 1},
-    {"game": 93, "goals_team1": 3, "goals_team2": 1, "team_qualified": 41},
-    {"game": 94, "goals_team1": 1, "goals_team2": 2, "team_qualified": 25},
-    {"game": 95, "goals_team1": 3, "goals_team2": 1, "team_qualified": 37},
-    {"game": 96, "goals_team1": 1, "goals_team2": 2, "team_qualified": 44}
+    {"game": 89, "goals_team1": 0, "goals_team2": 2, "team_qualified": 10},
+    {"game": 90, "goals_team1": 0, "goals_team2": 2, "team_qualified": 33},
+    {"game": 91, "goals_team1": 2, "goals_team2": 1, "team_qualified": 9},
+    {"game": 92, "goals_team1": 1, "goals_team2": 2, "team_qualified": 45},
+    {"game": 93, "goals_team1": 1, "goals_team2": 1, "team_qualified": 29},
+    {"game": 94, "goals_team1": 1, "goals_team2": 1, "team_qualified": 25},
+    {"game": 95, "goals_team1": 2, "goals_team2": 1, "team_qualified": 37},
+    {"game": 96, "goals_team1": 0, "goals_team2": 1, "team_qualified": 44}
   ]
 },{
   "id": 43,
