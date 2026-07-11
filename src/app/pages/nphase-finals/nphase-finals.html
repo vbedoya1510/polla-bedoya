@@ -1,20 +1,16 @@
 
-<!-- CUARTOS DE FINAL -->
+<!-- 3ER PUESTO Y FINAL -->
+@if (phaseUnlocked()[6]) {
 <div class="phase-section">
-  <div class="phase-title">CUARTOS DE FINAL</div>
+  <div class="phase-title-final">3ER PUESTO Y FINAL</div>
   <app-nresults-table
-    [games]="gamesPhase4"
+    [games]="gamesPhase6"
     [players]="players"
-    [predictionsGame]="predictionsPhase4"
-    [phase]="phase4">
+    [predictionsGame]="predictionsPhase6"
+    [phase]="phase6">
   </app-nresults-table>
-  <app-nqualified-table
-    [games]="gamesPhase4"
-    [players]="players"
-    [predictionsGame]="predictionsPhase4"
-    [phase]="phase4">
-  </app-nqualified-table>
 </div>
+}
 
 <!-- SEMIFINALES -->
 @if (phaseUnlocked()[5]) {
@@ -35,15 +31,22 @@
 </div>
 }
 
-<!-- 3ER PUESTO Y FINAL -->
-@if (phaseUnlocked()[6]) {
+<!-- CUARTOS DE FINAL -->
 <div class="phase-section">
-  <div class="phase-title-final">3ER PUESTO Y FINAL</div>
+  <div class="phase-title">CUARTOS DE FINAL</div>
   <app-nresults-table
-    [games]="gamesPhase6"
+    [games]="gamesPhase4"
     [players]="players"
-    [predictionsGame]="predictionsPhase6"
-    [phase]="phase6">
+    [predictionsGame]="predictionsPhase4"
+    [phase]="phase4">
   </app-nresults-table>
+  <app-nqualified-table
+    [games]="gamesPhase4"
+    [players]="players"
+    [predictionsGame]="predictionsPhase4"
+    [phase]="phase4">
+  </app-nqualified-table>
 </div>
-}
+
+
+
