@@ -359,8 +359,8 @@
       "phone": "3013356886",
       "email": "player1@mail.com",
       "pay": false,
-      "total_score": 566,
-      "position": 20
+      "total_score": 578,
+      "position": 22
     },
     {
       "id": 2,
@@ -378,7 +378,7 @@
       "email": "player3@mail.com",
       "pay": true,
       "total_score": 502,
-      "position": 41
+      "position": 47
     },
     {
       "id": 4,
@@ -387,7 +387,7 @@
       "email": "player4@mail.com",
       "pay": true,
       "total_score": 652,
-      "position": 6
+      "position": 2
     },
     {
       "id": 5,
@@ -405,7 +405,7 @@
       "email": "player6@mail.com",
       "pay": true,
       "total_score": 596,
-      "position": 19
+      "position": 16
     },
     {
       "id": 7,
@@ -414,7 +414,7 @@
       "email": "player7@mail.com",
       "pay": false,
       "total_score": 534,
-      "position": 32
+      "position": 33
     },
     {
       "id": 8,
@@ -423,7 +423,7 @@
       "email": "player8@mail.com",
       "pay": false,
       "total_score": 628,
-      "position": 5
+      "position": 7
     },
     {
       "id": 9,
@@ -431,8 +431,8 @@
       "phone": "3031429110",
       "email": "player9@mail.com",
       "pay": false,
-      "total_score": 514,
-      "position": 33
+      "total_score": 522,
+      "position": 36
     },
     {
       "id": 10,
@@ -441,7 +441,7 @@
       "email": "player10@mail.com",
       "pay": true,
       "total_score": 602,
-      "position": 11
+      "position": 14
     },
     {
       "id": 11,
@@ -450,7 +450,7 @@
       "email": "player11@mail.com",
       "pay": true,
       "total_score": 544,
-      "position": 29
+      "position": 31
     },
     {
       "id": 12,
@@ -459,7 +459,7 @@
       "email": "player12@mail.com",
       "pay": true,
       "total_score": 500,
-      "position": 50
+      "position": 48
     },
     {
       "id": 13,
@@ -468,7 +468,7 @@
       "email": "player13@mail.com",
       "pay": false,
       "total_score": 506,
-      "position": 38
+      "position": 45
     },
     {
       "id": 14,
@@ -477,7 +477,7 @@
       "email": "player14@mail.com",
       "pay": true,
       "total_score": 508,
-      "position": 39
+      "position": 42
     },
     {
       "id": 15,
@@ -485,8 +485,8 @@
       "phone": "3117302366",
       "email": "victorbedoya1510@mail.com",
       "pay": true,
-      "total_score": 574,
-      "position": 25
+      "total_score": 582,
+      "position": 19
     },
     {
       "id": 16,
@@ -495,7 +495,7 @@
       "email": "player16@mail.com",
       "pay": true,
       "total_score": 508,
-      "position": 42
+      "position": 43
     },
     {
       "id": 17,
@@ -504,7 +504,7 @@
       "email": "player17@mail.com",
       "pay": true,
       "total_score": 496,
-      "position": 49
+      "position": 50
     },
     {
       "id": 18,
@@ -513,7 +513,7 @@
       "email": "player18@mail.com",
       "pay": true,
       "total_score": 646,
-      "position": 3
+      "position": 4
     },
     {
       "id": 19,
@@ -522,7 +522,7 @@
       "email": "player19@mail.com",
       "pay": false,
       "total_score": 516,
-      "position": 37
+      "position": 39
     },
     {
       "id": 20,
@@ -531,7 +531,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 558,
-      "position": 30
+      "position": 26
     },
     {
       "id": 21,
@@ -540,7 +540,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 642,
-      "position": 8
+      "position": 6
     },
     {
       "id": 22,
@@ -549,7 +549,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 602,
-      "position": 17
+      "position": 15
     },
     {
       "id": 23,
@@ -576,7 +576,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 582,
-      "position": 15
+      "position": 20
     },
     {
       "id": 26,
@@ -594,7 +594,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 624,
-      "position": 7
+      "position": 9
     },
     {
       "id": 28,
@@ -602,8 +602,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 538,
-      "position": 28
+      "total_score": 550,
+      "position": 29
     },
     {
       "id": 29,
@@ -612,7 +612,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 586,
-      "position": 21
+      "position": 18
     },
     {
       "id": 30,
@@ -621,7 +621,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 508,
-      "position": 43
+      "position": 44
     },
     {
       "id": 31,
@@ -629,8 +629,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 514,
-      "position": 46
+      "total_score": 522,
+      "position": 37
     },
     {
       "id": 32,
@@ -638,8 +638,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 556,
-      "position": 23
+      "total_score": 564,
+      "position": 24
     },
     {
       "id": 33,
@@ -648,7 +648,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 582,
-      "position": 18
+      "position": 21
     },
     {
       "id": 34,
@@ -657,7 +657,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 612,
-      "position": 9
+      "position": 10
     },
     {
       "id": 35,
@@ -665,7 +665,7 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 462,
+      "total_score": 490,
       "position": 51
     },
     {
@@ -675,7 +675,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 568,
-      "position": 22
+      "position": 23
     },
     {
       "id": 37,
@@ -684,7 +684,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 608,
-      "position": 10
+      "position": 11
     },
     {
       "id": 38,
@@ -693,7 +693,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 552,
-      "position": 26
+      "position": 28
     },
     {
       "id": 39,
@@ -702,7 +702,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 604,
-      "position": 16
+      "position": 13
     },
     {
       "id": 40,
@@ -711,7 +711,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 644,
-      "position": 2
+      "position": 5
     },
     {
       "id": 41,
@@ -720,7 +720,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 520,
-      "position": 34
+      "position": 38
     },
     {
       "id": 42,
@@ -729,7 +729,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 652,
-      "position": 4
+      "position": 3
     },
     {
       "id": 43,
@@ -738,7 +738,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 596,
-      "position": 13
+      "position": 17
     },
     {
       "id": 44,
@@ -747,7 +747,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 556,
-      "position": 24
+      "position": 27
     },
     {
       "id": 45,
@@ -755,8 +755,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 538,
-      "position": 31
+      "total_score": 550,
+      "position": 30
     },
     {
       "id": 46,
@@ -765,7 +765,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 564,
-      "position": 27
+      "position": 25
     },
     {
       "id": 47,
@@ -773,8 +773,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 498,
-      "position": 45
+      "total_score": 506,
+      "position": 46
     },
     {
       "id": 48,
@@ -783,7 +783,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 540,
-      "position": 35
+      "position": 32
     },
     {
       "id": 49,
@@ -791,8 +791,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 620,
-      "position": 14
+      "total_score": 628,
+      "position": 8
     },
     {
       "id": 50,
@@ -800,8 +800,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 520,
-      "position": 44
+      "total_score": 528,
+      "position": 35
     },
     {
       "id": 51,
@@ -809,8 +809,8 @@
       "phone": "3095320121",
       "email": "player20@mail.com",
       "pay": false,
-      "total_score": 522,
-      "position": 36
+      "total_score": 530,
+      "position": 34
     },
     {
       "id": 52,
@@ -819,7 +819,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 512,
-      "position": 47
+      "position": 41
     },
     {
       "id": 53,
@@ -828,7 +828,7 @@
       "email": "player20@mail.com",
       "pay": false,
       "total_score": 500,
-      "position": 48
+      "position": 49
     }
   ],
   "games": [
@@ -1832,8 +1832,26 @@
       "end_game": true,
       "team_qualified": 37
     },
-    {"id":101,"phase":5,"team1":33,"team2":29,"goals_team1":0,"goals_team2":0,"end_game":false,"team_qualified":0},
-    {"id":102,"phase":5,"team1":45,"team2":37,"goals_team1":0,"goals_team2":0,"end_game":false,"team_qualified":0},
+    {
+      "id": 101,
+      "phase": 5,
+      "team1": 33,
+      "team2": 29,
+      "goals_team1": 0,
+      "goals_team2": 2,
+      "end_game": true,
+      "team_qualified": 29
+    },
+    {
+      "id": 102,
+      "phase": 5,
+      "team1": 45,
+      "team2": 37,
+      "goals_team1": 0,
+      "goals_team2": 0,
+      "end_game": false,
+      "team_qualified": 0
+    },
     {
       "id": 103,
       "phase": 6,
