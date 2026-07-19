@@ -18,8 +18,6 @@ export class NDataService {
   #groupPoints = signal<Map<number, number>>(new Map());
   #qualifiedPoints = signal<Map<number, Map<number, number>>>(new Map());
   #finalistPointsMap = signal<Map<number, Map<number, number>>>(new Map());
-  // Estado locked de las posiciones finales al momento de la carga inicial
-  #originalPositionsLocked = signal(false);
 
   private mapToArray(m: Map<number, number>): [number, number][] {
     return [...m.entries()];
@@ -78,8 +76,6 @@ export class NDataService {
 
 readonly playerTotalScores = computed(() => {
   const scores = new Map<number, number>();
-  // Usar el estado locked de la carga inicial, no el actual (evita que ediciones de sesión anulen los puntos)
-  const positionsLocked = this.#originalPositionsLocked();
 
   this.#baseScores().forEach((base: number, playerId: number) => {
     const games = [...this.#gamePoints().values()]
@@ -87,9 +83,9 @@ readonly playerTotalScores = computed(() => {
     const groups = this.#groupPoints().get(playerId) ?? 0;
     const qualified = [...this.#qualifiedPoints().values()]
       .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
-    // Cuando las posiciones finales ya están cerradas en ndata (idTeam !== 0),
-    // esos puntos ya están incluidos en total_score — no sumar de nuevo
-    const finalist = positionsLocked ? 0 : [...this.#finalistPointsMap().values()]
+    // finalistPointsMap ya excluye, por posición/goleador, lo que viene fijado
+    // desde el ndata.json original (ver nfinals-table.ts), así que se suma siempre.
+    const finalist = [...this.#finalistPointsMap().values()]
       .reduce((sum, phaseMap) => sum + (phaseMap.get(playerId) ?? 0), 0);
     scores.set(playerId, base + games + groups + qualified + finalist);
   });
@@ -138,10 +134,6 @@ readonly selectedPlayerId = this.#selectedPlayerId.asReadonly();
     const newMap = new Map<number, number>();
     players.forEach((p: any) => newMap.set(p.id, p.total_score));
     this.#baseScores.set(newMap);
-    // Capturar el estado locked de las posiciones tal como vienen del JSON original
-    const positions = this.#ndata()?.teamsPositions ?? [];
-    const locked = positions.length > 0 && positions.every((p: any) => p.idTeam !== 0);
-    this.#originalPositionsLocked.set(locked);
   }
 
   setGamePoints(phase: number, points: Map<number, number>) {

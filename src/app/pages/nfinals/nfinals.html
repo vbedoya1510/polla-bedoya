@@ -68,7 +68,9 @@
     [players]="players"
     [phase]="phases[0]"
     [teams]="teams"
-    [scorerPredictions]="scorerPredictionsPhase1">
+    [scorerPredictions]="scorerPredictionsPhase1"
+    [hasRealPositions]="hasRealPositions"
+    [hasRealScorer]="hasRealScorer">
   </app-nfinals-table>
 
   @if (phaseUnlocked()[2]) {
@@ -77,7 +79,9 @@
       [predictionTeams]="predictionTeamsPhase2"
       [players]="players"
       [phase]="phases[1]"
-      [teams]="teams">
+      [teams]="teams"
+      [hasRealPositions]="hasRealPositions"
+      [hasRealScorer]="hasRealScorer">
     </app-nfinals-table>
   }
 
@@ -87,7 +91,9 @@
       [predictionTeams]="predictionTeamsPhase3"
       [players]="players"
       [phase]="phases[2]"
-      [teams]="teams">
+      [teams]="teams"
+      [hasRealPositions]="hasRealPositions"
+      [hasRealScorer]="hasRealScorer">
     </app-nfinals-table>
   }
 </div>

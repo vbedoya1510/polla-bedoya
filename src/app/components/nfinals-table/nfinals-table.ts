@@ -18,6 +18,10 @@ export class NfinalsTable implements OnChanges {
   @Input() phase!: Phase;
   @Input() teams: Team[] = [];
   @Input() scorerPredictions: { [playerId: number]: number } = {};
+  // Posiciones/goleador que ya venían fijados en el ndata.json original: su puntaje
+  // ya está incluido en total_score, así que no se deben volver a sumar aquí.
+  @Input() hasRealPositions: { [pos: number]: boolean } = {};
+  @Input() hasRealScorer = false;
 
   public dataService = inject(NDataService);
   private cdr = inject(ChangeDetectorRef);
@@ -65,24 +69,32 @@ export class NfinalsTable implements OnChanges {
 
   private calculatePoints() {
     if (!this.phase || !this.players.length) return;
-    const points = new Map<number, number>();
+    const displayPoints = new Map<number, number>();
+    const persistPoints = new Map<number, number>();
     const scorerPoints = this.dataService.worldCupData()?.teamScorer?.scorer_points ?? 40;
 
     this.players.forEach(player => {
-      let total = 0;
+      let displayTotal = 0;
+      let persistTotal = 0;
       this.positions.forEach(pos => {
         if (this.isCorrect(player.id, pos)) {
-          total += this.phase.finalist_points ?? 0;
+          const pts = this.phase.finalist_points ?? 0;
+          displayTotal += pts;
+          // Si la posición ya venía fijada en el ndata.json original, su puntaje
+          // ya está incluido en total_score: no sumarla de nuevo al total global.
+          if (!this.hasRealPositions[pos]) persistTotal += pts;
         }
       });
       if (this.isScorerCorrect(player.id)) {
-        total += scorerPoints;
+        displayTotal += scorerPoints;
+        if (!this.hasRealScorer) persistTotal += scorerPoints;
       }
-      points.set(player.id, total);
+      displayPoints.set(player.id, displayTotal);
+      persistPoints.set(player.id, persistTotal);
     });
 
-    this.phasePoints = points;
-    this.dataService.setFinalistPoints(this.phase.id, points);
+    this.phasePoints = displayPoints;
+    this.dataService.setFinalistPoints(this.phase.id, persistPoints);
   }
 
  isScorerCorrect(playerId: number): boolean {
