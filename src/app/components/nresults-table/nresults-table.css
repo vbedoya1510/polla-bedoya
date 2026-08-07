@@ -119,7 +119,13 @@
 }
 
 .winner-match {
-  background-color: #a5d6a7;
+  background-color: #c9f9cb;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.goal-match {
+  background-color:  #a5d6a7;
   color: #1b5e20;
   font-weight: bold;
 }

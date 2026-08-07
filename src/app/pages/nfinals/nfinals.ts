@@ -60,7 +60,7 @@ export class NFinals {
         new Player(p.id, p.name, p.phone, p.email, p.pay, p.total_score, p.position)
       );
       this.phases = data.phases.map((p: any) =>
-        new Phase(p.id, p.classified_points, p.finalist_points, p.result_points, p.winner_points, p.winner_scorer)
+        new Phase(p.id, p.classified_points, p.finalist_points, p.result_points, p.winner_points, p.winner_scorer, p.goal_points)
       );
 
       data.teamsPositions.forEach((tp: any) => {

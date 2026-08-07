@@ -37,7 +37,7 @@ export class NPhase1 {
       this.teams = data.teams.map((t: any) => new Team(t.id, t.name, t.group, t.position ?? 0));
 
       this.phases = data.phases.map((p: any) =>
-        new Phase(p.id, p.classified_points, p.finalist_points, p.result_points, p.winner_points, p.winner_scorer)
+        new Phase(p.id, p.classified_points, p.finalist_points, p.result_points, p.winner_points, p.winner_scorer, p.goal_points)
       );
 
       this.phase = this.phases[this.phaseNumber - 1];

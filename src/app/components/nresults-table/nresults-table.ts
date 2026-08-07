@@ -17,7 +17,7 @@ interface GameRow {
     player: Player;
     prediction: NPredictionGame | undefined;
     points: number;
-    matchType: 'exact' | 'winner' | 'none';
+    matchType: 'exact' | 'winner' | 'goal' | 'none';
   }[];
 }
 
@@ -101,20 +101,36 @@ private buildTable() {
     realG2: number,
     prediction: NPredictionGame | undefined,
     shouldCalculate: boolean
-  ): { points: number, matchType: 'exact' | 'winner' | 'none' } {
+  ): { points: number, matchType: 'exact' | 'winner' | 'goal' | 'none' } {
     if (!prediction || !this.phase || !shouldCalculate) {
       return { points: 0, matchType: 'none' };
     }
 
+    // Marcador exacto: no se combina con winner_points ni goal_points.
     if (prediction.goals_team1 === realG1 && prediction.goals_team2 === realG2) {
       return { points: this.phase.result_points, matchType: 'exact' };
     }
 
+    let points = 0;
+    let matchType: 'winner' | 'goal' | 'none' = 'none';
+
     if (Math.sign(prediction.goals_team1 - prediction.goals_team2) === Math.sign(realG1 - realG2)) {
-      return { points: this.phase.winner_points, matchType: 'winner' };
+      points += this.phase.winner_points;
+      matchType = 'winner';
     }
 
-    return { points: 0, matchType: 'none' };
+    // Goal_points: independiente de acertar el ganador. Se suma por cada
+    // equipo cuya cantidad de goles predicha coincide con la real (0 o 1,
+    // nunca los 2, porque eso ya sería marcador exacto).
+    let goalHits = 0;
+    if (prediction.goals_team1 === realG1) goalHits++;
+    if (prediction.goals_team2 === realG2) goalHits++;
+    if (goalHits > 0) {
+      points += goalHits * (this.phase.goal_points ?? 0);
+      if (matchType === 'none') matchType = 'goal';
+    }
+
+    return { points, matchType };
   }
 
   onScoreChange(row: GameRow) {
